@@ -75,12 +75,31 @@ namespace Game.Dialogue.Editor
             }
             else
             {
-                DrawProperty("yesChoice");
-
-                DrawProperty("noChoice");
+                DrawYesNoChoice("yesChoice", "YES");
+                DrawYesNoChoice("noChoice", "NO");
             }
         }
 
+
+        private void DrawYesNoChoice(string propertyName, string label)
+        {
+            SerializedProperty choice =
+                serializedObject.FindProperty(propertyName);
+
+            if (choice == null)
+                return;
+
+            SerializedProperty nextDialogue =
+                choice.FindPropertyRelative("nextDialogue");
+
+            EditorGUILayout.BeginVertical(EditorStyles.helpBox);
+
+            EditorGUILayout.LabelField(label, EditorStyles.boldLabel);
+
+            EditorGUILayout.PropertyField(nextDialogue);
+
+            EditorGUILayout.EndVertical();
+        }
 
 
         private void DrawAdvanced()

@@ -10,13 +10,11 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: bb50b23a4cf2d8b458c5808c80931e04, type: 3}
-  m_Name: Test 2
+  m_Name: Test yesno
   m_EditorClassIdentifier: Assembly-CSharp::Game.Dialogue.DialogueNode
   speakerName: Boss
-  dialogueType: 0
-  lines:
-  - portrait: {fileID: 0}
-    text: Can I trust you with my secret?
+  dialogueType: 1
+  lines: []
   choices:
   - text: Lmao no way you can
     nextDialogue: {fileID: 11400000, guid: 8618db4cc43c69946aa96c4575df1cf8, type: 2}
@@ -57,7 +55,7 @@ MonoBehaviour:
         m_Calls: []
   yesChoice:
     text: 
-    nextDialogue: {fileID: 0}
+    nextDialogue: {fileID: 11400000, guid: 2d92144bbd2ade7488098a36326e6f05, type: 2}
     conditions: []
     effects: []
     onSelected:
@@ -65,7 +63,7 @@ MonoBehaviour:
         m_Calls: []
   noChoice:
     text: 
-    nextDialogue: {fileID: 0}
+    nextDialogue: {fileID: 11400000, guid: e45a961f1f162cf4d981cfd8cf0a70d6, type: 2}
     conditions: []
     effects: []
     onSelected:

@@ -99,6 +99,12 @@ namespace Game.Dialogue
                 dialogueText.text = "";
         }
 
+        public void DisplayYesNoText()
+        {
+            ClearText();
+            dialogueText.text = "Shake your head or Nod to answer the question!";
+        }
+
 
 
         #endregion

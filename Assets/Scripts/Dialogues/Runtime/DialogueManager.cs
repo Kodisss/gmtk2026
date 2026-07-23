@@ -36,10 +36,8 @@ namespace Game.Dialogue
         private DialogueState state = DialogueState.Hidden;
 
 
-
+        public bool WaitingForYesNo => state == DialogueState.WaitingForChoice && currentNode != null && currentNode.dialogueType == DialogueType.YesNo;
         public DialogueState CurrentState => state;
-
-
 
         private void Awake()
         {
@@ -221,16 +219,12 @@ namespace Game.Dialogue
 
 
                 case DialogueType.YesNo:
-                    ui.CreateChoice("YES", () => Choose(currentNode.yesChoice), true);
-
-                    ui.CreateChoice("NO", () => Choose(currentNode.noChoice), true);
+                    ui.DisplayYesNoText();
 
                     break;
             }
 
-
-            state =
-                DialogueState.WaitingForChoice;
+            state = DialogueState.WaitingForChoice;
         }
 
 
@@ -240,16 +234,12 @@ namespace Game.Dialogue
             if (choice == null)
                 return;
 
-
-            ApplyEffects(
-                choice.effects);
+            ApplyEffects(choice.effects);
 
 
             choice.onSelected?.Invoke();
 
-
-            StartDialogue(
-                choice.nextDialogue);
+            StartDialogue(choice.nextDialogue);
         }
 
 
@@ -307,8 +297,6 @@ namespace Game.Dialogue
                 }  
             }
 
-            
-
             ui.CreateChoice(endDialogue, () => Choose(choice), shouldItBeOn);
         }
 
@@ -326,5 +314,23 @@ namespace Game.Dialogue
 
 
         #endregion
+
+        public void Yes()
+        {
+            if (!WaitingForYesNo)
+                return;
+
+            Choose(currentNode.yesChoice);
+        }
+
+
+
+        public void No()
+        {
+            if (!WaitingForYesNo)
+                return;
+
+            Choose(currentNode.noChoice);
+        }
     }
 }

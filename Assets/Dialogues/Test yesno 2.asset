@@ -10,25 +10,31 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: bb50b23a4cf2d8b458c5808c80931e04, type: 3}
-  m_Name: Test 1
+  m_Name: Test yesno 2
   m_EditorClassIdentifier: Assembly-CSharp::Game.Dialogue.DialogueNode
   speakerName: Boss
   dialogueType: 0
-  lines: []
+  lines:
+  - portrait: {fileID: 0}
+    text: You just said NO
   choices:
-  - text: Test
+  - text: I did!
     nextDialogue: {fileID: 11400000, guid: d3353e87eefa66a40a432b5ddf6ddf20, type: 2}
     conditions: []
-    effects:
-    - variable: 0
-      operation: 0
-      value: 5
+    effects: []
+    onSelected:
+      m_PersistentCalls:
+        m_Calls: []
+  - text: I didn't
+    nextDialogue: {fileID: 11400000, guid: d3353e87eefa66a40a432b5ddf6ddf20, type: 2}
+    conditions: []
+    effects: []
     onSelected:
       m_PersistentCalls:
         m_Calls: []
   yesChoice:
     text: 
-    nextDialogue: {fileID: 0}
+    nextDialogue: {fileID: 11400000, guid: 8618db4cc43c69946aa96c4575df1cf8, type: 2}
     conditions: []
     effects: []
     onSelected:
@@ -36,7 +42,7 @@ MonoBehaviour:
         m_Calls: []
   noChoice:
     text: 
-    nextDialogue: {fileID: 0}
+    nextDialogue: {fileID: 11400000, guid: 116844dbd4a2f334f8ea4f62bae1f399, type: 2}
     conditions: []
     effects: []
     onSelected:
