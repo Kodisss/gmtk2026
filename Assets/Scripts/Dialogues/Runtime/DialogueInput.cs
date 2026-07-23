@@ -6,6 +6,8 @@ namespace Game.Dialogue
     public class DialogueInput : MonoBehaviour
     {
         private DialogueManager dialogueManager;
+        private float lastContinueTime;
+        [SerializeField] private float continueCooldown = 0.3f;
 
 
         private void Start()
@@ -18,14 +20,18 @@ namespace Game.Dialogue
             if (!context.performed)
                 return;
 
+
+            if (Time.time - lastContinueTime < continueCooldown) return;
+
+            lastContinueTime = Time.time;
+
             dialogueManager.Continue();
         }
 
 
         public void OnInterrupt(InputAction.CallbackContext context)
         {
-            if (!context.performed)
-                return;
+            if (!context.performed) return;
 
             dialogueManager.Interrupt();
         }

@@ -228,7 +228,7 @@ MonoBehaviour:
     m_ActionName: 'BossFight/Continue[/Mouse/leftButton]'
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
-  m_DefaultActionMap: b151e770-e3df-481b-be76-3e8f6de8802d
+  m_DefaultActionMap: BossFight
   m_SplitScreenIndex: -1
   m_Camera: {fileID: 0}
 --- !u!114 &71381125
@@ -243,6 +243,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a69c42c9028ba6d4eb44e1e5f3e545da, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Game.Dialogue.DialogueInput
+  continueCooldown: 0.3
 --- !u!1 &119070837
 GameObject:
   m_ObjectHideFlags: 0

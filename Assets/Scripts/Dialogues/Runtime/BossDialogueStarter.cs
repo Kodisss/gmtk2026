@@ -10,8 +10,7 @@ namespace Game.Dialogue
 
         private void Start()
         {
-            FindAnyObjectByType<DialogueManager>()
-                .StartDialogue(startingDialogue);
+            FindAnyObjectByType<DialogueManager>().StartDialogue(startingDialogue);
         }
     }
 }
