@@ -23,18 +23,15 @@ namespace Game.Dialogue
         /// <summary>
         /// Initializes the button with text and click behaviour.
         /// </summary>
-        public void Initialize(
-            string text,
-            UnityAction onClicked)
+        public void Initialize(string text, UnityAction onClicked, bool canInteract)
         {
             buttonText.text = text;
 
-
             button.onClick.RemoveAllListeners();
 
+            button.onClick.AddListener(onClicked);
 
-            button.onClick.AddListener(
-                onClicked);
+            button.interactable = canInteract;
         }
 
 

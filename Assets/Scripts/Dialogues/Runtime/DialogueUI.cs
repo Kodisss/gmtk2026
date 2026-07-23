@@ -139,20 +139,13 @@ namespace Game.Dialogue
         #region Choices
 
 
-        public void CreateChoice(string text, UnityAction action)
+        public void CreateChoice(string text, UnityAction action, bool activate)
         {
             ClearText();
 
-            ChoiceButton button =
-                Instantiate(
-                    choicePrefab,
-                    choiceContainer);
+            ChoiceButton button = Instantiate(choicePrefab, choiceContainer);
 
-
-            button.Initialize(
-                text,
-                action);
-
+            button.Initialize(text, action, activate);
 
             spawnedChoices.Add(button);
         }

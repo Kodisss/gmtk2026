@@ -1,5 +1,4 @@
 using UnityEngine;
-using UnityEngine.Events;
 
 namespace Game.Dialogue
 {
@@ -34,8 +33,7 @@ namespace Game.Dialogue
 
         private int currentLineIndex;
 
-        private DialogueState state =
-            DialogueState.Hidden;
+        private DialogueState state = DialogueState.Hidden;
 
 
 
@@ -45,8 +43,7 @@ namespace Game.Dialogue
 
         private void Awake()
         {
-            if (startHidden)
-                ui.Hide();
+            if (startHidden) ui.Hide();
         }
 
 
@@ -58,8 +55,7 @@ namespace Game.Dialogue
         {
             if (node == null)
             {
-                Debug.LogWarning(
-                    "Tried starting a null dialogue node.");
+                Debug.LogWarning("Tried starting a null dialogue node.");
 
                 return;
             }
@@ -70,8 +66,7 @@ namespace Game.Dialogue
             currentLineIndex = 0;
 
 
-            ApplyEffects(
-                node.onEnterEffects);
+            ApplyEffects(node.onEnterEffects);
 
 
             node.onEnter?.Invoke();
@@ -81,9 +76,7 @@ namespace Game.Dialogue
 
             ui.ResetUI();
 
-            ui.SetSpeaker(
-                node.speakerName);
-
+            ui.SetSpeaker(node.speakerName);
 
             DisplayCurrentLine();
         }
@@ -96,7 +89,6 @@ namespace Game.Dialogue
             {
                 currentNode.onExit?.Invoke();
             }
-
 
             currentNode = null;
 
@@ -195,16 +187,11 @@ namespace Game.Dialogue
 
         public void Interrupt()
         {
-            if (state != DialogueState.Typing)
-                return;
+            if (state != DialogueState.Typing) return;
 
+            if (currentNode.interruptDialogue == null) return;
 
-            if (currentNode.interruptDialogue == null)
-                return;
-
-
-            StartDialogue(
-                currentNode.interruptDialogue);
+            StartDialogue(currentNode.interruptDialogue);
         }
 
 
@@ -224,15 +211,9 @@ namespace Game.Dialogue
             {
                 case DialogueType.Normal:
 
-                    foreach (DialogueChoice choice
-                            in currentNode.choices)
+                    foreach (DialogueChoice choice in currentNode.choices)
                     {
-                        if (CheckConditions(choice))
-                        {
-                            DialogueChoice selected = choice;
-
-                            ui.CreateChoice(selected.text, () => Choose(selected));
-                        }
+                        CheckConditions(choice);
                     }
 
                     break;
@@ -240,16 +221,9 @@ namespace Game.Dialogue
 
 
                 case DialogueType.YesNo:
+                    ui.CreateChoice("YES", () => Choose(currentNode.yesChoice), true);
 
-
-                    ui.CreateChoice(
-                        "YES",
-                        () => Choose(currentNode.yesChoice));
-
-
-                    ui.CreateChoice(
-                        "NO",
-                        () => Choose(currentNode.noChoice));
+                    ui.CreateChoice("NO", () => Choose(currentNode.noChoice), true);
 
                     break;
             }
@@ -287,32 +261,62 @@ namespace Game.Dialogue
         #region Conditions / Effects
 
 
-        private bool CheckConditions(
-            DialogueChoice choice)
+        private void CheckConditions(DialogueChoice choice)
         {
-            if (choice.conditions == null)
-                return true;
+            if (choice.conditions == null) ui.CreateChoice(choice.text, () => Choose(choice), true);
 
+            DialogueCondition thatDidntWork;
+            bool shouldItBeOn = true;
+            string endDialogue = choice.text;
 
-            foreach (DialogueCondition condition
-                    in choice.conditions)
+            foreach (DialogueCondition condition in choice.conditions)
             {
                 if (!variables.Check(condition))
-                    return false;
+                {
+                    thatDidntWork = condition;
+                    shouldItBeOn = false;
+                    string conditionBetterWording;
+
+
+                    switch (condition.condition)
+                    {
+                        case ConditionOperator.Equal:
+                            conditionBetterWording = "not equal to ";
+                            break;
+                        case ConditionOperator.NotEqual:
+                            conditionBetterWording = "anything but ";
+                            break;
+                        case ConditionOperator.Greater:
+                            conditionBetterWording = "greater than ";
+                            break;
+                        case ConditionOperator.Less:
+                            conditionBetterWording = "lower than ";
+                            break;
+                        case ConditionOperator.GreaterOrEqual:
+                            conditionBetterWording = "greater than ";
+                            break;
+                        case ConditionOperator.LessOrEqual:
+                            conditionBetterWording = "greater than ";
+                            break;
+                        default:
+                            conditionBetterWording = " ";
+                            break;
+                    }
+
+                    endDialogue = "(" + condition.variable + " must be " + conditionBetterWording + condition.value + ") " + endDialogue;
+                }  
             }
 
+            
 
-            return true;
+            ui.CreateChoice(endDialogue, () => Choose(choice), shouldItBeOn);
         }
 
 
 
-        private void ApplyEffects(
-            DialogueEffect[] effects)
+        private void ApplyEffects(DialogueEffect[] effects)
         {
-            if (effects == null)
-                return;
-
+            if (effects == null) return;
 
             foreach (DialogueEffect effect in effects)
             {

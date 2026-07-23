@@ -688,7 +688,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2f351bb55c46ac942adfd82c23da2816, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Game.Dialogue.BossDialogueStarter
-  startingDialogue: {fileID: 11400000, guid: 33e13d5680783824aa83b1ab53c2b44a, type: 2}
+  startingDialogue: {fileID: 11400000, guid: 8618db4cc43c69946aa96c4575df1cf8, type: 2}
 --- !u!4 &528690090
 Transform:
   m_ObjectHideFlags: 0
