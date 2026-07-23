@@ -224,11 +224,11 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-    m_ActionId: dfc5e6dd-6337-4042-9348-2bd3caf34e74
-    m_ActionName: 'Player/Continue[/Mouse/leftButton]'
+    m_ActionId: f2171fe4-dd9d-406c-bf40-def93457cb87
+    m_ActionName: 'BossFight/Continue[/Mouse/leftButton]'
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
-  m_DefaultActionMap: Player
+  m_DefaultActionMap: b151e770-e3df-481b-be76-3e8f6de8802d
   m_SplitScreenIndex: -1
   m_Camera: {fileID: 0}
 --- !u!114 &71381125

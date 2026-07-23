@@ -41,15 +41,6 @@
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": true
-                },
-                {
-                    "name": "Continue",
-                    "type": "Button",
-                    "id": "dfc5e6dd-6337-4042-9348-2bd3caf34e74",
-                    "expectedControlType": "",
-                    "processors": "",
-                    "interactions": "",
-                    "initialStateCheck": false
                 }
             ],
             "bindings": [
@@ -184,10 +175,27 @@
                     "action": "Move",
                     "isComposite": false,
                     "isPartOfComposite": false
-                },
+                }
+            ]
+        },
+        {
+            "name": "BossFight",
+            "id": "b151e770-e3df-481b-be76-3e8f6de8802d",
+            "actions": [
+                {
+                    "name": "Continue",
+                    "type": "Button",
+                    "id": "f2171fe4-dd9d-406c-bf40-def93457cb87",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                }
+            ],
+            "bindings": [
                 {
                     "name": "",
-                    "id": "cb30285a-5db1-411a-b257-19d3072a955c",
+                    "id": "b5223cce-0f9f-4b06-940b-02892f2a5b66",
                     "path": "<Mouse>/leftButton",
                     "interactions": "",
                     "processors": "",

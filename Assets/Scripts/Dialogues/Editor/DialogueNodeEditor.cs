@@ -8,14 +8,12 @@ namespace Game.Dialogue.Editor
     [CustomEditor(typeof(DialogueNode))]
     public class DialogueNodeEditor : UnityEditor.Editor
     {
-        private SerializedProperty dialogueType;
+        private DialogueNode node;
 
 
         private void OnEnable()
         {
-            dialogueType =
-                serializedObject.FindProperty(
-                    "dialogueType");
+            node = (DialogueNode)target;
         }
 
 
@@ -25,58 +23,29 @@ namespace Game.Dialogue.Editor
             serializedObject.Update();
 
 
-            DialogueNode node =
-                (DialogueNode)target;
+            DrawHeader();
 
+
+            EditorGUILayout.Space();
 
 
             DrawProperty("speakerName");
 
             DrawProperty("dialogueType");
 
-
             DrawProperty("lines");
 
 
-            if(node.dialogueType == DialogueType.Normal)
-            {
-                EditorGUILayout.Space();
-
-                EditorGUILayout.LabelField(
-                    "Choices",
-                    EditorStyles.boldLabel);
-
-                DrawProperty("choices");
-            }
+            EditorGUILayout.Space();
 
 
-
-            if(node.dialogueType == DialogueType.YesNo)
-            {
-                EditorGUILayout.Space();
-
-                EditorGUILayout.LabelField(
-                    "YES / NO",
-                    EditorStyles.boldLabel);
+            DrawChoices();
 
 
-                DrawProperty("yesChoice");
-
-                DrawProperty("noChoice");
-            }
+            EditorGUILayout.Space();
 
 
-
-            DrawProperty("interruptDialogue");
-
-
-            DrawProperty("onEnterEffects");
-
-
-            DrawProperty("onEnter");
-
-            DrawProperty("onExit");
-
+            DrawAdvanced();
 
 
             serializedObject.ApplyModifiedProperties();
@@ -84,38 +53,83 @@ namespace Game.Dialogue.Editor
 
 
 
-        private void DrawProperty(string name)
+        private void DrawHeader()
         {
-            EditorGUILayout.PropertyField(
-                serializedObject.FindProperty(name),
-                true);
+            EditorGUILayout.LabelField(
+                "Dialogue Node",
+                EditorStyles.boldLabel);
+
+
+            EditorGUILayout.HelpBox(
+                GetHelpText(),
+                MessageType.Info);
         }
 
 
 
-        private string GetHelpText(
-            DialogueNode node)
+        private void DrawChoices()
         {
-            switch(node.dialogueType)
+            if (node.dialogueType == DialogueType.Normal)
             {
-                case DialogueType.Normal:
-
-                    return
-                    "Normal dialogue uses the Choices list.";
-
-
-
-                case DialogueType.YesNo:
-
-                    return
-                    "Yes/No dialogue uses Yes Choice and No Choice.";
-
-
-
-                default:
-
-                    return "";
+                DrawProperty("choices");
             }
+            else
+            {
+                DrawProperty("yesChoice");
+
+                DrawProperty("noChoice");
+            }
+        }
+
+
+
+        private void DrawAdvanced()
+        {
+            EditorGUILayout.LabelField(
+                "Advanced",
+                EditorStyles.boldLabel);
+
+
+            DrawProperty("interruptDialogue");
+
+            DrawProperty("onEnterEffects");
+
+            DrawProperty("onEnter");
+
+            DrawProperty("onExit");
+        }
+
+
+
+        private void DrawProperty(string propertyName)
+        {
+            SerializedProperty property =
+                serializedObject.FindProperty(propertyName);
+
+
+            if (property != null)
+            {
+                EditorGUILayout.PropertyField(
+                    property,
+                    true);
+            }
+        }
+
+
+
+        private string GetHelpText()
+        {
+            return node.dialogueType switch
+            {
+                DialogueType.Normal =>
+                    "Normal dialogue: lines followed by multiple choices.",
+
+                DialogueType.YesNo =>
+                    "Yes / No dialogue: lines followed by two possible answers.",
+
+                _ =>
+                    ""
+            };
         }
     }
 }
