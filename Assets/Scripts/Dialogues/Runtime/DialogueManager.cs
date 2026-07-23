@@ -229,13 +229,9 @@ namespace Game.Dialogue
                     {
                         if (CheckConditions(choice))
                         {
-                            DialogueChoice selected =
-                                choice;
+                            DialogueChoice selected = choice;
 
-                            ui.CreateChoice(
-                                selected.text,
-                                () =>
-                                Choose(selected));
+                            ui.CreateChoice(selected.text, () => Choose(selected));
                         }
                     }
 
@@ -248,16 +244,12 @@ namespace Game.Dialogue
 
                     ui.CreateChoice(
                         "YES",
-                        () =>
-                        Choose(
-                            currentNode.yesChoice));
+                        () => Choose(currentNode.yesChoice));
 
 
                     ui.CreateChoice(
                         "NO",
-                        () =>
-                        Choose(
-                            currentNode.noChoice));
+                        () => Choose(currentNode.noChoice));
 
                     break;
             }
