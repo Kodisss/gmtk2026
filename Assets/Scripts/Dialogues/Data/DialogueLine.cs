@@ -12,7 +12,7 @@ namespace Game.Dialogue
         [Header("Voice")]
         public AudioClip voiceClip;
 
-        [Range(0f, 1f)]
+        [Range(0f, 1.5f)]
         public float voiceVolume = 1f;
 
 
