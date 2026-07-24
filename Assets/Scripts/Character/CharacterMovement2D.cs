@@ -1,17 +1,18 @@
+using System.Collections;
 using UnityEngine;
 
 public enum CharacterState
 {
     Idle, // 0
     Walking, // 1
-    Sprinting, // 2
-    Jumping, // 3
-    Falling, // 4
-    Dashing
+    Jumping, // 2
+    Falling, // 3
+    Dashing //4
 }
 
 [RequireComponent(typeof(Rigidbody2D))]
 [RequireComponent(typeof(CharacterInputs))]
+[RequireComponent(typeof(CharacterStats))]
 public class CharacterMovement2D : MonoBehaviour
 {
     private Rigidbody2D rb;
@@ -24,7 +25,6 @@ public class CharacterMovement2D : MonoBehaviour
 
     [Header("Movement")]
     [SerializeField] private float walkingSpeed = 5f;
-    [SerializeField] private float sprintingSpeed = 8f;
     [SerializeField] private float acceleration = 150f;
     [SerializeField] private float deceleration = 150f;
 
@@ -44,7 +44,13 @@ public class CharacterMovement2D : MonoBehaviour
     [SerializeField] private float doubleJumpCooldown = 0.2f;
 
     [Header("Dash")]
-    [SerializeField] private float defaultDashForce = 15f;
+    [SerializeField] private float dashForce = 20f;
+    [SerializeField] private float dashDuration = 0.15f;
+    [SerializeField] private float dashCooldown = 0.5f;
+
+    private bool isDashing;
+    private bool canDash = true;
+    private Vector2 dashDirection;
 
     private bool canDoubleJump;
     private float doubleJumpTimer;
@@ -55,10 +61,11 @@ public class CharacterMovement2D : MonoBehaviour
     [SerializeField] private LayerMask groundLayer;
 
     [Header("Camera Offsets")]
-    [SerializeField] private float sprintingCameraOffset = 3f;
     [SerializeField] private float walkingCameraOffset = 2f;
     [SerializeField] private float idleCameraOffset = 2f;
 
+    public float CurrentSpeed => Mathf.Abs(currentHorizontalSpeed);
+    public float MaxSpeed => walkingSpeed;
 
     private float coyoteTimer;
     private float jumpBufferTimer;
@@ -86,10 +93,14 @@ public class CharacterMovement2D : MonoBehaviour
     {
         CheckGround();
 
+        HandleDash();
+
         HandleJumpBuffer();
         HandleCoyoteTime();
         HandleJump();
+
         if (stats.DoubleJumpEnabled) HandleDoubleJumpCooldown();
+
         HandleBetterJump();
 
         HandleSpriteFlip();
@@ -117,13 +128,13 @@ public class CharacterMovement2D : MonoBehaviour
 
     private void HandleMovement()
     {
-        //Debug.Log($"Move Input: {characterInput.MoveInput}");
+        if (isDashing) return;
 
         float targetSpeed = 0f;
 
         if (Mathf.Abs(characterInput.MoveInput.x) > 0.01f)
         {
-            targetSpeed = characterInput.IsSprinting ? sprintingSpeed : walkingSpeed;
+            targetSpeed = walkingSpeed;
             targetSpeed *= Mathf.Sign(characterInput.MoveInput.x);
             targetSpeed *= stats.SpeedMultiplier;
         }
@@ -228,8 +239,55 @@ public class CharacterMovement2D : MonoBehaviour
         }
     }
 
+    private void HandleDash()
+    {
+        if (!characterInput.DashPressed) return;
+
+        if (!canDash)  return;
+
+        StartCoroutine(Dash());
+    }
+
+    private IEnumerator Dash()
+    {
+        isDashing = true;
+        canDash = false;
+
+        currentState = CharacterState.Dashing;
+
+        dashDirection = new Vector2(characterInput.MoveInput.x, characterInput.MoveInput.y);
+
+        // If no input, dash facing direction
+        if (dashDirection == Vector2.zero)
+        {
+            dashDirection = spriteRenderer.flipX ? Vector2.left : Vector2.right;
+        }
+
+        rb.gravityScale = 0;
+
+        rb.linearVelocity = dashDirection * dashForce;
+
+        yield return new WaitForSeconds(dashDuration);
+
+        isDashing = false;
+
+        rb.linearVelocity = new Vector2(0, rb.linearVelocity.y);
+
+        rb.gravityScale = baseGravity;
+
+        yield return new WaitForSeconds(dashCooldown);
+
+        canDash = true;
+    }
+
     private void UpdateState()
     {
+        if (isDashing)
+        {
+            currentState = CharacterState.Dashing;
+            return;
+        }
+
         if (!isGrounded)
         {
             currentState = rb.linearVelocity.y > 0 ? CharacterState.Jumping : CharacterState.Falling;
@@ -239,10 +297,6 @@ public class CharacterMovement2D : MonoBehaviour
         if (Mathf.Abs(currentHorizontalSpeed) < 0.1f)
         {
             currentState = CharacterState.Idle;
-        }
-        else if (characterInput.IsSprinting)
-        {
-            currentState = CharacterState.Sprinting;
         }
         else
         {
@@ -257,9 +311,16 @@ public class CharacterMovement2D : MonoBehaviour
 
     private void UpdateCameraOffset()
     {
-        if (currentState == CharacterState.Sprinting) moveCamera.SetOffset(sprintingCameraOffset);
-        if (currentState == CharacterState.Walking) moveCamera.SetOffset(walkingCameraOffset);
-        if (currentState == CharacterState.Idle) moveCamera.SetOffset(idleCameraOffset);
+        if (moveCamera == null) return;
+
+        if (currentState == CharacterState.Walking)
+        {
+            moveCamera.SetOffset(walkingCameraOffset);
+        }
+        else if (currentState == CharacterState.Idle)
+        {
+            moveCamera.SetOffset(idleCameraOffset);
+        }
     }
 
     private void OnDrawGizmosSelected()

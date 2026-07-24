@@ -5,7 +5,6 @@ using UnityEngine.InputSystem;
 public class CharacterInputs : MonoBehaviour
 {
     public Vector2 MoveInput { get; private set; }
-    public bool IsSprinting { get; private set; }
     public bool JumpPressed { get; private set; }
     public bool JumpReleased { get; private set; }
     public bool DashPressed { get; private set; }
@@ -14,21 +13,6 @@ public class CharacterInputs : MonoBehaviour
     {
         MoveInput = context.ReadValue<Vector2>();
     }
-
-
-    public void OnSprint(InputAction.CallbackContext context)
-    {
-        if (context.performed)
-        {
-            IsSprinting = true;
-        }
-
-        if (context.canceled)
-        {
-            IsSprinting = false;
-        }
-    }
-
 
     public void OnJump(InputAction.CallbackContext context)
     {
@@ -50,7 +34,6 @@ public class CharacterInputs : MonoBehaviour
             DashPressed = true;
         }
     }
-
 
     private void LateUpdate()
     {

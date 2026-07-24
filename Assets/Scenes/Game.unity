@@ -158,16 +158,20 @@ MonoBehaviour:
   sprintingSpeed: 8
   acceleration: 150
   deceleration: 150
+  baseGravity: 3
   jumpForce: 20
-  jumpGravityMultiplier: 4
+  jumpGravityMultiplier: 2
   fallGravityMultiplier: 3
-  lowJumpGravityMultiplier: 5
+  lowJumpGravityMultiplier: 10
   coyoteTime: 0.1
   jumpBufferTime: 0.15
   jumpCutMultiplier: 0.5
   allowedToDoubleJump: 0
   doubleJumpForce: 18
   doubleJumpCooldown: 0.2
+  dashForce: 25
+  dashDuration: 0.15
+  dashCooldown: 0.5
   groundCheck: {fileID: 684924354}
   groundRadius: 0.15
   groundLayer:
@@ -176,7 +180,6 @@ MonoBehaviour:
   sprintingCameraOffset: 3
   walkingCameraOffset: 2
   idleCameraOffset: 2
-  defaultDashForce: 15
 --- !u!114 &283765112
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -215,7 +218,19 @@ MonoBehaviour:
       m_Calls: []
   m_ActionEvents:
   - m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 283765112}
+        m_TargetAssemblyTypeName: CharacterInputs, Assembly-CSharp
+        m_MethodName: OnDash
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_ActionId: 36e57aca-39ee-4696-9525-f0d615296a36
     m_ActionName: 'Player/Fire[/Mouse/leftButton]'
   - m_PersistentCalls:
