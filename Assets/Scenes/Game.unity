@@ -166,7 +166,7 @@ MonoBehaviour:
   jumpCutMultiplier: 0.5
   landingVelocityThresholdToLand: -23
   landingDuration: 0.08
-  allowedToDoubleJump: 1
+  allowedToDoubleJump: 0
   doubleJumpForce: 18
   doubleJumpCooldown: 0.2
   dashForce: 25
