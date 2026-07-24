@@ -16,7 +16,7 @@ MonoBehaviour:
   dialogueType: 0
   lines:
   - portrait: {fileID: 0}
-    voiceClip: {fileID: 0}
+    voiceClip: {fileID: 8300000, guid: c24a7b4c4ab702e40ad119184336e7ae, type: 3}
     voiceVolume: 1
     text: FUCK YOU YOU MORON I HATE YOU! I'LL WILL BURN YOUR WHOLE FAMILY OF LITTLE.
       FUCKING. RABBITS!
