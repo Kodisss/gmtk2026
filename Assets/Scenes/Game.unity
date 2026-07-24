@@ -165,6 +165,7 @@ MonoBehaviour:
   coyoteTime: 0.1
   jumpBufferTime: 0.15
   jumpCutMultiplier: 0.5
+  landingVelocityThresholdToLand: -23
   landingDuration: 0.08
   allowedToDoubleJump: 1
   doubleJumpForce: 18

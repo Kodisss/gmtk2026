@@ -38,9 +38,11 @@ public class CharacterMovement2D : MonoBehaviour
     [SerializeField] private float coyoteTime = 0.1f;
     [SerializeField] private float jumpBufferTime = 0.15f;
     [SerializeField] private float jumpCutMultiplier = 0.5f;
+    [SerializeField] private float landingVelocityThresholdToLand = -8f;
     [SerializeField] private float landingDuration = 0.08f;
 
     private float landingTimer;
+    private float lastVerticalVelocity;
 
     [Header("Double Jump")]
     [SerializeField] private bool allowedToDoubleJump = false;
@@ -95,6 +97,8 @@ public class CharacterMovement2D : MonoBehaviour
 
     private void Update()
     {
+        lastVerticalVelocity = rb.linearVelocity.y;
+
         CheckGround();
 
         HandleDash();
@@ -166,7 +170,11 @@ public class CharacterMovement2D : MonoBehaviour
             canDoubleJump = true;
             doubleJumpTimer = 0f;
 
-            landingTimer = landingDuration;
+            if (lastVerticalVelocity < landingVelocityThresholdToLand)
+            {
+                Debug.Log("Landed because last vertical velocity is " + lastVerticalVelocity + " and the threshold is " + landingVelocityThresholdToLand);
+                landingTimer = landingDuration;
+            }
         }
     }
 
