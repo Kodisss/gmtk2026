@@ -172,7 +172,7 @@ public class CharacterMovement2D : MonoBehaviour
 
             if (lastVerticalVelocity < landingVelocityThresholdToLand)
             {
-                Debug.Log("Landed because last vertical velocity is " + lastVerticalVelocity + " and the threshold is " + landingVelocityThresholdToLand);
+                //Debug.Log("Landed because last vertical velocity is " + lastVerticalVelocity + " and the threshold is " + landingVelocityThresholdToLand);
                 landingTimer = landingDuration;
             }
         }
