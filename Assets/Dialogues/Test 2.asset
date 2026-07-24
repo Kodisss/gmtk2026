@@ -16,7 +16,11 @@ MonoBehaviour:
   dialogueType: 0
   lines:
   - portrait: {fileID: 0}
-    text: Can I trust you with my secret?
+    voiceClip: {fileID: 0}
+    voiceVolume: 1
+    text: FUCK YOU YOU MORON I HATE YOU! I'LL WILL BURN YOUR WHOLE FAMILY OF LITTLE.
+      FUCKING. RABBITS!
+    typingSpeed: 1
   choices:
   - text: Lmao no way you can
     nextDialogue: {fileID: 11400000, guid: 8618db4cc43c69946aa96c4575df1cf8, type: 2}

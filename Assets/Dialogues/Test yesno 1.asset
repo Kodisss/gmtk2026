@@ -13,10 +13,13 @@ MonoBehaviour:
   m_Name: Test yesno 1
   m_EditorClassIdentifier: Assembly-CSharp::Game.Dialogue.DialogueNode
   speakerName: Boss
-  dialogueType: 0
+  dialogueType: 1
   lines:
   - portrait: {fileID: 0}
-    text: You just said YES
+    voiceClip: {fileID: 0}
+    voiceVolume: 1
+    text: Wait... you do not know who I am?
+    typingSpeed: 1
   choices:
   - text: I did!
     nextDialogue: {fileID: 11400000, guid: d3353e87eefa66a40a432b5ddf6ddf20, type: 2}
