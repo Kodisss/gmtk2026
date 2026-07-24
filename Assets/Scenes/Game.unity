@@ -132,6 +132,7 @@ GameObject:
   - component: {fileID: 283765117}
   - component: {fileID: 283765114}
   - component: {fileID: 283765113}
+  - component: {fileID: 283765118}
   - component: {fileID: 283765112}
   - component: {fileID: 283765111}
   m_Layer: 0
@@ -164,6 +165,7 @@ MonoBehaviour:
   coyoteTime: 0.1
   jumpBufferTime: 0.15
   jumpCutMultiplier: 0.5
+  allowedToDoubleJump: 0
   doubleJumpForce: 18
   doubleJumpCooldown: 0.2
   groundCheck: {fileID: 684924354}
@@ -171,6 +173,10 @@ MonoBehaviour:
   groundLayer:
     serializedVersion: 2
     m_Bits: 64
+  sprintingCameraOffset: 3
+  walkingCameraOffset: 2
+  idleCameraOffset: 2
+  defaultDashForce: 15
 --- !u!114 &283765112
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -260,6 +266,14 @@ MonoBehaviour:
         m_CallState: 2
     m_ActionId: eda6f55c-4929-4189-86b0-8693c9100d64
     m_ActionName: 'Player/Move[/Keyboard/w,/Keyboard/s,/Keyboard/a,/Keyboard/d]'
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: f2171fe4-dd9d-406c-bf40-def93457cb87
+    m_ActionName: 'BossFight/Continue[/Mouse/leftButton]'
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 528593cf-0990-4eac-a67f-ed98229625c3
+    m_ActionName: 'BossFight/Look[/Mouse/delta]'
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
   m_DefaultActionMap: Player
@@ -405,6 +419,18 @@ CapsuleCollider2D:
   m_Offset: {x: 0, y: 0}
   m_Size: {x: 1, y: 2}
   m_Direction: 0
+--- !u!114 &283765118
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 283765110}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b5695290ccf57324dafa95d2259c13a9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::CharacterStats
 --- !u!1 &462478612
 GameObject:
   m_ObjectHideFlags: 0
