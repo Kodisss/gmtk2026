@@ -11,7 +11,6 @@ public class CharacterAnimation : MonoBehaviour
     private static readonly int StateHash = Animator.StringToHash("State");
     private static readonly int SpeedHash = Animator.StringToHash("Speed");
     private static readonly int GroundedHash = Animator.StringToHash("Grounded");
-    private static readonly int DashHash = Animator.StringToHash("Dash");
 
     private void Awake()
     {
@@ -36,11 +35,6 @@ public class CharacterAnimation : MonoBehaviour
         if (movement.CurrentState != previousState)
         {
             animator.SetInteger(StateHash, (int)movement.CurrentState);
-
-            if (movement.CurrentState == CharacterState.Dashing)
-            {
-                animator.SetTrigger(DashHash);
-            }
 
             previousState = movement.CurrentState;
         }

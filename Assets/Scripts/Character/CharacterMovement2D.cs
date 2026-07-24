@@ -7,7 +7,8 @@ public enum CharacterState
     Walking, // 1
     Jumping, // 2
     Falling, // 3
-    Dashing //4
+    Dashing,   // 4
+    Landing    // 5
 }
 
 [RequireComponent(typeof(Rigidbody2D))]
@@ -37,6 +38,9 @@ public class CharacterMovement2D : MonoBehaviour
     [SerializeField] private float coyoteTime = 0.1f;
     [SerializeField] private float jumpBufferTime = 0.15f;
     [SerializeField] private float jumpCutMultiplier = 0.5f;
+    [SerializeField] private float landingDuration = 0.08f;
+
+    private float landingTimer;
 
     [Header("Double Jump")]
     [SerializeField] private bool allowedToDoubleJump = false;
@@ -105,6 +109,11 @@ public class CharacterMovement2D : MonoBehaviour
 
         HandleSpriteFlip();
 
+        if (landingTimer > 0f)
+        {
+            landingTimer -= Time.deltaTime;
+        }
+
         UpdateState();
         UpdateCameraOffset();
     }
@@ -156,6 +165,8 @@ public class CharacterMovement2D : MonoBehaviour
         {
             canDoubleJump = true;
             doubleJumpTimer = 0f;
+
+            landingTimer = landingDuration;
         }
     }
 
@@ -285,6 +296,12 @@ public class CharacterMovement2D : MonoBehaviour
         if (isDashing)
         {
             currentState = CharacterState.Dashing;
+            return;
+        }
+
+        if (landingTimer > 0f)
+        {
+            currentState = CharacterState.Landing;
             return;
         }
 
