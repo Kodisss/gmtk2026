@@ -121,17 +121,11 @@ namespace Game.Dialogue
                 return;
             }
 
+            DialogueLine line = currentNode.lines[currentLineIndex];
 
-            DialogueLine line =
-                currentNode.lines[currentLineIndex];
+            ui.SetPortrait(line.portrait, line.PortraitAnimationFPS);
 
-
-            ui.SetPortrait(
-                line.portrait);
-
-
-            state =
-                DialogueState.Typing;
+            state = DialogueState.Typing;
 
 
             typewriter.Type(
@@ -207,6 +201,7 @@ namespace Game.Dialogue
         {
             ui.ClearChoices();
 
+            ui.SetPortrait(currentNode.ChoicePortraits, currentNode.ChoicePortraitAnimationFPS);
 
             switch (currentNode.dialogueType)
             {

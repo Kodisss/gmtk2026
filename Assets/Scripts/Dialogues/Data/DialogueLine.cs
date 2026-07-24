@@ -6,7 +6,10 @@ namespace Game.Dialogue
     public class DialogueLine
     {
         [Header("Visual")]
-        public Sprite portrait;
+        [Tooltip("One sprite = static portrait. Multiple sprites = animation.")]
+        public Sprite[] portrait;
+        [Range(1f, 10f)]
+        public int PortraitAnimationFPS = 8;
 
 
         [Header("Voice")]

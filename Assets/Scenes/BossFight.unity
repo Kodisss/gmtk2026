@@ -204,10 +204,6 @@ MonoBehaviour:
     m_ActionName: 'Player/Jump[/Keyboard/space]'
   - m_PersistentCalls:
       m_Calls: []
-    m_ActionId: b7f512e2-b0a2-4c88-a529-6a853808bbdf
-    m_ActionName: 'Player/Sprint[/Keyboard/shift]'
-  - m_PersistentCalls:
-      m_Calls: []
     m_ActionId: eda6f55c-4929-4189-86b0-8693c9100d64
     m_ActionName: 'Player/Move[/Keyboard/w,/Keyboard/s,/Keyboard/a,/Keyboard/d]'
   - m_PersistentCalls:
@@ -260,6 +256,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Game.Dialogue.DialogueInput
   continueCooldown: 0.3
+  dialogueUI: {fileID: 119070839}
+  directionThreshold: 100
   movementThreshold: 15
   gestureTimeout: 2
 --- !u!1 &119070837
@@ -319,6 +317,12 @@ MonoBehaviour:
   dialogueRoot: {fileID: 119070837}
   speakerText: {fileID: 1395848220}
   dialogueText: {fileID: 1988750349}
+  lookCenter: {fileID: 21300000, guid: ca3435c863f5c464ea7899cc39d00322, type: 3}
+  lookUp: {fileID: 21300000, guid: 8011a7ae0be6259498bcfedaeddb451e, type: 3}
+  lookDown: {fileID: 21300000, guid: 7faa2259233796d489caa0a3398b620b, type: 3}
+  lookLeft: {fileID: 21300000, guid: 8199b6195cd2e654fb961e6585f3cca7, type: 3}
+  lookRight: {fileID: 21300000, guid: 13206debdf2d6c24d97cb0ee3a4fe29f, type: 3}
+  centerDeadZone: 0.25
   portraitImage: {fileID: 431597803}
   choiceContainer: {fileID: 280243742}
   choicePrefab: {fileID: 1579370383158510583, guid: eaceb074fc5a4f946a6f445caa1ff284, type: 3}
@@ -706,7 +710,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2f351bb55c46ac942adfd82c23da2816, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Game.Dialogue.BossDialogueStarter
-  startingDialogue: {fileID: 11400000, guid: 8618db4cc43c69946aa96c4575df1cf8, type: 2}
+  startingDialogue: {fileID: 11400000, guid: 46dd08d7fef5170448540862d9d2c755, type: 2}
 --- !u!4 &528690090
 Transform:
   m_ObjectHideFlags: 0
@@ -849,6 +853,13 @@ MonoBehaviour:
   minPitch: 0.9
   maxPitch: 1.1
   charactersPerBlip: 2
+  commaPause: 0.15
+  periodPause: 0.35
+  ellipsisPause: 0.8
+  ellipsisDotDelay: 0.2
+  ellipsisEndPause: 0.8
+  exclamationPause: 0.45
+  questionPause: 0.45
 --- !u!4 &764264407
 Transform:
   m_ObjectHideFlags: 0

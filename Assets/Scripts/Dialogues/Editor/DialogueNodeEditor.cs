@@ -69,8 +69,14 @@ namespace Game.Dialogue.Editor
 
         private void DrawChoices()
         {
+            EditorGUILayout.LabelField("Choice Display", EditorStyles.boldLabel);
+
+            EditorGUILayout.Space();
+
             if (node.dialogueType == DialogueType.Normal)
             {
+                DrawProperty("ChoicePortraits");
+                DrawProperty("ChoicePortraitAnimationFPS");
                 DrawProperty("choices");
             }
             else
@@ -83,14 +89,11 @@ namespace Game.Dialogue.Editor
 
         private void DrawYesNoChoice(string propertyName, string label)
         {
-            SerializedProperty choice =
-                serializedObject.FindProperty(propertyName);
+            SerializedProperty choice = serializedObject.FindProperty(propertyName);
 
-            if (choice == null)
-                return;
+            if (choice == null) return;
 
-            SerializedProperty nextDialogue =
-                choice.FindPropertyRelative("nextDialogue");
+            SerializedProperty nextDialogue = choice.FindPropertyRelative("nextDialogue");
 
             EditorGUILayout.BeginVertical(EditorStyles.helpBox);
 

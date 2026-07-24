@@ -1,0 +1,71 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bb50b23a4cf2d8b458c5808c80931e04, type: 3}
+  m_Name: DemoYesNo
+  m_EditorClassIdentifier: Assembly-CSharp::Game.Dialogue.DialogueNode
+  speakerName: Boss
+  dialogueType: 1
+  lines:
+  - portrait:
+    - {fileID: -5629209291032929933, guid: 0aa531942dc074c4f8b134a329da5e54, type: 3}
+    - {fileID: -7092260930629485070, guid: 03c7343961272c342a477ddf234e61c2, type: 3}
+    PortraitAnimationFPS: 2
+    voiceClip: {fileID: 0}
+    voiceVolume: 1
+    text: Hey I am the boss... I look like i'm angry and neutral every few seconds.
+      I know it might look weird but I trust the artists could help with that!
+    typingSpeed: 1
+  - portrait:
+    - {fileID: -5629209291032929933, guid: 0aa531942dc074c4f8b134a329da5e54, type: 3}
+    PortraitAnimationFPS: 2
+    voiceClip: {fileID: 0}
+    voiceVolume: 1
+    text: Of course I can still only one sprite that is then not animated, the developer
+      is quite smart!
+    typingSpeed: 1
+  - portrait:
+    - {fileID: -7092260930629485070, guid: 03c7343961272c342a477ddf234e61c2, type: 3}
+    - {fileID: -5629209291032929933, guid: 0aa531942dc074c4f8b134a329da5e54, type: 3}
+    PortraitAnimationFPS: 8
+    voiceClip: {fileID: 0}
+    voiceVolume: 1
+    text: You can also decide to animate me with more frames per second! Crazy right?
+      Now you will get a yes/no question to answer to try the new animations. I believe
+      you will want to change the artwork for them because it's quite... UGLY...
+    typingSpeed: 1
+  ChoicePortraits: []
+  ChoicePortraitAnimationFPS: 8
+  choices: []
+  yesChoice:
+    text: 
+    nextDialogue: {fileID: 11400000}
+    conditions: []
+    effects: []
+    onSelected:
+      m_PersistentCalls:
+        m_Calls: []
+  noChoice:
+    text: 
+    nextDialogue: {fileID: 11400000}
+    conditions: []
+    effects: []
+    onSelected:
+      m_PersistentCalls:
+        m_Calls: []
+  interruptDialogue: {fileID: 0}
+  onEnterEffects: []
+  onEnter:
+    m_PersistentCalls:
+      m_Calls: []
+  onExit:
+    m_PersistentCalls:
+      m_Calls: []

@@ -9,12 +9,12 @@ namespace Game.Dialogue
         private float lastContinueTime;
         [SerializeField] private float continueCooldown = 0.3f;
 
-        [Header("Gesture Detection")]
-        [SerializeField]
-        private float movementThreshold = 25f;
+        [SerializeField] private DialogueUI dialogueUI;
+        [SerializeField] private float directionThreshold = 100f;
 
-        [SerializeField]
-        private float gestureTimeout = 1f;
+        [Header("Gesture Detection")]
+        [SerializeField] private float movementThreshold = 25f;
+        [SerializeField] private float gestureTimeout = 1f;
 
         private float lastGestureTime;
 
@@ -35,11 +35,55 @@ namespace Game.Dialogue
             dialogueManager = transform.GetComponent<DialogueManager>();
         }
 
-        public void OnContinue(InputAction.CallbackContext context)
+        private void Update()
         {
-            if (!context.performed)
+            if (!dialogueManager.WaitingForYesNo)
                 return;
 
+
+            Vector2 mouse = Mouse.current.position.ReadValue();
+
+
+            Vector2 center = new Vector2(Screen.width / 2f, Screen.height / 2f);
+
+
+            Vector2 direction = mouse - center;
+
+
+            if (direction.magnitude < directionThreshold)
+            {
+                dialogueUI.SetReactionDirection(DialogueLookDirection.Center);
+                return;
+            }
+
+
+            if (Mathf.Abs(direction.x) > Mathf.Abs(direction.y))
+            {
+                if (direction.x > 0)
+                {
+                    dialogueUI.SetReactionDirection(DialogueLookDirection.Right);
+                }
+                else
+                {
+                    dialogueUI.SetReactionDirection(DialogueLookDirection.Left);
+                }
+            }
+            else
+            {
+                if (direction.y > 0)
+                {
+                    dialogueUI.SetReactionDirection(DialogueLookDirection.Up);
+                }
+                else
+                {
+                    dialogueUI.SetReactionDirection(DialogueLookDirection.Down);
+                }
+            }
+        }
+
+        public void OnContinue(InputAction.CallbackContext context)
+        {
+            if (!context.performed) return;
 
             if (Time.time - lastContinueTime < continueCooldown) return;
 

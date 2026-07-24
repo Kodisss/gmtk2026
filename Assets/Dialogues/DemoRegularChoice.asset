@@ -10,26 +10,26 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: bb50b23a4cf2d8b458c5808c80931e04, type: 3}
-  m_Name: Test yesno 1
+  m_Name: DemoRegularChoice
   m_EditorClassIdentifier: Assembly-CSharp::Game.Dialogue.DialogueNode
   speakerName: Boss
-  dialogueType: 1
+  dialogueType: 0
   lines:
-  - portrait: {fileID: 0}
+  - portrait:
+    - {fileID: -5629209291032929933, guid: 0aa531942dc074c4f8b134a329da5e54, type: 3}
+    PortraitAnimationFPS: 8
     voiceClip: {fileID: 0}
     voiceVolume: 1
-    text: Wait... you do not know who I am?
+    text: Welcome to the demo of the new regular choices options with buttons. You
+      asked that we could add a sprite of your cute little character when they need
+      to make a choice and so it's now done!
     typingSpeed: 1
+  ChoicePortraits:
+  - {fileID: 21300000, guid: e7201fb1ca1892c4ab03101462701536, type: 3}
+  ChoicePortraitAnimationFPS: 8
   choices:
-  - text: I did!
-    nextDialogue: {fileID: 11400000, guid: d3353e87eefa66a40a432b5ddf6ddf20, type: 2}
-    conditions: []
-    effects: []
-    onSelected:
-      m_PersistentCalls:
-        m_Calls: []
-  - text: I didn't
-    nextDialogue: {fileID: 11400000, guid: d3353e87eefa66a40a432b5ddf6ddf20, type: 2}
+  - text: Oh wow that is actually quite impressive!
+    nextDialogue: {fileID: 11400000, guid: 1f453087a6b65464d9c15dfee5195f81, type: 2}
     conditions: []
     effects: []
     onSelected:
@@ -37,7 +37,7 @@ MonoBehaviour:
         m_Calls: []
   yesChoice:
     text: 
-    nextDialogue: {fileID: 11400000, guid: 8618db4cc43c69946aa96c4575df1cf8, type: 2}
+    nextDialogue: {fileID: 0}
     conditions: []
     effects: []
     onSelected:
@@ -45,7 +45,7 @@ MonoBehaviour:
         m_Calls: []
   noChoice:
     text: 
-    nextDialogue: {fileID: 11400000, guid: 116844dbd4a2f334f8ea4f62bae1f399, type: 2}
+    nextDialogue: {fileID: 0}
     conditions: []
     effects: []
     onSelected:
