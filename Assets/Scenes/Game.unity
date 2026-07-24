@@ -155,7 +155,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CharacterMovement2D
   walkingSpeed: 5
-  sprintingSpeed: 8
   acceleration: 150
   deceleration: 150
   baseGravity: 3
@@ -166,7 +165,7 @@ MonoBehaviour:
   coyoteTime: 0.1
   jumpBufferTime: 0.15
   jumpCutMultiplier: 0.5
-  allowedToDoubleJump: 0
+  allowedToDoubleJump: 1
   doubleJumpForce: 18
   doubleJumpCooldown: 0.2
   dashForce: 25
@@ -177,7 +176,6 @@ MonoBehaviour:
   groundLayer:
     serializedVersion: 2
     m_Bits: 64
-  sprintingCameraOffset: 3
   walkingCameraOffset: 2
   idleCameraOffset: 2
 --- !u!114 &283765112
@@ -249,22 +247,6 @@ MonoBehaviour:
         m_CallState: 2
     m_ActionId: a49a6053-9b32-42ea-b846-8efa50df82e2
     m_ActionName: 'Player/Jump[/Keyboard/space]'
-  - m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 283765112}
-        m_TargetAssemblyTypeName: CharacterInputs, Assembly-CSharp
-        m_MethodName: OnSprint
-        m_Mode: 0
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-    m_ActionId: b7f512e2-b0a2-4c88-a529-6a853808bbdf
-    m_ActionName: 'Player/Sprint[/Keyboard/shift]'
   - m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 283765112}
@@ -533,8 +515,8 @@ Transform:
   m_GameObject: {fileID: 462478612}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.22, y: -6.61, z: 0}
-  m_LocalScale: {x: 16.0365, y: 0.854, z: 1}
+  m_LocalPosition: {x: 40, y: -2, z: 0}
+  m_LocalScale: {x: 100, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}

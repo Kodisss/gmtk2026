@@ -70,6 +70,17 @@
                 },
                 {
                     "name": "",
+                    "id": "32969aa7-45cf-4d85-826b-eb6e71e74652",
+                    "path": "<Gamepad>/buttonWest",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Dash",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
                     "id": "f34707f0-00bd-42f8-a20b-09157e5f46e0",
                     "path": "<Gamepad>/buttonSouth",
                     "interactions": "",
