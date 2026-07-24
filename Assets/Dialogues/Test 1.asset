@@ -14,7 +14,32 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Game.Dialogue.DialogueNode
   speakerName: Boss
   dialogueType: 0
-  lines: []
+  lines:
+  - portrait: {fileID: 0}
+    voiceClip: {fileID: 0}
+    voiceVolume: 0.704
+    text: You have finally arrived...
+    typingSpeed: 1
+  - portrait: {fileID: 0}
+    voiceClip: {fileID: 0}
+    voiceVolume: 1
+    text: How did you find me?
+    typingSpeed: 1
+  - portrait: {fileID: 0}
+    voiceClip: {fileID: 0}
+    voiceVolume: 1
+    text: Well, it doesn't matter, you're here now aren't you?
+    typingSpeed: 1
+  - portrait: {fileID: 0}
+    voiceClip: {fileID: 0}
+    voiceVolume: 0.383
+    text: YOU RUINED MY LIFE...
+    typingSpeed: 0.5
+  - portrait: {fileID: 0}
+    voiceClip: {fileID: 0}
+    voiceVolume: 1
+    text: PREPARE TO DIE!
+    typingSpeed: 1.75
   choices:
   - text: Test
     nextDialogue: {fileID: 11400000, guid: d3353e87eefa66a40a432b5ddf6ddf20, type: 2}

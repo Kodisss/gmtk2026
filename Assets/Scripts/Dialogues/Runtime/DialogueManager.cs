@@ -137,6 +137,9 @@ namespace Game.Dialogue
             typewriter.Type(
                 ui.DialogueText,
                 line.text,
+                line.voiceClip,
+                line.voiceVolume,
+                line.typingSpeed,
                 OnTypingFinished);
         }
 
