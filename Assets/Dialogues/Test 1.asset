@@ -16,27 +16,27 @@ MonoBehaviour:
   dialogueType: 0
   lines:
   - portrait: {fileID: -5629209291032929933, guid: 0aa531942dc074c4f8b134a329da5e54, type: 3}
-    voiceClip: {fileID: 8300000, guid: c5053d154457c0f4da8a8c513f622a0b, type: 3}
+    voiceClip: {fileID: 8300000, guid: 0e68174b74dce0a49b3e1e42ef9f7ef9, type: 3}
     voiceVolume: 0.136
     text: You have finally arrived...
     typingSpeed: 1
   - portrait: {fileID: -5629209291032929933, guid: 0aa531942dc074c4f8b134a329da5e54, type: 3}
-    voiceClip: {fileID: 8300000, guid: c5053d154457c0f4da8a8c513f622a0b, type: 3}
+    voiceClip: {fileID: 8300000, guid: 0e68174b74dce0a49b3e1e42ef9f7ef9, type: 3}
     voiceVolume: 0.127
     text: How did you find me?
     typingSpeed: 1
   - portrait: {fileID: -5629209291032929933, guid: 0aa531942dc074c4f8b134a329da5e54, type: 3}
-    voiceClip: {fileID: 8300000, guid: c5053d154457c0f4da8a8c513f622a0b, type: 3}
+    voiceClip: {fileID: 8300000, guid: 0e68174b74dce0a49b3e1e42ef9f7ef9, type: 3}
     voiceVolume: 0.156
     text: Well, it doesn't matter, you're here now aren't you?
     typingSpeed: 1
   - portrait: {fileID: -7092260930629485070, guid: 03c7343961272c342a477ddf234e61c2, type: 3}
-    voiceClip: {fileID: 8300000, guid: c5053d154457c0f4da8a8c513f622a0b, type: 3}
+    voiceClip: {fileID: 8300000, guid: c24a7b4c4ab702e40ad119184336e7ae, type: 3}
     voiceVolume: 0.82
     text: YOU RUINED MY LIFE...
     typingSpeed: 0.5
   - portrait: {fileID: -7092260930629485070, guid: 03c7343961272c342a477ddf234e61c2, type: 3}
-    voiceClip: {fileID: 8300000, guid: c5053d154457c0f4da8a8c513f622a0b, type: 3}
+    voiceClip: {fileID: 8300000, guid: c24a7b4c4ab702e40ad119184336e7ae, type: 3}
     voiceVolume: 1
     text: PREPARE TO DIE!
     typingSpeed: 1.75
