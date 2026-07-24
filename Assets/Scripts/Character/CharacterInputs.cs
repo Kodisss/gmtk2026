@@ -5,12 +5,10 @@ using UnityEngine.InputSystem;
 public class CharacterInputs : MonoBehaviour
 {
     public Vector2 MoveInput { get; private set; }
-
     public bool IsSprinting { get; private set; }
-
     public bool JumpPressed { get; private set; }
     public bool JumpReleased { get; private set; }
-
+    public bool DashPressed { get; private set; }
 
     public void OnMove(InputAction.CallbackContext context)
     {
@@ -45,10 +43,19 @@ public class CharacterInputs : MonoBehaviour
         }
     }
 
+    public void OnDash(InputAction.CallbackContext context)
+    {
+        if (context.performed)
+        {
+            DashPressed = true;
+        }
+    }
+
 
     private void LateUpdate()
     {
         JumpPressed = false;
         JumpReleased = false;
+        DashPressed = false;
     }
 }

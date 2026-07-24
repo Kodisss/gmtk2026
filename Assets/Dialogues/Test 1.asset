@@ -18,7 +18,8 @@ MonoBehaviour:
   - portrait: {fileID: -5629209291032929933, guid: 0aa531942dc074c4f8b134a329da5e54, type: 3}
     voiceClip: {fileID: 8300000, guid: 0e68174b74dce0a49b3e1e42ef9f7ef9, type: 3}
     voiceVolume: 1.5
-    text: You have finally arrived...
+    text: You have finally arrived... I didn't expect you so early, what are you
+      doing here?
     typingSpeed: 1
   - portrait: {fileID: -5629209291032929933, guid: 0aa531942dc074c4f8b134a329da5e54, type: 3}
     voiceClip: {fileID: 8300000, guid: 0e68174b74dce0a49b3e1e42ef9f7ef9, type: 3}

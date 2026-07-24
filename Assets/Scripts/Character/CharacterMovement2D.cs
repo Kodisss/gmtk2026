@@ -1,5 +1,4 @@
 using UnityEngine;
-using System.Collections;
 
 public enum CharacterState
 {
@@ -8,9 +7,7 @@ public enum CharacterState
     Sprinting, // 2
     Jumping, // 3
     Falling, // 4
-    Attacking, //5
-    Dashing, //6
-    Hurt //7
+    Dashing
 }
 
 [RequireComponent(typeof(Rigidbody2D))]
@@ -32,6 +29,7 @@ public class CharacterMovement2D : MonoBehaviour
     [SerializeField] private float deceleration = 150f;
 
     [Header("Jump")]
+    [SerializeField] private float baseGravity = 3f;
     [SerializeField] private float jumpForce = 20f;
     [SerializeField] private float jumpGravityMultiplier = 4f;
     [SerializeField] private float fallGravityMultiplier = 2.5f;
@@ -45,6 +43,9 @@ public class CharacterMovement2D : MonoBehaviour
     [SerializeField] private float doubleJumpForce = 18f;
     [SerializeField] private float doubleJumpCooldown = 0.2f;
 
+    [Header("Dash")]
+    [SerializeField] private float defaultDashForce = 15f;
+
     private bool canDoubleJump;
     private float doubleJumpTimer;
 
@@ -54,12 +55,10 @@ public class CharacterMovement2D : MonoBehaviour
     [SerializeField] private LayerMask groundLayer;
 
     [Header("Camera Offsets")]
-    [SerializeField] private float sprintingCameraOffset = 7f;
-    [SerializeField] private float walkingCameraOffset = 5f;
+    [SerializeField] private float sprintingCameraOffset = 3f;
+    [SerializeField] private float walkingCameraOffset = 2f;
     [SerializeField] private float idleCameraOffset = 2f;
 
-    [Header("Card Abilities")]
-    [SerializeField] private float defaultDashForce = 15f;
 
     private float coyoteTimer;
     private float jumpBufferTimer;
@@ -73,7 +72,7 @@ public class CharacterMovement2D : MonoBehaviour
     public bool IsGrounded => isGrounded;
     public bool IsMoving => Mathf.Abs(rb.linearVelocity.x) > 0.1f;
 
-    private void Start()
+    private void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
         characterInput = GetComponent<CharacterInputs>();
@@ -206,21 +205,26 @@ public class CharacterMovement2D : MonoBehaviour
 
     private void HandleBetterJump()
     {
+        if (characterInput.JumpReleased && rb.linearVelocity.y > 0)
+        {
+            rb.linearVelocity = new Vector2(
+                rb.linearVelocity.x,
+                rb.linearVelocity.y * jumpCutMultiplier
+            );
+        }
+
+
         if (rb.linearVelocity.y < 0)
         {
-            // Falling
-            rb.gravityScale = fallGravityMultiplier;
+            rb.gravityScale = baseGravity * fallGravityMultiplier;
         }
-        else if (characterInput.JumpReleased && rb.linearVelocity.y > 0)
+        else if (rb.linearVelocity.y > 0)
         {
-            // Released early
-            rb.linearVelocity = new Vector2(rb.linearVelocity.x, rb.linearVelocity.y * jumpCutMultiplier);
-            rb.gravityScale = lowJumpGravityMultiplier;
+            rb.gravityScale = baseGravity * jumpGravityMultiplier;
         }
         else
         {
-            // Rising
-            rb.gravityScale = jumpGravityMultiplier;
+            rb.gravityScale = baseGravity;
         }
     }
 
@@ -246,24 +250,16 @@ public class CharacterMovement2D : MonoBehaviour
         }
     }
 
-    public void Dash(float distance, float force)
-    {
-        Vector2 direction = spriteRenderer.flipX ? Vector2.left : Vector2.right;
-
-        rb.linearVelocity = direction * force;
-    }
-
     public void ApplyForce(Vector2 force)
     {
         rb.AddForce(force,ForceMode2D.Impulse);
     }
 
-
     private void UpdateCameraOffset()
     {
         if (currentState == CharacterState.Sprinting) moveCamera.SetOffset(sprintingCameraOffset);
         if (currentState == CharacterState.Walking) moveCamera.SetOffset(walkingCameraOffset);
-        if(currentState == CharacterState.Idle) moveCamera.SetOffset(idleCameraOffset);
+        if (currentState == CharacterState.Idle) moveCamera.SetOffset(idleCameraOffset);
     }
 
     private void OnDrawGizmosSelected()

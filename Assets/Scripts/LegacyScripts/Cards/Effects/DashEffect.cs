@@ -17,9 +17,6 @@ public class DashEffect : CardEffect
         }
 
 
-        context.movement.Dash(
-            distance,
-            force
-        );
+        // context.movement.Dash(distance, force);
     }
 }
