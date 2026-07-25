@@ -53,17 +53,13 @@ namespace Game.Dialogue
                 return;
             }
 
-
             currentNode = node;
 
             currentLineIndex = 0;
 
-
             ApplyEffects(node.onEnterEffects);
 
-
             node.onEnter?.Invoke();
-
 
             ui.Show();
 
