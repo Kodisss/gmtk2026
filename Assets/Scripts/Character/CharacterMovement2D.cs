@@ -369,6 +369,15 @@ public class CharacterMovement2D : MonoBehaviour
         }
     }
 
+    public void StopMovement()
+    {
+        StopAllCoroutines();
+
+        isDashing = false;
+        rb.linearVelocity = Vector2.zero;
+        rb.gravityScale = baseGravity;
+    }
+
     public void ApplyForce(Vector2 force)
     {
         rb.AddForce(force,ForceMode2D.Impulse);

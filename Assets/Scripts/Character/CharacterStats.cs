@@ -168,11 +168,8 @@ public class CharacterStats : MonoBehaviour
 
         IsDead = true;
 
+        GetComponent<CharacterMovement2D>().StopMovement();
         GetComponent<CharacterMovement2D>().enabled = false;
-
-        Rigidbody2D rb = GetComponent<Rigidbody2D>();
-        rb.linearVelocity = Vector2.zero;
-        rb.simulated = false;
 
         characterAnimation.PlayDeath();
     }
