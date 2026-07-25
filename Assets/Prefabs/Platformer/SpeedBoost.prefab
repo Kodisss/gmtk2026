@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 9104112207599932919}
   - component: {fileID: 3818579987218013484}
   m_Layer: 0
-  m_Name: Square
+  m_Name: SpeedBoost
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
