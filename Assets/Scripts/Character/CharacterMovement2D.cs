@@ -109,8 +109,7 @@ public class CharacterMovement2D : MonoBehaviour
         HandleCoyoteTime();
         HandleJump();
 
-        // if (stats.DoubleJumpEnabled) HandleDoubleJumpCooldown();
-        if (allowedToDoubleJump) HandleDoubleJumpCooldown();
+        if (stats.DoubleJumpEnabled) HandleDoubleJumpCooldown();
 
         HandleBetterJump();
 
@@ -152,7 +151,7 @@ public class CharacterMovement2D : MonoBehaviour
         {
             targetSpeed = walkingSpeed;
             targetSpeed *= Mathf.Sign(characterInput.MoveInput.x);
-            // targetSpeed *= stats.SpeedMultiplier;
+            targetSpeed *= stats.SpeedMultiplier;
         }
 
         float rate = Mathf.Abs(targetSpeed) > Mathf.Abs(currentHorizontalSpeed) ? acceleration : deceleration;
@@ -213,8 +212,7 @@ public class CharacterMovement2D : MonoBehaviour
         }
 
         // Double jump
-        //if (!stats.DoubleJumpEnabled) return;
-        if (!allowedToDoubleJump) return;
+        if(!stats.DoubleJumpEnabled) return;
 
         if (canDoubleJump && doubleJumpTimer <= 0f)
         {

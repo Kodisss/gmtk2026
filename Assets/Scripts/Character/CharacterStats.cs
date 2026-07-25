@@ -3,9 +3,15 @@ using UnityEngine;
 
 public class CharacterStats : MonoBehaviour
 {
-    [Header("Movement")]
+    [Header("Movements")]
     public float SpeedMultiplier { get; private set; } = 1f;
-    public bool DoubleJumpEnabled { get; private set; }
+    public bool DoubleJumpEnabled { get; private set; } = false;
+
+    [SerializeField] private AudioSource boostAudioSource;
+
+    [Header("Speed boost sounds")]
+    [SerializeField] private AudioClip speedIn;
+    [SerializeField] private AudioClip speedOut;
 
     private Coroutine speedRoutine;
     private Coroutine doubleJumpRoutine;
@@ -14,8 +20,7 @@ public class CharacterStats : MonoBehaviour
 
     public void ApplySpeedMultiplier(float multiplier, float duration)
     {
-        if (speedRoutine != null)
-            StopCoroutine(speedRoutine);
+        if (speedRoutine != null) StopCoroutine(speedRoutine);
 
         speedRoutine = StartCoroutine(SpeedRoutine(multiplier, duration));
     }
@@ -23,10 +28,12 @@ public class CharacterStats : MonoBehaviour
     private IEnumerator SpeedRoutine(float multiplier, float duration)
     {
         SpeedMultiplier = multiplier;
+        boostAudioSource.PlayOneShot(speedIn);
 
         yield return new WaitForSeconds(duration);
 
         SpeedMultiplier = 1f;
+        boostAudioSource.PlayOneShot(speedOut);
     }
 
     #endregion
