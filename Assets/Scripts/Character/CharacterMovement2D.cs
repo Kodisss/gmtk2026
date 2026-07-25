@@ -67,7 +67,8 @@ public class CharacterMovement2D : MonoBehaviour
 
     [Header("Ground Check")]
     [SerializeField] private Transform groundCheck;
-    [SerializeField] private float groundRadius = 0.15f;
+    [SerializeField] private Vector2 groundCheckSize = new Vector2(0.8f, 0.15f);
+    [SerializeField] private float groundCheckXOffset = 0f;
     [SerializeField] private LayerMask groundLayer;
 
     [Header("Camera Offsets")]
@@ -167,12 +168,12 @@ public class CharacterMovement2D : MonoBehaviour
     {
         bool wasGrounded = isGrounded;
 
-        isGrounded = Physics2D.OverlapCircle(
-            groundCheck.position,
-            groundRadius,
+        isGrounded = Physics2D.OverlapBox(
+            GroundCheckPosition(),
+            groundCheckSize,
+            0f,
             groundLayer
         );
-
 
         if (isGrounded && !wasGrounded)
         {
@@ -187,6 +188,11 @@ public class CharacterMovement2D : MonoBehaviour
                 landingTimer = landingDuration;
             }
         }
+    }
+
+    private Vector2 GroundCheckPosition()
+    {
+        return groundCheck.position + new Vector3(groundCheckXOffset, 0f, 0f);
     }
 
     private void HandleCoyoteTime()
@@ -388,6 +394,10 @@ public class CharacterMovement2D : MonoBehaviour
             return;
 
         Gizmos.color = Color.green;
-        Gizmos.DrawWireSphere(groundCheck.position, groundRadius);
+
+        Gizmos.DrawWireCube(
+            GroundCheckPosition(),
+            groundCheckSize
+        );
     }
 }

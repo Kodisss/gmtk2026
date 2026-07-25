@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class CharacterStats : MonoBehaviour
 {
+    private CharacterAnimation characterAnimation;
+
     [Header("Movements")]
     public float SpeedMultiplier { get; private set; } = 1f;
     public bool DoubleJumpEnabled { get; private set; } = false;
@@ -17,7 +19,7 @@ public class CharacterStats : MonoBehaviour
     public bool IsDead { get; private set; }
 
     public event Action<int> OnHealthChanged;
-    public event Action OnDeath;
+    // public event Action OnDeath;
 
     [SerializeField] private SpriteRenderer spriteRenderer;
 
@@ -46,6 +48,7 @@ public class CharacterStats : MonoBehaviour
     private void Start()
     {
         CurrentHealth = maxHealth;
+        characterAnimation = GetComponentInChildren<CharacterAnimation>();
 
         speedBoostRenderer.sprite = null;
         doubleJumpBoostRenderer.sprite = null;
@@ -161,16 +164,25 @@ public class CharacterStats : MonoBehaviour
 
     public void Die()
     {
+        if (IsDead) return;
+
         IsDead = true;
 
         GetComponent<CharacterMovement2D>().enabled = false;
 
-        OnDeath?.Invoke();
+        Rigidbody2D rb = GetComponent<Rigidbody2D>();
+        rb.linearVelocity = Vector2.zero;
+        rb.simulated = false;
 
-        GameManager.Instance.PlayerDied();
+        characterAnimation.PlayDeath();
     }
 
+    public void FinishDeath()
+    {
+        GameManager.Instance.PlayerDied();
 
+        gameObject.SetActive(false);
+    }
 
     public void Heal(int amount)
     {

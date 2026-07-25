@@ -5,15 +5,18 @@ public class CharacterAnimation : MonoBehaviour
 {
     private Animator animator;
     private CharacterMovement2D movement;
+    private CharacterStats stats;
 
     private CharacterState previousState;
 
     private static readonly int StateHash = Animator.StringToHash("State");
+    private static readonly int DieHash = Animator.StringToHash("Die");
 
     private void Awake()
     {
         animator = GetComponent<Animator>();
         movement = GetComponentInParent<CharacterMovement2D>();
+        stats = GetComponentInParent<CharacterStats>();
 
         if (movement == null)
         {
@@ -34,5 +37,15 @@ public class CharacterAnimation : MonoBehaviour
 
             previousState = movement.CurrentState;
         }
+    }
+
+    public void PlayDeath()
+    {
+        animator.SetTrigger(DieHash);
+    }
+
+    public void DeathAnimationFinished()
+    {
+        stats.FinishDeath();
     }
 }
