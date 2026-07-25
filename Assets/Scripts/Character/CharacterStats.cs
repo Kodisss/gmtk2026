@@ -159,7 +159,7 @@ public class CharacterStats : MonoBehaviour
         invincibilityCoroutine = null;
     }
 
-    private void Die()
+    public void Die()
     {
         IsDead = true;
 
