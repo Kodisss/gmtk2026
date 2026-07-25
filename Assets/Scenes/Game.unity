@@ -487,6 +487,7 @@ MonoBehaviour:
   doubleJumpBoostRenderer: {fileID: 1832746609}
   doubleJumpSprite: {fileID: 21300000, guid: 8b08940500791184b928e31362662f25, type: 3}
   pickUpItemSound: {fileID: 8300000, guid: a96fa46bfc79f0d4fae4ac461572b616, type: 3}
+  damageTakenSound: {fileID: 8300000, guid: 6dfad54419d4e2c49a4bb41dcbc14ddf, type: 3}
 --- !u!61 &283765119
 BoxCollider2D:
   m_ObjectHideFlags: 0

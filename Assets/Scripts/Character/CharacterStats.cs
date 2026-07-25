@@ -41,6 +41,7 @@ public class CharacterStats : MonoBehaviour
     [SerializeField] private Sprite doubleJumpSprite;
 
     [SerializeField] private AudioClip pickUpItemSound;
+    [SerializeField] private AudioClip damageTakenSound;
 
     private Coroutine speedRoutine;
     private Coroutine doubleJumpRoutine;
@@ -126,6 +127,8 @@ public class CharacterStats : MonoBehaviour
             Die();
             return;
         }
+
+        boostAudioSource.PlayOneShot(damageTakenSound);
 
         StartCoroutine(InvincibilityRoutine());
     }
