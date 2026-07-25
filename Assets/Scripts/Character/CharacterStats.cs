@@ -177,6 +177,8 @@ public class CharacterStats : MonoBehaviour
 
         Debug.Log("Disabled Movements");
 
+        GetComponentInChildren<CharacterAudio>().PlayDeathSoundEffect();
+
         characterAnimation.PlayDeath();
     }
 

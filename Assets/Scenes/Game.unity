@@ -867,7 +867,7 @@ Camera:
     height: 1
   near clip plane: 0.3
   far clip plane: 1000
-  field of view: 60
+  field of view: 70
   orthographic: 0
   orthographic size: 5
   m_Depth: -1
@@ -1112,6 +1112,7 @@ MonoBehaviour:
   jumpClip: {fileID: 8300000, guid: 6209ea879dd038345b2a9b5b49bf57d7, type: 3}
   dashClip: {fileID: 8300000, guid: a76103a49ff6271428ba841bcef0deb7, type: 3}
   landClip: {fileID: 8300000, guid: b4ac39fee66f7914fa1c71242d441c30, type: 3}
+  deathClip: {fileID: 8300000, guid: 6dfad54419d4e2c49a4bb41dcbc14ddf, type: 3}
   stepInterval: 0.4
   minPitch: 0.95
   maxPitch: 1.05
@@ -1119,6 +1120,7 @@ MonoBehaviour:
   jumpVolume: 0.6
   dashVolume: 0.7
   landVolume: 0.45
+  deathVolume: 1
 --- !u!82 &651908405
 AudioSource:
   m_ObjectHideFlags: 0

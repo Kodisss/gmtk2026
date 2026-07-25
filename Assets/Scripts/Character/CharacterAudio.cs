@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.Rendering;
 
 public class CharacterAudio : MonoBehaviour
 {
@@ -14,6 +15,7 @@ public class CharacterAudio : MonoBehaviour
     [SerializeField] private AudioClip jumpClip;
     [SerializeField] private AudioClip dashClip;
     [SerializeField] private AudioClip landClip;
+    [SerializeField] private AudioClip deathClip;
 
     [Header("Footsteps")]
     [SerializeField] private float stepInterval = 0.35f;
@@ -25,6 +27,7 @@ public class CharacterAudio : MonoBehaviour
     [SerializeField] private float jumpVolume = 1f;
     [SerializeField] private float dashVolume = 1f;
     [SerializeField] private float landVolume = 1f;
+    [SerializeField] private float deathVolume = 1f;
 
     private CharacterState previousState;
     private bool previousGrounded;
@@ -102,5 +105,11 @@ public class CharacterAudio : MonoBehaviour
 
         effectsSource.pitch = Random.Range(minPitch, maxPitch);
         effectsSource.PlayOneShot(clip, volume);
+    }
+
+    public void PlayDeathSoundEffect()
+    {
+        effectsSource.pitch = 1f;
+        effectsSource.PlayOneShot(deathClip, deathVolume);
     }
 }
