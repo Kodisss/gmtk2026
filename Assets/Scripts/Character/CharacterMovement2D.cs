@@ -1,4 +1,5 @@
 using System.Collections;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public enum CharacterState
@@ -16,6 +17,7 @@ public enum CharacterState
 [RequireComponent(typeof(CharacterStats))]
 public class CharacterMovement2D : MonoBehaviour
 {
+    public bool CanMove { get; set; } = true;
     private Rigidbody2D rb;
     private CharacterInputs characterInput;
     private SpriteRenderer spriteRenderer;
@@ -102,6 +104,8 @@ public class CharacterMovement2D : MonoBehaviour
 
     private void Update()
     {
+        if (!CanMove) return;
+
         lastVerticalVelocity = rb.linearVelocity.y;
 
         CheckGround();

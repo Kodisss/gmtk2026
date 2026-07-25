@@ -6,6 +6,20 @@ public class GameManager : MonoBehaviour
 {
     public static GameManager Instance { get; private set; }
 
+    private int daysLeft = 7;
+
+    public int DaysLeft
+    {
+        get
+        {
+            return daysLeft;
+        }
+        set
+        {
+            daysLeft = value;
+        }
+    }
+
     [SerializeField] private float restartDelay = 2f;
 
     private bool restarting;

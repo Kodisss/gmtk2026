@@ -40,6 +40,8 @@ public class CharacterStats : MonoBehaviour
     [SerializeField] private SpriteRenderer doubleJumpBoostRenderer;
     [SerializeField] private Sprite doubleJumpSprite;
 
+    [SerializeField] private AudioClip pickUpItemSound;
+
     private Coroutine speedRoutine;
     private Coroutine doubleJumpRoutine;
     private Coroutine invincibilityCoroutine;
@@ -85,6 +87,8 @@ public class CharacterStats : MonoBehaviour
         if (doubleJumpRoutine != null) StopCoroutine(doubleJumpRoutine);
 
         doubleJumpRoutine = StartCoroutine(DoubleJumpRoutine(duration));
+
+        boostAudioSource.PlayOneShot(pickUpItemSound);
     }
 
     private IEnumerator DoubleJumpRoutine(float duration)
@@ -99,6 +103,12 @@ public class CharacterStats : MonoBehaviour
     }
 
     #endregion
+
+    public void NewDashPickup()
+    {
+        boostAudioSource.PlayOneShot(pickUpItemSound);
+        movements.CanDash = true;
+    }
 
     public void TakeDamage(int damage)
     {

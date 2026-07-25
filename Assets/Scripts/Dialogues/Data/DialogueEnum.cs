@@ -16,11 +16,8 @@ namespace Game.Dialogue
     /// </summary>
     public enum DialogueVariable
     {
-        Trust,
-        Respect,
-        Anger,
-        Curiosity,
-        Fear
+        Reputation,
+        DaysLeft
     }
 
 
