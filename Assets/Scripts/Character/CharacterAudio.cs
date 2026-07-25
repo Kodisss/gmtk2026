@@ -56,9 +56,7 @@ public class CharacterAudio : MonoBehaviour
 
     private void HandleFootsteps()
     {
-        bool walking =
-            movement.IsGrounded &&
-            movement.CurrentState == CharacterState.Walking;
+        bool walking = movement.IsGrounded && movement.CurrentState == CharacterState.Walking;
 
         if (!walking)
         {
@@ -68,8 +66,7 @@ public class CharacterAudio : MonoBehaviour
 
         stepTimer -= Time.deltaTime;
 
-        if (stepTimer > 0f)
-            return;
+        if (stepTimer > 0f) return;
 
         footstepSource.pitch = Random.Range(minPitch, maxPitch);
         footstepSource.PlayOneShot(footstepClip, footstepVolume);
@@ -80,14 +77,13 @@ public class CharacterAudio : MonoBehaviour
     private void HandleEvents()
     {
         // Jump
-        if (previousGrounded && !movement.IsGrounded)
+        if (movement.CurrentState == CharacterState.Jumping && previousState != CharacterState.Jumping)
         {
             PlayEffect(jumpClip, jumpVolume);
         }
 
         // Dash
-        if (movement.CurrentState == CharacterState.Dashing &&
-            previousState != CharacterState.Dashing)
+        if (movement.CurrentState == CharacterState.Dashing && previousState != CharacterState.Dashing)
         {
             PlayEffect(dashClip, dashVolume);
         }

@@ -41,6 +41,8 @@ public class CharacterMovement2D : MonoBehaviour
     [SerializeField] private float landingVelocityThresholdToLand = -8f;
     [SerializeField] private float landingDuration = 0.08f;
 
+    private bool isJumping;
+
     private float landingTimer;
     private float lastVerticalVelocity;
 
@@ -170,6 +172,7 @@ public class CharacterMovement2D : MonoBehaviour
         {
             canDoubleJump = true;
             doubleJumpTimer = 0f;
+            isJumping = false;
 
             if (lastVerticalVelocity < landingVelocityThresholdToLand)
             {
@@ -197,13 +200,13 @@ public class CharacterMovement2D : MonoBehaviour
 
     private void HandleJump()
     {
-        if (jumpBufferTimer <= 0)
-            return;
+        if (jumpBufferTimer <= 0) return;
 
         // Normal jump
         if (coyoteTimer > 0f)
         {
             rb.linearVelocity = new Vector2(rb.linearVelocity.x, jumpForce);
+            isJumping = true;
             jumpBufferTimer = 0f;
             coyoteTimer = 0f;
             return;
@@ -215,10 +218,7 @@ public class CharacterMovement2D : MonoBehaviour
 
         if (canDoubleJump && doubleJumpTimer <= 0f)
         {
-            rb.linearVelocity = new Vector2(
-                rb.linearVelocity.x,
-                doubleJumpForce
-            );
+            rb.linearVelocity = new Vector2(rb.linearVelocity.x, doubleJumpForce);
 
             canDoubleJump = false;
             doubleJumpTimer = doubleJumpCooldown;
@@ -244,7 +244,6 @@ public class CharacterMovement2D : MonoBehaviour
                 rb.linearVelocity.y * jumpCutMultiplier
             );
         }
-
 
         if (rb.linearVelocity.y < 0)
         {
@@ -272,6 +271,7 @@ public class CharacterMovement2D : MonoBehaviour
     private IEnumerator Dash()
     {
         isDashing = true;
+        isJumping = false;
         canDash = false;
 
         currentState = CharacterState.Dashing;
@@ -317,7 +317,7 @@ public class CharacterMovement2D : MonoBehaviour
 
         if (!isGrounded)
         {
-            currentState = rb.linearVelocity.y > 0 ? CharacterState.Jumping : CharacterState.Falling;
+            currentState = isJumping && rb.linearVelocity.y > 0 ? CharacterState.Jumping : CharacterState.Falling;
             return;
         }
 
