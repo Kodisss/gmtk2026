@@ -23,6 +23,11 @@ public class GameManager : MonoBehaviour
         DontDestroyOnLoad(gameObject);
     }
 
+    private void Start()
+    {
+        MusicManager.Instance.PlayMusic("Day3");
+    }
+
     public void PlayerDied()
     {
         if (restarting) return;

@@ -31,6 +31,8 @@ public class CharacterAnimation : MonoBehaviour
 
     private void Update()
     {
+        if (stats.IsDead) return;
+
         if (movement.CurrentState != previousState)
         {
             animator.SetInteger(StateHash, (int)movement.CurrentState);
@@ -41,6 +43,7 @@ public class CharacterAnimation : MonoBehaviour
 
     public void PlayDeath()
     {
+        animator.SetInteger(StateHash, -1);
         animator.SetTrigger(DieHash);
     }
 

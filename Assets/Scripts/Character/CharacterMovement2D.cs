@@ -371,10 +371,23 @@ public class CharacterMovement2D : MonoBehaviour
 
     public void StopMovement()
     {
+        Debug.Log("StopMovements");
+
         StopAllCoroutines();
 
+        Debug.Log("StoppedCoroutines");
+
         isDashing = false;
+        isJumping = false;
+
+        CanDash = false;
+
+        // currentState = CharacterState.Idle;
+
+        currentHorizontalSpeed = 0;
+
         rb.linearVelocity = Vector2.zero;
+        rb.simulated = false;
         rb.gravityScale = baseGravity;
     }
 

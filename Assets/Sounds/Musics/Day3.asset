@@ -1,0 +1,18 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b352845f7297a1b4bb86ce77b26d478b, type: 3}
+  m_Name: Day3
+  m_EditorClassIdentifier: Assembly-CSharp::MusicTrack
+  trackID: Day3
+  intro: {fileID: 8300000, guid: 9466e89d1bbada24ca69ab68de2a5dec, type: 3}
+  loop: {fileID: 8300000, guid: fcbc1e934d288a24eb55d1906a972e47, type: 3}
+  volume: 1

@@ -5,6 +5,7 @@ using UnityEngine;
 public class CharacterStats : MonoBehaviour
 {
     private CharacterAnimation characterAnimation;
+    private CharacterMovement2D movements;
 
     [Header("Movements")]
     public float SpeedMultiplier { get; private set; } = 1f;
@@ -50,6 +51,7 @@ public class CharacterStats : MonoBehaviour
         CurrentHealth = maxHealth;
         characterAnimation = GetComponentInChildren<CharacterAnimation>();
 
+        movements = GetComponent<CharacterMovement2D>();
         speedBoostRenderer.sprite = null;
         doubleJumpBoostRenderer.sprite = null;
     }
@@ -168,8 +170,12 @@ public class CharacterStats : MonoBehaviour
 
         IsDead = true;
 
-        GetComponent<CharacterMovement2D>().StopMovement();
+        movements.StopMovement();
+        Debug.Log("Stopped Movements");
+
         GetComponent<CharacterMovement2D>().enabled = false;
+
+        Debug.Log("Disabled Movements");
 
         characterAnimation.PlayDeath();
     }
