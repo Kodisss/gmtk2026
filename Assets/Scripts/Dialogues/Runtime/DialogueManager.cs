@@ -35,6 +35,8 @@ namespace Game.Dialogue
         public bool WaitingForYesNo => state == DialogueState.WaitingForChoice && currentNode != null && currentNode.dialogueType == DialogueType.YesNo;
         public DialogueState CurrentState => state;
 
+        public System.Action<DialogueNode> OnEndDialogueNode;
+
         private void Awake()
         {
             if (startHidden) ui.Hide();
@@ -72,9 +74,16 @@ namespace Game.Dialogue
 
         public void EndDialogue()
         {
+            DialogueNode finishedNode = currentNode;
+
             if (currentNode != null)
             {
                 currentNode.onExit?.Invoke();
+            }
+
+            if (finishedNode != null && finishedNode.dialogueType == DialogueType.End)
+            {
+                OnEndDialogueNode?.Invoke(finishedNode);
             }
 
             currentNode = null;
@@ -83,9 +92,7 @@ namespace Game.Dialogue
 
             state = DialogueState.Hidden;
 
-
             ui.ResetUI();
-
             ui.Hide();
         }
 
@@ -101,8 +108,7 @@ namespace Game.Dialogue
 
             if (currentLineIndex >= currentNode.lines.Length)
             {
-                DisplayChoices();
-
+                HandleNodeEnd();
                 return;
             }
 
@@ -119,6 +125,20 @@ namespace Game.Dialogue
                 line.voiceVolume,
                 line.typingSpeed,
                 OnTypingFinished);
+        }
+
+        private void HandleNodeEnd()
+        {
+            switch (currentNode.dialogueType)
+            {
+                case DialogueType.End:
+                    EndDialogue();
+                    break;
+
+                default:
+                    DisplayChoices();
+                    break;
+            }
         }
 
         private void OnTypingFinished()

@@ -14,6 +14,10 @@ namespace Game.Dialogue
         [Header("Dialogue Type")]
         public DialogueType dialogueType;
 
+        [Header("End Dialogue")]
+        [Tooltip("Used only by End dialogue. Advances the dialogue database.")]
+        public bool advanceDialogueDatabase = true;
+
         [Header("Lines")]
         public DialogueLine[] lines;
 

@@ -16,7 +16,7 @@ public enum CharacterState
 [RequireComponent(typeof(CharacterStats))]
 public class CharacterMovement2D : MonoBehaviour
 {
-    public bool CanMove { get; set; } = true;
+    public bool CanMove { get; private set; } = true;
     private Rigidbody2D rb;
     private CharacterInputs characterInput;
     private SpriteRenderer spriteRenderer;
@@ -132,7 +132,20 @@ public class CharacterMovement2D : MonoBehaviour
 
     private void FixedUpdate()
     {
+        if(!CanMove) return; 
         HandleMovement();
+    }
+
+    public void SetMovementEnabled(bool enabled)
+    {
+        CanMove = enabled;
+
+        if (!enabled)
+        {
+            rb.linearVelocity = Vector2.zero;
+            currentHorizontalSpeed = 0f;
+            currentState = CharacterState.Idle;
+        }
     }
 
     private void HandleSpriteFlip()

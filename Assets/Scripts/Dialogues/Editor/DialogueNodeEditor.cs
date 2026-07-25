@@ -25,7 +25,6 @@ namespace Game.Dialogue.Editor
 
             DrawHeader();
 
-
             EditorGUILayout.Space();
 
 
@@ -33,13 +32,17 @@ namespace Game.Dialogue.Editor
 
             DrawProperty("dialogueType");
 
-            DrawProperty("lines");
+
+            EditorGUILayout.Space();
+
+
+            DrawLines();
 
 
             EditorGUILayout.Space();
 
 
-            DrawChoices();
+            DrawDialogueTypeSpecific();
 
 
             EditorGUILayout.Space();
@@ -53,56 +56,125 @@ namespace Game.Dialogue.Editor
 
 
 
-        private void DrawHeader()
+        private void DrawLines()
         {
             EditorGUILayout.LabelField(
-                "Dialogue Node",
+                "Dialogue Lines",
                 EditorStyles.boldLabel);
 
 
+            DrawProperty("lines");
+        }
+
+
+
+        private void DrawDialogueTypeSpecific()
+        {
+            switch (node.dialogueType)
+            {
+                case DialogueType.Normal:
+
+                    DrawNormalChoices();
+
+                    break;
+
+
+                case DialogueType.YesNo:
+
+                    DrawYesNoChoices();
+
+                    break;
+
+
+                case DialogueType.End:
+
+                    DrawEndDialogue();
+
+                    break;
+            }
+        }
+
+
+
+        private void DrawNormalChoices()
+        {
+            EditorGUILayout.LabelField(
+                "Choice Display",
+                EditorStyles.boldLabel);
+
+
+            DrawProperty("ChoicePortraits");
+
+            DrawProperty(
+                "ChoicePortraitAnimationFPS");
+
+
+            DrawProperty("choices");
+        }
+
+
+
+        private void DrawYesNoChoices()
+        {
+            EditorGUILayout.LabelField(
+                "YES / NO",
+                EditorStyles.boldLabel);
+
+
+            DrawYesNoChoice(
+                "yesChoice",
+                "YES");
+
+
+            DrawYesNoChoice(
+                "noChoice",
+                "NO");
+        }
+
+
+
+        private void DrawEndDialogue()
+        {
             EditorGUILayout.HelpBox(
-                GetHelpText(),
+                "End dialogue: only lines are displayed. Dialogue closes automatically afterwards.",
                 MessageType.Info);
         }
 
 
 
-        private void DrawChoices()
+        private void DrawYesNoChoice(
+            string propertyName,
+            string label)
         {
-            EditorGUILayout.LabelField("Choice Display", EditorStyles.boldLabel);
-
-            EditorGUILayout.Space();
-
-            if (node.dialogueType == DialogueType.Normal)
-            {
-                DrawProperty("ChoicePortraits");
-                DrawProperty("ChoicePortraitAnimationFPS");
-                DrawProperty("choices");
-            }
-            else
-            {
-                DrawYesNoChoice("yesChoice", "YES");
-                DrawYesNoChoice("noChoice", "NO");
-            }
-        }
+            SerializedProperty choice =
+                serializedObject.FindProperty(propertyName);
 
 
-        private void DrawYesNoChoice(string propertyName, string label)
-        {
-            SerializedProperty choice = serializedObject.FindProperty(propertyName);
+            if (choice == null)
+                return;
 
-            if (choice == null) return;
 
-            SerializedProperty nextDialogue = choice.FindPropertyRelative("nextDialogue");
+            SerializedProperty nextDialogue =
+                choice.FindPropertyRelative(
+                    "nextDialogue");
 
-            EditorGUILayout.BeginVertical(EditorStyles.helpBox);
 
-            EditorGUILayout.LabelField(label, EditorStyles.boldLabel);
+            EditorGUILayout.BeginVertical(
+                EditorStyles.helpBox);
 
-            EditorGUILayout.PropertyField(nextDialogue);
+
+            EditorGUILayout.LabelField(
+                label,
+                EditorStyles.boldLabel);
+
+
+            EditorGUILayout.PropertyField(
+                nextDialogue);
+
 
             EditorGUILayout.EndVertical();
         }
+
 
 
         private void DrawAdvanced()
@@ -139,15 +211,35 @@ namespace Game.Dialogue.Editor
 
 
 
+        private void DrawHeader()
+        {
+            EditorGUILayout.LabelField(
+                "Dialogue Node",
+                EditorStyles.boldLabel);
+
+
+            EditorGUILayout.HelpBox(
+                GetHelpText(),
+                MessageType.Info);
+        }
+
+
+
         private string GetHelpText()
         {
             return node.dialogueType switch
             {
                 DialogueType.Normal =>
-                    "Normal dialogue: lines followed by multiple choices.",
+                    "Normal dialogue: lines followed by choices.",
+
 
                 DialogueType.YesNo =>
-                    "Yes / No dialogue: lines followed by two possible answers.",
+                    "Yes/No dialogue: player answers by nodding or shaking.",
+
+
+                DialogueType.End =>
+                    "End dialogue: displays lines and closes the conversation.",
+
 
                 _ =>
                     ""

@@ -6,7 +6,8 @@ namespace Game.Dialogue
     public enum DialogueType
     {
         Normal,
-        YesNo
+        YesNo,
+        End
     }
 
 

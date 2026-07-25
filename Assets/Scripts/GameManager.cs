@@ -1,11 +1,16 @@
 using System.Collections;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using Game.Dialogue;
 
 public class GameManager : MonoBehaviour
 {
     public static GameManager Instance { get; private set; }
 
+    [Header("Boss Dialogue")]
+    [SerializeField] private CharacterMovement2D playerMovement;
+    [SerializeField] private DialogueManager dialogueManager;
+    [SerializeField] private DialogueDatabase bossDialogueDatabase;
 
     [SerializeField]
     private int daysLeft = 7;
@@ -68,7 +73,29 @@ public class GameManager : MonoBehaviour
     private void Start()
     {
         MusicManager.Instance.PlayMusic("Day3");
+        dialogueManager.OnEndDialogueNode += DialogueFinished;
     }
+
+    public void StartBossDialogue()
+    {
+        playerMovement.SetMovementEnabled(false);
+        dialogueManager.StartDialogue(bossDialogueDatabase.GetCurrentDialogue());
+    }
+
+    private void DialogueFinished(DialogueNode node)
+    {
+        if (node.dialogueType != DialogueType.End)
+            return;
+
+
+        if (node.advanceDialogueDatabase)
+        {
+            bossDialogueDatabase.Advance();
+        }
+
+        playerMovement.SetMovementEnabled(true);
+    }
+
 
     public void PlayerDied()
     {

@@ -119,6 +119,54 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!1 &6506149
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 6506150}
+  - component: {fileID: 6506151}
+  m_Layer: 0
+  m_Name: DialogueDatabase
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &6506150
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6506149}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 8365827432583229853}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &6506151
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6506149}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c9ef941d8ac8854428e9167496acb38b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Game.Dialogue.DialogueDatabase
+  allDialogues:
+  - {fileID: 11400000, guid: d8288bc797beb364c9b7cd4ad57a1209, type: 2}
+  - {fileID: 11400000, guid: 46dd08d7fef5170448540862d9d2c755, type: 2}
+  currentDialogueIndex: 0
 --- !u!1 &92520075
 GameObject:
   m_ObjectHideFlags: 0
@@ -901,7 +949,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 5db029f3526c3a3459bacd6e60914ebd, type: 2}
   introSource: {fileID: 361472385}
   loopSource: {fileID: 361472384}
-  musicVolume: 0.457
+  musicVolume: 0
   fadeDuration: 1
 --- !u!4 &361472387
 Transform:
@@ -1810,6 +1858,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 424edbba8a73734439bc3fcd14b43189, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::GameManager
+  playerMovement: {fileID: 283765111}
+  dialogueManager: {fileID: 4365247804648253884}
+  bossDialogueDatabase: {fileID: 6506151}
   daysLeft: 7
   reputation: 0
   restartDelay: 2
@@ -6317,7 +6368,7 @@ Transform:
   m_GameObject: {fileID: 4484537596729441306}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 21.08, y: 3.84, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -74928,6 +74979,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1689108626796912976}
   - component: {fileID: 6280229542504029153}
+  - component: {fileID: 6280229542504029154}
   m_Layer: 0
   m_Name: DialogueStarter
   m_TagString: Untagged
@@ -75661,6 +75713,52 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Game.Dialogue.BossDialogueStarter
   startingDialogue: {fileID: 11400000, guid: d8288bc797beb364c9b7cd4ad57a1209, type: 2}
+--- !u!61 &6280229542504029154
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4484537596729441306}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_CompositeOperation: 0
+  m_CompositeOrder: 0
+  m_Offset: {x: -0.18876648, y: 1.2269809}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0, y: 0}
+    oldSize: {x: 0, y: 0}
+    newSize: {x: 0, y: 0}
+    adaptiveTilingThreshold: 0
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  m_Size: {x: 6.1596107, y: 5.2157803}
+  m_EdgeRadius: 0
 --- !u!212 &6295521054266737016
 SpriteRenderer:
   serializedVersion: 3
@@ -77214,6 +77312,7 @@ Transform:
   - {fileID: 1689108626796912976}
   - {fileID: 8863390825728519969}
   - {fileID: 7393416331545611434}
+  - {fileID: 6506150}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &8478524171354918934
