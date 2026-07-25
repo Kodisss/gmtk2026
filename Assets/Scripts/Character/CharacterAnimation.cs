@@ -9,8 +9,6 @@ public class CharacterAnimation : MonoBehaviour
     private CharacterState previousState;
 
     private static readonly int StateHash = Animator.StringToHash("State");
-    private static readonly int SpeedHash = Animator.StringToHash("Speed");
-    private static readonly int GroundedHash = Animator.StringToHash("Grounded");
 
     private void Awake()
     {
@@ -30,15 +28,11 @@ public class CharacterAnimation : MonoBehaviour
 
     private void Update()
     {
-        animator.SetBool(GroundedHash, movement.IsGrounded);
-
         if (movement.CurrentState != previousState)
         {
             animator.SetInteger(StateHash, (int)movement.CurrentState);
 
             previousState = movement.CurrentState;
         }
-
-        animator.SetFloat(SpeedHash, movement.CurrentSpeed / movement.MaxSpeed);
     }
 }
