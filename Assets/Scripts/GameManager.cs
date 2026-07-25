@@ -14,9 +14,6 @@ public class GameManager : MonoBehaviour
     private int reputation = 0;
 
 
-    public event System.Action<int> OnDaysChanged;
-    public event System.Action<int> OnReputationChanged;
-
     public int DaysLeft
     {
         get => daysLeft;
@@ -28,7 +25,7 @@ public class GameManager : MonoBehaviour
 
             daysLeft = value;
 
-            OnDaysChanged?.Invoke(daysLeft);
+            if (daysLeft == 0) Debug.Log("World should end"); // do something
         }
     }
 
@@ -44,8 +41,6 @@ public class GameManager : MonoBehaviour
                 return;
 
             reputation = clampedValue;
-
-            OnReputationChanged?.Invoke(reputation);
         }
     }
 

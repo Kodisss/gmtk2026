@@ -75660,7 +75660,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2f351bb55c46ac942adfd82c23da2816, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Game.Dialogue.BossDialogueStarter
-  startingDialogue: {fileID: 11400000, guid: 46dd08d7fef5170448540862d9d2c755, type: 2}
+  startingDialogue: {fileID: 11400000, guid: d8288bc797beb364c9b7cd4ad57a1209, type: 2}
 --- !u!212 &6295521054266737016
 SpriteRenderer:
   serializedVersion: 3
@@ -77343,6 +77343,8 @@ CircleCollider2D:
 SceneRoots:
   m_ObjectHideFlags: 0
   m_Roots:
+  - {fileID: 1067853614}
+  - {fileID: 361472387}
   - {fileID: 519420032}
   - {fileID: 619394802}
   - {fileID: 283765116}
@@ -77350,6 +77352,4 @@ SceneRoots:
   - {fileID: 5870126534055655606}
   - {fileID: 401214918}
   - {fileID: 1385589215}
-  - {fileID: 1067853614}
-  - {fileID: 361472387}
   - {fileID: 8365827432583229853}

@@ -1,22 +1,28 @@
 using TMPro;
 using UnityEngine;
+using static UnityEngine.Rendering.DebugUI;
 
 public class ReputationUI : MonoBehaviour
 {
     [SerializeField]
     private TMP_Text reputationText;
+    private int previousReputation = 0;
+    private GameManager gameManager;
 
-
-    private void OnEnable()
+    private void Start()
     {
-        GameManager.Instance.OnReputationChanged += UpdateReputation;
-        UpdateReputation(GameManager.Instance.Reputation);
+        gameManager = GameManager.Instance;
     }
 
-
-    private void OnDisable()
+    private void Update()
     {
-        GameManager.Instance.OnReputationChanged -= UpdateReputation;
+        int nextReputation = gameManager.Reputation;
+
+        if (nextReputation != previousReputation)
+        {
+            UpdateReputation(nextReputation);
+            previousReputation = nextReputation;
+        }
     }
 
 

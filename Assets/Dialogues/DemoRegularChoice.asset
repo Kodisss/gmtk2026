@@ -31,7 +31,10 @@ MonoBehaviour:
   - text: Oh wow that is actually quite impressive!
     nextDialogue: {fileID: 11400000, guid: 1f453087a6b65464d9c15dfee5195f81, type: 2}
     conditions: []
-    effects: []
+    effects:
+    - variable: 0
+      operation: 0
+      value: -4
     onSelected:
       m_PersistentCalls:
         m_Calls: []

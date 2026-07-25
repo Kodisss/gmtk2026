@@ -34,25 +34,19 @@ namespace Game.Dialogue
 
         public void Modify(DialogueEffect effect)
         {
+            Debug.Log("Trying to modify a variable");
+
             switch (effect.variable)
             {
                 case DialogueVariable.DaysLeft:
-
-                    GameManager.Instance.DaysLeft =
-                        ApplyOperation(
-                            GameManager.Instance.DaysLeft,
-                            effect);
-
+                    GameManager.Instance.DaysLeft = ApplyOperation(GameManager.Instance.DaysLeft,effect);
                     break;
 
 
                 case DialogueVariable.Reputation:
+                    Debug.Log("Trying to set Reputation with a value of " + ApplyOperation(GameManager.Instance.Reputation, effect));
 
-                    GameManager.Instance.Reputation =
-                        ApplyOperation(
-                            GameManager.Instance.Reputation,
-                            effect);
-
+                    GameManager.Instance.Reputation = ApplyOperation(GameManager.Instance.Reputation, effect);
                     break;
             }
         }

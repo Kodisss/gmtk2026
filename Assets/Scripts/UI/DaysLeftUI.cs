@@ -5,24 +5,22 @@ public class DaysLeftUI : MonoBehaviour
 {
     [SerializeField]
     private TMP_Text daysText;
+    private int previousDaysCount = 0;
+    private GameManager gameManager;
 
-
-    private void OnEnable()
+    private void Start()
     {
-        if(GameManager.Instance != null)
-        {
-            GameManager.Instance.OnDaysChanged += UpdateDays;
-
-            UpdateDays(GameManager.Instance.DaysLeft);
-        }
+        gameManager = GameManager.Instance;
     }
 
-
-    private void OnDisable()
+    private void Update()
     {
-        if(GameManager.Instance != null)
+        int nextDaysCount = gameManager.DaysLeft;
+
+        if (nextDaysCount != previousDaysCount)
         {
-            GameManager.Instance.OnDaysChanged -= UpdateDays;
+            UpdateDays(nextDaysCount);
+            previousDaysCount = nextDaysCount;
         }
     }
 
