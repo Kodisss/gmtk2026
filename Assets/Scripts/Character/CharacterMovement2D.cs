@@ -54,10 +54,9 @@ public class CharacterMovement2D : MonoBehaviour
     [Header("Dash")]
     [SerializeField] private float dashForce = 20f;
     [SerializeField] private float dashDuration = 0.15f;
-    [SerializeField] private float dashCooldown = 0.5f;
 
     private bool isDashing;
-    private bool canDash = true;
+    public bool CanDash { get; set; } = true;
     private Vector2 dashDirection;
 
     private bool canDoubleJump;
@@ -169,13 +168,14 @@ public class CharacterMovement2D : MonoBehaviour
 
         if (isGrounded && !wasGrounded)
         {
+            CanDash = true;
+
             canDoubleJump = true;
             doubleJumpTimer = 0f;
             isJumping = false;
 
             if (lastVerticalVelocity < landingVelocityThresholdToLand)
             {
-                //Debug.Log("Landed because last vertical velocity is " + lastVerticalVelocity + " and the threshold is " + landingVelocityThresholdToLand);
                 landingTimer = landingDuration;
             }
         }
@@ -217,6 +217,7 @@ public class CharacterMovement2D : MonoBehaviour
         if (canDoubleJump && doubleJumpTimer <= 0f)
         {
             rb.linearVelocity = new Vector2(rb.linearVelocity.x, doubleJumpForce);
+            isJumping = true;
 
             canDoubleJump = false;
             doubleJumpTimer = doubleJumpCooldown;
@@ -261,7 +262,7 @@ public class CharacterMovement2D : MonoBehaviour
     {
         if (!characterInput.DashPressed) return;
 
-        if (!canDash)  return;
+        if (!CanDash)  return;
 
         StartCoroutine(Dash());
     }
@@ -270,7 +271,7 @@ public class CharacterMovement2D : MonoBehaviour
     {
         isDashing = true;
         isJumping = false;
-        canDash = false;
+        CanDash = false;
 
         currentState = CharacterState.Dashing;
 
@@ -291,12 +292,7 @@ public class CharacterMovement2D : MonoBehaviour
         isDashing = false;
 
         rb.linearVelocity = new Vector2(0, rb.linearVelocity.y);
-
         rb.gravityScale = baseGravity;
-
-        yield return new WaitForSeconds(dashCooldown);
-
-        canDash = true;
     }
 
     private void UpdateState()
