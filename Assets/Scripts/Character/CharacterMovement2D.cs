@@ -56,6 +56,7 @@ public class CharacterMovement2D : MonoBehaviour
     [SerializeField] private float dashDuration = 0.15f;
     [SerializeField] private float groundDashCooldown = 0.5f;
 
+    private bool dashStartedGrounded;
     private float groundDashTimer;
     private bool isDashing;
     public bool CanDash { get; set; } = true;
@@ -173,7 +174,6 @@ public class CharacterMovement2D : MonoBehaviour
         );
 
 
-        // Air dash reset
         if (isGrounded && !wasGrounded)
         {
             CanDash = true;
@@ -277,7 +277,7 @@ public class CharacterMovement2D : MonoBehaviour
 
     private IEnumerator Dash()
     {
-        bool wasGrounded = isGrounded;
+        dashStartedGrounded = isGrounded;
 
         isDashing = true;
         isJumping = false;
@@ -285,16 +285,19 @@ public class CharacterMovement2D : MonoBehaviour
 
         currentState = CharacterState.Dashing;
 
-        dashDirection = new Vector2(characterInput.MoveInput.x, characterInput.MoveInput.y);
+        dashDirection = new Vector2(
+            characterInput.MoveInput.x,
+            characterInput.MoveInput.y
+        );
 
-        // If no input, dash facing direction
         if (dashDirection == Vector2.zero)
         {
-            dashDirection = spriteRenderer.flipX ? Vector2.left : Vector2.right;
+            dashDirection = spriteRenderer.flipX
+                ? Vector2.left
+                : Vector2.right;
         }
 
         rb.gravityScale = 0;
-
         rb.linearVelocity = dashDirection * dashForce;
 
         yield return new WaitForSeconds(dashDuration);
@@ -304,8 +307,17 @@ public class CharacterMovement2D : MonoBehaviour
         rb.linearVelocity = new Vector2(0, rb.linearVelocity.y);
         rb.gravityScale = baseGravity;
 
-        // Ground dash cooldown
-        if (wasGrounded) groundDashTimer = groundDashCooldown;
+
+        // Ground dash: wait before allowing another dash
+        if (dashStartedGrounded)
+        {
+            yield return new WaitForSeconds(groundDashCooldown);
+
+            if (isGrounded)
+            {
+                CanDash = true;
+            }
+        }
     }
 
     private void HandleGroundDashCooldown()

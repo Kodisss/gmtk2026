@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using UnityEngine;
 
@@ -8,6 +9,23 @@ public class CharacterStats : MonoBehaviour
     public bool DoubleJumpEnabled { get; private set; } = false;
 
     [SerializeField] private AudioSource boostAudioSource;
+
+    [Header("Health")]
+    [SerializeField] private int maxHealth = 3;
+    public int MaxHealth => maxHealth;
+    public int CurrentHealth { get; private set; }
+    public bool IsDead { get; private set; }
+
+    public event Action<int, int> OnHealthChanged;
+    public event Action OnDeath;
+
+    [SerializeField] private SpriteRenderer spriteRenderer;
+
+    [Header("Damage")]
+    [SerializeField] private float invincibilityTime = 1f;
+    [SerializeField] private Color damageColor = Color.red;
+    private bool invincible;
+    
 
     [Header("Speed boost grejer")]
     [SerializeField] private SpriteRenderer speedBoostRenderer;
@@ -21,11 +39,14 @@ public class CharacterStats : MonoBehaviour
 
     private Coroutine speedRoutine;
     private Coroutine doubleJumpRoutine;
+    private Coroutine invincibilityCoroutine;
 
     #region Speed
 
     private void Start()
     {
+        CurrentHealth = maxHealth;
+
         speedBoostRenderer.sprite = null;
         doubleJumpBoostRenderer.sprite = null;
     }
@@ -73,4 +94,91 @@ public class CharacterStats : MonoBehaviour
     }
 
     #endregion
+
+    public void TakeDamage(int damage)
+    {
+        if (IsDead || invincible)
+            return;
+
+        CurrentHealth -= damage;
+
+        CurrentHealth = Mathf.Clamp(CurrentHealth, 0, MaxHealth);
+
+        OnHealthChanged?.Invoke(CurrentHealth, MaxHealth);
+
+        if (CurrentHealth <= 0)
+        {
+            Die();
+            return;
+        }
+
+        StartCoroutine(InvincibilityRoutine());
+    }
+
+    private IEnumerator InvincibilityRoutine()
+    {
+        invincible = true;
+
+        Color startColor = Color.white;
+
+        float halfTime = invincibilityTime * 0.5f;
+
+        // White -> Red
+        float timer = 0f;
+        while (timer < halfTime)
+        {
+            timer += Time.deltaTime;
+
+            spriteRenderer.color = Color.Lerp(
+                startColor,
+                damageColor,
+                timer / halfTime
+            );
+
+            yield return null;
+        }
+
+        // Red -> White
+        timer = 0f;
+        while (timer < halfTime)
+        {
+            timer += Time.deltaTime;
+
+            spriteRenderer.color = Color.Lerp(
+                damageColor,
+                startColor,
+                timer / halfTime
+            );
+
+            yield return null;
+        }
+
+        spriteRenderer.color = startColor;
+
+        invincible = false;
+        invincibilityCoroutine = null;
+    }
+
+    private void Die()
+    {
+        IsDead = true;
+
+        GetComponent<CharacterMovement2D>().enabled = false;
+
+        OnDeath?.Invoke();
+
+        GameManager.Instance.PlayerDied();
+    }
+
+
+
+    public void Heal(int amount)
+    {
+        if (IsDead)
+            return;
+
+        CurrentHealth += amount;
+        CurrentHealth = Mathf.Clamp(CurrentHealth, 0, maxHealth);
+        OnHealthChanged?.Invoke(CurrentHealth, MaxHealth);
+    }
 }
