@@ -1,10 +1,9 @@
 using UnityEngine;
 
-public class SpeedBoostPickup : MonoBehaviour
+public class DoubleJumpBoostPickup : MonoBehaviour
 {
     CharacterStats characterStats;
 
-    [SerializeField] private float speedMultiplier = 1.5f;
     [SerializeField] private float boostDuration = 5f;
 
     private void Start()
@@ -14,7 +13,7 @@ public class SpeedBoostPickup : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        characterStats.ApplySpeedMultiplier(speedMultiplier, boostDuration);
+        characterStats.EnableDoubleJump(boostDuration);
         Destroy(gameObject);
     }
 }

@@ -10,11 +10,11 @@ GameObject:
   m_Component:
   - component: {fileID: 4290797557546211465}
   - component: {fileID: 7551002161705050947}
-  - component: {fileID: 8137673662930995326}
-  - component: {fileID: 3818579987218013484}
-  - component: {fileID: 3302791186175932962}
+  - component: {fileID: 1182869320699842699}
+  - component: {fileID: 8986945888683254328}
+  - component: {fileID: 4135171479528214962}
   m_Layer: 0
-  m_Name: SpeedBoost
+  m_Name: DoubleJumpBoost
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -84,7 +84,7 @@ SpriteRenderer:
   m_SortingLayer: 3
   m_SortingOrder: 0
   m_MaskInteraction: 0
-  m_Sprite: {fileID: 8951347214503883303, guid: c7215d09b1c223441b99eb328e32f200, type: 3}
+  m_Sprite: {fileID: -1377831525198441351, guid: 9b341d73673ba99499a13240fa0c74a7, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -95,7 +95,7 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_SpriteSortPoint: 0
   m_BlendShapeWeights: []
---- !u!58 &8137673662930995326
+--- !u!58 &1182869320699842699
 CircleCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -131,21 +131,7 @@ CircleCollider2D:
   m_CompositeOrder: 0
   m_Offset: {x: 0, y: 0}
   m_Radius: 0.55
---- !u!114 &3818579987218013484
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4028608570572198087}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9156014b1b7542a40bd3e7bbfbe16417, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::SpeedBoostPickup
-  speedMultiplier: 1.5
-  boostDuration: 5
---- !u!95 &3302791186175932962
+--- !u!95 &8986945888683254328
 Animator:
   serializedVersion: 7
   m_ObjectHideFlags: 0
@@ -155,7 +141,7 @@ Animator:
   m_GameObject: {fileID: 4028608570572198087}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: f84836563b207984eb0f6bb8d88421b7, type: 2}
+  m_Controller: {fileID: 9100000, guid: 514d1b55f0e5be047b9ec57fd820a845, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -167,3 +153,16 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &4135171479528214962
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4028608570572198087}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e3ddc570d748ec0448639dbd444a77d9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::DoubleJumpBoostPickup
+  boostDuration: 5
