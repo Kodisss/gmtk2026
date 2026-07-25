@@ -16,7 +16,7 @@ public class CharacterStats : MonoBehaviour
     public int CurrentHealth { get; private set; }
     public bool IsDead { get; private set; }
 
-    public event Action<int, int> OnHealthChanged;
+    public event Action<int> OnHealthChanged;
     public event Action OnDeath;
 
     [SerializeField] private SpriteRenderer spriteRenderer;
@@ -104,7 +104,7 @@ public class CharacterStats : MonoBehaviour
 
         CurrentHealth = Mathf.Clamp(CurrentHealth, 0, MaxHealth);
 
-        OnHealthChanged?.Invoke(CurrentHealth, MaxHealth);
+        OnHealthChanged?.Invoke(CurrentHealth);
 
         if (CurrentHealth <= 0)
         {
@@ -179,6 +179,6 @@ public class CharacterStats : MonoBehaviour
 
         CurrentHealth += amount;
         CurrentHealth = Mathf.Clamp(CurrentHealth, 0, maxHealth);
-        OnHealthChanged?.Invoke(CurrentHealth, MaxHealth);
+        OnHealthChanged?.Invoke(CurrentHealth);
     }
 }

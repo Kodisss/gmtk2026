@@ -1,20 +1,19 @@
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
 
 public class PlayerUI : MonoBehaviour
 {
     [SerializeField] private CharacterStats player;
 
-    [SerializeField] private List<Image> hearts;
-    [SerializeField] private Sprite fullHeart;
-    [SerializeField] private Sprite emptyHeart;
+    [SerializeField] private HeartUILogic heartPrefab;
+    [SerializeField] private Transform heartHolder;
+    [SerializeField] private List<HeartUILogic> hearts;
 
     private void Start()
     {
         player.OnHealthChanged += UpdateHearts;
 
-        UpdateHearts(player.CurrentHealth, player.MaxHealth);
+        InitiateHearts();
     }
 
     private void OnDestroy()
@@ -22,11 +21,23 @@ public class PlayerUI : MonoBehaviour
         player.OnHealthChanged -= UpdateHearts;
     }
 
-    private void UpdateHearts(int current, int max)
+    private void InitiateHearts()
     {
-        for (int i = 0; i < hearts.Count; i++)
+        for (int i = 0; i < player.MaxHealth; i++)
         {
-            hearts[i].sprite = i < current ? fullHeart : emptyHeart;
+            HeartUILogic currentHeart = Instantiate(heartPrefab, heartHolder);
+
+            currentHeart.InitiateHeart();
+
+            hearts.Add(currentHeart);
+        }
+    }
+
+    private void UpdateHearts(int current)
+    {
+        for (int i = 0; i < hearts.Count; i++) 
+        {
+            if (i > current - 1) hearts[i].KillYourself();
         }
     }
 }
