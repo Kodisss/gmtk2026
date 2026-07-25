@@ -8,7 +8,6 @@ public class CharacterStats : MonoBehaviour
     public bool DoubleJumpEnabled { get; private set; } = false;
 
     [SerializeField] private AudioSource boostAudioSource;
-    
 
     [Header("Speed boost grejer")]
     [SerializeField] private SpriteRenderer speedBoostRenderer;

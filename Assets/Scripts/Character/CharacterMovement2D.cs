@@ -54,7 +54,9 @@ public class CharacterMovement2D : MonoBehaviour
     [Header("Dash")]
     [SerializeField] private float dashForce = 20f;
     [SerializeField] private float dashDuration = 0.15f;
+    [SerializeField] private float groundDashCooldown = 0.5f;
 
+    private float groundDashTimer;
     private bool isDashing;
     public bool CanDash { get; set; } = true;
     private Vector2 dashDirection;
@@ -101,7 +103,7 @@ public class CharacterMovement2D : MonoBehaviour
         lastVerticalVelocity = rb.linearVelocity.y;
 
         CheckGround();
-
+        HandleGroundDashCooldown();
         HandleDash();
 
         HandleJumpBuffer();
@@ -164,8 +166,14 @@ public class CharacterMovement2D : MonoBehaviour
     {
         bool wasGrounded = isGrounded;
 
-        isGrounded = Physics2D.OverlapCircle(groundCheck.position, groundRadius, groundLayer);
+        isGrounded = Physics2D.OverlapCircle(
+            groundCheck.position,
+            groundRadius,
+            groundLayer
+        );
 
+
+        // Air dash reset
         if (isGrounded && !wasGrounded)
         {
             CanDash = true;
@@ -269,6 +277,8 @@ public class CharacterMovement2D : MonoBehaviour
 
     private IEnumerator Dash()
     {
+        bool wasGrounded = isGrounded;
+
         isDashing = true;
         isJumping = false;
         CanDash = false;
@@ -293,6 +303,22 @@ public class CharacterMovement2D : MonoBehaviour
 
         rb.linearVelocity = new Vector2(0, rb.linearVelocity.y);
         rb.gravityScale = baseGravity;
+
+        // Ground dash cooldown
+        if (wasGrounded) groundDashTimer = groundDashCooldown;
+    }
+
+    private void HandleGroundDashCooldown()
+    {
+        if (groundDashTimer > 0)
+        {
+            groundDashTimer -= Time.deltaTime;
+
+            if (groundDashTimer <= 0 && isGrounded)
+            {
+                CanDash = true;
+            }
+        }
     }
 
     private void UpdateState()
