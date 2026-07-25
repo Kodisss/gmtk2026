@@ -625,7 +625,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 5db029f3526c3a3459bacd6e60914ebd, type: 2}
   introSource: {fileID: 361472385}
   loopSource: {fileID: 361472384}
-  musicVolume: 1
+  musicVolume: 0.457
   fadeDuration: 1
 --- !u!4 &361472387
 Transform:
