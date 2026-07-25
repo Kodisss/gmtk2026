@@ -12,7 +12,6 @@ namespace Game.Dialogue
             WaitingForChoice
         }
 
-
         [Header("References")]
         [SerializeField]
         private DialogueUI ui;
@@ -23,18 +22,15 @@ namespace Game.Dialogue
         [SerializeField]
         private DialogueVariables variables;
 
-
         [Header("Settings")]
         [SerializeField]
         private bool startHidden = true;
-
 
         private DialogueNode currentNode;
 
         private int currentLineIndex;
 
         private DialogueState state = DialogueState.Hidden;
-
 
         public bool WaitingForYesNo => state == DialogueState.WaitingForChoice && currentNode != null && currentNode.dialogueType == DialogueType.YesNo;
         public DialogueState CurrentState => state;
@@ -43,7 +39,6 @@ namespace Game.Dialogue
         {
             if (startHidden) ui.Hide();
         }
-
 
 
         #region Dialogue Starting
@@ -79,8 +74,6 @@ namespace Game.Dialogue
             DisplayCurrentLine();
         }
 
-
-
         public void EndDialogue()
         {
             if (currentNode != null)
@@ -100,13 +93,9 @@ namespace Game.Dialogue
             ui.Hide();
         }
 
-
         #endregion
 
-
-
         #region Display
-
 
         private void DisplayCurrentLine()
         {
@@ -127,7 +116,6 @@ namespace Game.Dialogue
 
             state = DialogueState.Typing;
 
-
             typewriter.Type(
                 ui.DialogueText,
                 line.text,
@@ -137,21 +125,15 @@ namespace Game.Dialogue
                 OnTypingFinished);
         }
 
-
-
         private void OnTypingFinished()
         {
             state =
                 DialogueState.WaitingForContinue;
         }
 
-
         #endregion
 
-
-
         #region Input
-
 
         public void Continue()
         {
@@ -178,8 +160,6 @@ namespace Game.Dialogue
             }
         }
 
-
-
         public void Interrupt()
         {
             if (state != DialogueState.Typing) return;
@@ -192,10 +172,7 @@ namespace Game.Dialogue
 
         #endregion
 
-
-
         #region Choices
-
 
         private void DisplayChoices()
         {
@@ -225,8 +202,6 @@ namespace Game.Dialogue
             state = DialogueState.WaitingForChoice;
         }
 
-
-
         private void Choose(DialogueChoice choice)
         {
             if (choice == null)
@@ -240,18 +215,18 @@ namespace Game.Dialogue
             StartDialogue(choice.nextDialogue);
         }
 
-
-
         #endregion
-
-
 
         #region Conditions / Effects
 
 
         private void CheckConditions(DialogueChoice choice)
         {
-            if (choice.conditions == null) ui.CreateChoice(choice.text, () => Choose(choice), true);
+            if (choice.conditions == null)
+            {
+                ui.CreateChoice(choice.text, () => Choose(choice), true);
+                return;
+            }
 
             DialogueCondition thatDidntWork;
             bool shouldItBeOn = true;

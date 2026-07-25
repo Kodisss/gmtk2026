@@ -1,55 +1,83 @@
-using System.Collections.Generic;
 using UnityEngine;
 
 namespace Game.Dialogue
 {
     public class DialogueVariables : MonoBehaviour
     {
-        private Dictionary<DialogueVariable, int> variables;
-
-
-        private void Awake()
-        {
-            variables = new Dictionary<DialogueVariable, int>();
-
-            foreach (DialogueVariable variable in 
-                     System.Enum.GetValues(typeof(DialogueVariable)))
-            {
-                variables.Add(variable, 0);
-            }
-        }
-
 
         public int Get(DialogueVariable variable)
         {
-            return variables[variable];
+            if (GameManager.Instance == null)
+            {
+                Debug.LogWarning(
+                    "GameManager missing while reading dialogue variable.");
+
+                return 0;
+            }
+
+
+            return variable switch
+            {
+                DialogueVariable.DaysLeft =>
+                    GameManager.Instance.DaysLeft,
+
+
+                DialogueVariable.Reputation =>
+                    GameManager.Instance.Reputation,
+
+
+                _ => 0
+            };
         }
+
 
 
         public void Modify(DialogueEffect effect)
         {
-            switch (effect.operation)
+            switch (effect.variable)
             {
-                case VariableOperation.Set:
-                    variables[effect.variable] = effect.value;
+                case DialogueVariable.DaysLeft:
+
+                    GameManager.Instance.DaysLeft =
+                        ApplyOperation(
+                            GameManager.Instance.DaysLeft,
+                            effect);
+
                     break;
 
 
-                case VariableOperation.Add:
-                    variables[effect.variable] += effect.value;
-                    break;
+                case DialogueVariable.Reputation:
 
+                    GameManager.Instance.Reputation =
+                        ApplyOperation(
+                            GameManager.Instance.Reputation,
+                            effect);
 
-                case VariableOperation.Subtract:
-                    variables[effect.variable] -= effect.value;
                     break;
             }
         }
 
+        private int ApplyOperation(int variable, DialogueEffect effect)
+        {
+            switch (effect.operation)
+            {
+                case VariableOperation.Set:
+                    return effect.value;
+
+                case VariableOperation.Add:
+                    return variable + effect.value;
+
+                case VariableOperation.Subtract:
+                    return variable - effect.value;
+            }
+
+            return variable;
+        }
 
         public bool Check(DialogueCondition condition)
         {
-            int currentValue = Get(condition.variable);
+            int currentValue =
+                Get(condition.variable);
 
             return condition.condition switch
             {
