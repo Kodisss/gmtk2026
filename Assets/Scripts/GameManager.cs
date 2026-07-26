@@ -75,7 +75,7 @@ public class GameManager : MonoBehaviour
         reputation = gameState.Reputation;
         daysLeft = gameState.DaysLeft;
 
-        MusicManager.Instance.PlayTrackNb(daysLeft);
+        MusicManager.Instance.PlayTrackNb(daysLeft + 1);
     }
 
     public void StartBossDialogue()

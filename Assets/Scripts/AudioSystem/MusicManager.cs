@@ -82,6 +82,8 @@ public class MusicManager : MonoBehaviour
 
     public void PlayTrackNb(int trackNumber)
     {
+        Debug.Log(trackNumber);
+
         FadeToMusic(musicTracks[trackNumber]);
     }
 

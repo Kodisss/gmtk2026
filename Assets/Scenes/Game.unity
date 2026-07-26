@@ -1966,8 +1966,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::MusicManager
   musicTracks:
-  - {fileID: 11400000, guid: a8d801ddf5e5606478c847df0e5829a7, type: 2}
-  - {fileID: 11400000, guid: 5db029f3526c3a3459bacd6e60914ebd, type: 2}
+  - {fileID: 11400000, guid: bc0703dcc92328e4ca244ed033f421e5, type: 2}
+  - {fileID: 11400000, guid: 337dff302f936fb439b73a52c3f35eaa, type: 2}
+  - {fileID: 11400000, guid: 2037fccd067615141b70939405bad21b, type: 2}
+  - {fileID: 11400000, guid: bc0703dcc92328e4ca244ed033f421e5, type: 2}
+  - {fileID: 11400000, guid: 337dff302f936fb439b73a52c3f35eaa, type: 2}
+  - {fileID: 11400000, guid: 53ffea8727334ed4280cfca943f29624, type: 2}
+  - {fileID: 11400000, guid: 337dff302f936fb439b73a52c3f35eaa, type: 2}
   introSource: {fileID: 361472385}
   loopSource: {fileID: 361472384}
   musicVolume: 0.52
@@ -2270,8 +2275,8 @@ MonoBehaviour:
   - {fileID: 21300000, guid: ca3435c863f5c464ea7899cc39d00322, type: 3}
   - {fileID: 464826628555727692, guid: 398a03e1b458c7544a89b563528a7d21, type: 3}
   displayImage: {fileID: 1046640065}
-  lostTheGameTrack: {fileID: 0}
-  wonTheGameTrack: {fileID: 0}
+  lostTheGameTrack: {fileID: 11400000, guid: bc0703dcc92328e4ca244ed033f421e5, type: 2}
+  wonTheGameTrack: {fileID: 11400000, guid: bc0703dcc92328e4ca244ed033f421e5, type: 2}
 --- !u!1 &420840483
 GameObject:
   m_ObjectHideFlags: 0
@@ -4358,7 +4363,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1f5a68654663076449ebfa96b0b24ab8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::GameState
-  DaysLeft: 7
+  DaysLeft: 5
   Reputation: 0
   CurrentBossDialogue: 0
 --- !u!1 &1046640064
@@ -4471,7 +4476,7 @@ MonoBehaviour:
   dialogueManager: {fileID: 4365247804648253884}
   endOfDialogueSceneReset: {fileID: 401214922}
   endOfGame: {fileID: 401214923}
-  daysLeft: 7
+  daysLeft: 5
   reputation: 0
   restartDelay: 2
 --- !u!4 &1067853614
