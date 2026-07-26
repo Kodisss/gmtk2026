@@ -1429,12 +1429,8 @@ MonoBehaviour:
     m_ActionName: 'Player/Move[/Keyboard/w,/Keyboard/s,/Keyboard/a,/Keyboard/d]'
   - m_PersistentCalls:
       m_Calls: []
-    m_ActionId: f2171fe4-dd9d-406c-bf40-def93457cb87
-    m_ActionName: 'BossFight/Continue[/Mouse/leftButton]'
-  - m_PersistentCalls:
-      m_Calls: []
-    m_ActionId: 528593cf-0990-4eac-a67f-ed98229625c3
-    m_ActionName: 'BossFight/Look[/Mouse/delta]'
+    m_ActionId: 938da8a9-de46-47a4-9b02-660b961024bf
+    m_ActionName: 'Player/Continue[/Mouse/leftButton]'
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
   m_DefaultActionMap: Player
@@ -86749,27 +86745,11 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-    m_ActionId: f2171fe4-dd9d-406c-bf40-def93457cb87
-    m_ActionName: 'BossFight/Continue[/Mouse/leftButton]'
-  - m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 8846165446880511226}
-        m_TargetAssemblyTypeName: Game.Dialogue.DialogueInput, Assembly-CSharp
-        m_MethodName: OnLook
-        m_Mode: 0
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-    m_ActionId: 528593cf-0990-4eac-a67f-ed98229625c3
-    m_ActionName: 'BossFight/Look[/Mouse/delta]'
+    m_ActionId: 938da8a9-de46-47a4-9b02-660b961024bf
+    m_ActionName: 'Player/Continue[/Mouse/leftButton]'
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
-  m_DefaultActionMap: BossFight
+  m_DefaultActionMap: Player
   m_SplitScreenIndex: -1
   m_Camera: {fileID: 0}
 --- !u!114 &4768003191420772024

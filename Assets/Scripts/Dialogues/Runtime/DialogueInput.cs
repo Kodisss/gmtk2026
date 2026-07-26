@@ -83,7 +83,7 @@ namespace Game.Dialogue
 
         public void OnContinue(InputAction.CallbackContext context)
         {
-            Debug.Log("Try to continue");
+            // Debug.Log("Try to continue");
 
             if (!context.performed) return;
 
