@@ -83,6 +83,8 @@ namespace Game.Dialogue
 
         public void OnContinue(InputAction.CallbackContext context)
         {
+            Debug.Log("Try to continue");
+
             if (!context.performed) return;
 
             if (Time.time - lastContinueTime < continueCooldown) return;

@@ -132,14 +132,10 @@ public class GameManager : MonoBehaviour
         StartCoroutine(RestartSceneRoutine());
     }
 
-
-
     public void RestartScene()
     {
         StartCoroutine(RestartSceneRoutine());
     }
-
-
 
     private IEnumerator RestartSceneRoutine()
     {

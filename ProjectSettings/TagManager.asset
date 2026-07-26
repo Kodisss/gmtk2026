@@ -41,8 +41,23 @@ TagManager:
   - name: Default
     uniqueID: 0
     locked: 0
+  - name: Sky
+    uniqueID: 22541501
+    locked: 0
+  - name: Clouds
+    uniqueID: 3833582675
+    locked: 0
+  - name: Background2
+    uniqueID: 3507029695
+    locked: 0
   - name: BackGround
     uniqueID: 3852168985
+    locked: 0
+  - name: BackgroundClose
+    uniqueID: 2318023903
+    locked: 0
+  - name: Props
+    uniqueID: 719366061
     locked: 0
   - name: Level
     uniqueID: 2055609095
