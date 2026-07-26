@@ -121,6 +121,7 @@ public class GameManager : MonoBehaviour
         if (endOfDialogueSceneReset != null)
         {
             gameState.CurrentBossDialogue++;
+            DaysLeft = daysLeft - 1;
             endOfDialogueSceneReset.GoToNextDay();
         }
     }

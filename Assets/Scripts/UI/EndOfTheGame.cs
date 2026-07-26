@@ -1,13 +1,17 @@
+using System.Collections;
 using UnityEngine;
 using UnityEngine.UI;
 
 public class EndOfTheGame : MonoBehaviour
 {
-    [SerializeField] private GameObject myUI;
-    [SerializeField] private Sprite lostTheGameSprite;
-    [SerializeField] private Sprite wonTheGameSprite;
-    [SerializeField] private Image displayImage;
     private MusicManager musicManager;
+
+    [SerializeField] private GameObject myUI;
+    [SerializeField] private float lostTimePerFrames;
+    [SerializeField] private Sprite[] lostTheGameSprite;
+    [SerializeField] private float winTimePerFrames;
+    [SerializeField] private Sprite[] wonTheGameSprite;
+    [SerializeField] private Image displayImage;
     [SerializeField] private MusicTrack lostTheGameTrack;
     [SerializeField] private MusicTrack wonTheGameTrack;
 
@@ -24,13 +28,30 @@ public class EndOfTheGame : MonoBehaviour
 
         if(reputationScore >= 3)
         {
-            displayImage.sprite = wonTheGameSprite;
+            StartCoroutine(AnimateTheImages(winTimePerFrames, wonTheGameSprite));
             musicManager.FadeToMusic(wonTheGameTrack);
         }
         else
         {
-            displayImage.sprite = lostTheGameSprite;
+            StartCoroutine(AnimateTheImages(lostTimePerFrames, lostTheGameSprite));
             musicManager.FadeToMusic(lostTheGameTrack);
         }
+    }
+
+    private IEnumerator AnimateTheImages(float framerate, Sprite[] images)
+    {
+        int imageCount = 0;
+        int maxImage = images.Length;
+
+        while (true)
+        {
+            displayImage.sprite = images[imageCount];
+
+            yield return new WaitForSeconds(framerate);
+
+            imageCount++;
+            if(imageCount >= images.Length) imageCount = 0;
+        }
+        
     }
 }

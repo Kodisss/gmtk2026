@@ -2261,8 +2261,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::EndOfTheGame
   myUI: {fileID: 1046640064}
-  lostTheGameSprite: {fileID: 0}
-  wonTheGameSprite: {fileID: 0}
+  lostTimePerFrames: 0.1
+  lostTheGameSprite:
+  - {fileID: 21300000, guid: 1196278bb2e7134498a336c18461fd65, type: 3}
+  - {fileID: 21300000, guid: 8f2961def0ed6a048bab3643fe75a48e, type: 3}
+  winTimePerFrames: 0.1
+  wonTheGameSprite:
+  - {fileID: 21300000, guid: ca3435c863f5c464ea7899cc39d00322, type: 3}
+  - {fileID: 464826628555727692, guid: 398a03e1b458c7544a89b563528a7d21, type: 3}
   displayImage: {fileID: 1046640065}
   lostTheGameTrack: {fileID: 0}
   wonTheGameTrack: {fileID: 0}
@@ -3606,7 +3612,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &706953144
 RectTransform:
   m_ObjectHideFlags: 0
