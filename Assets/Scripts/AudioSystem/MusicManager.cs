@@ -100,8 +100,6 @@ public class MusicManager : MonoBehaviour
         FadeToMusic(track);
     }
 
-
-
     public void FadeToMusic(MusicTrack track)
     {
         if (track == null)

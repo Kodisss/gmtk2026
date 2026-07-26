@@ -14,6 +14,7 @@ public class GameManager : MonoBehaviour
     [SerializeField] private CharacterMovement2D playerMovement;
     [SerializeField] private DialogueManager dialogueManager;
     [SerializeField] private EndOfDialogueSceneReset endOfDialogueSceneReset;
+    [SerializeField] private EndOfTheGame endOfGame;
 
     [SerializeField] private int daysLeft;
     [SerializeField] private int reputation;
@@ -136,7 +137,8 @@ public class GameManager : MonoBehaviour
 
     public void RestartScene()
     {
-        StartCoroutine(RestartSceneRoutine());
+        if(daysLeft > 0) StartCoroutine(RestartSceneRoutine());
+        else if (daysLeft == 0) endOfGame.EndOfGame(reputation);
     }
 
     private IEnumerator RestartSceneRoutine()
