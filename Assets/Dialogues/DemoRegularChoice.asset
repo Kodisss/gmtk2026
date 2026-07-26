@@ -14,9 +14,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Game.Dialogue.DialogueNode
   speakerName: Boss
   dialogueType: 0
+  advanceDialogueDatabase: 1
   lines:
   - portrait:
-    - {fileID: -5629209291032929933, guid: 0aa531942dc074c4f8b134a329da5e54, type: 3}
+    - {fileID: 21300000, guid: 8f2961def0ed6a048bab3643fe75a48e, type: 3}
     PortraitAnimationFPS: 8
     voiceClip: {fileID: 0}
     voiceVolume: 1

@@ -16,7 +16,8 @@ MonoBehaviour:
   dialogueType: 2
   advanceDialogueDatabase: 1
   lines:
-  - portrait: []
+  - portrait:
+    - {fileID: 21300000, guid: a969c6cf5888b5e47b18c98739fba120, type: 3}
     PortraitAnimationFPS: 8
     voiceClip: {fileID: 0}
     voiceVolume: 1

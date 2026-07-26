@@ -95,6 +95,8 @@ public class GameManager : MonoBehaviour
 
         playerMovement.SetMovementEnabled(false);
 
+        if(playerMovement.GetComponent<Animator>() != null) playerMovement.GetComponent<Animator>().Play("Idle");
+
         dialogueManager.StartDialogue(bossDialogueDatabase.GetDialogue(gameState.CurrentBossDialogue));
     }
 
