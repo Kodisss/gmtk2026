@@ -446,7 +446,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 609.9999, y: 90.00006}
+  m_AnchoredPosition: {x: 650, y: -500}
   m_SizeDelta: {x: 500, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &92520077
@@ -765,10 +765,10 @@ RectTransform:
   m_Children: []
   m_Father: {fileID: 1426532464}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 1}
-  m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: -660, y: 90.00006}
-  m_SizeDelta: {x: 300, y: 50}
+  m_AnchorMin: {x: 1, y: 1}
+  m_AnchorMax: {x: 1, y: 1}
+  m_AnchoredPosition: {x: 650, y: -500}
+  m_SizeDelta: {x: 500, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &223764283
 MonoBehaviour:
@@ -3584,7 +3584,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &706953144
 RectTransform:
   m_ObjectHideFlags: 0
@@ -81421,8 +81421,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2f351bb55c46ac942adfd82c23da2816, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Game.Dialogue.BossDialogueStarter
-  startingDialogue: {fileID: 11400000, guid: d8288bc797beb364c9b7cd4ad57a1209, type: 2}
   player: {fileID: 283765116}
+  reputationDisplay: {fileID: 401214920}
+  daysLeftDisplay: {fileID: 401214921}
 --- !u!61 &6280229542504029154
 BoxCollider2D:
   m_ObjectHideFlags: 0

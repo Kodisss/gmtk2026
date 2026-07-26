@@ -63,7 +63,10 @@ MonoBehaviour:
       m_PersistentCalls:
         m_Calls: []
   interruptDialogue: {fileID: 0}
-  onEnterEffects: []
+  onEnterEffects:
+  - variable: 1
+    operation: 0
+    value: 3
   onEnter:
     m_PersistentCalls:
       m_Calls: []

@@ -24,6 +24,15 @@ public class DaysLeftUI : MonoBehaviour
         }
     }
 
+    public void HideMyself()
+    {
+        daysText.gameObject.SetActive(false);
+    }
+
+    public void ShowMyself()
+    {
+        daysText.gameObject.SetActive(true);
+    }
 
     private void UpdateDays(int days)
     {

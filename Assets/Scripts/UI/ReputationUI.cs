@@ -1,17 +1,16 @@
 using TMPro;
 using UnityEngine;
-using static UnityEngine.Rendering.DebugUI;
 
 public class ReputationUI : MonoBehaviour
 {
-    [SerializeField]
-    private TMP_Text reputationText;
+    [SerializeField] private TMP_Text reputationText;
     private int previousReputation = 0;
     private GameManager gameManager;
 
     private void Start()
     {
         gameManager = GameManager.Instance;
+        HideMyself();
     }
 
     private void Update()
@@ -23,6 +22,16 @@ public class ReputationUI : MonoBehaviour
             UpdateReputation(nextReputation);
             previousReputation = nextReputation;
         }
+    }
+
+    public void HideMyself()
+    {
+        reputationText.gameObject.SetActive(false);
+    }
+
+    public void ShowMyself()
+    {
+        reputationText.gameObject.SetActive(true);
     }
 
 

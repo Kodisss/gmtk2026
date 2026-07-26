@@ -36,8 +36,8 @@ MonoBehaviour:
     conditions: []
     effects:
     - variable: 1
-      operation: 1
-      value: 5
+      operation: 0
+      value: 4
     - variable: 0
       operation: 2
       value: 7
