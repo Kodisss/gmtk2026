@@ -1,17 +1,18 @@
 using System.Collections;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.Video;
 
 public class EndOfTheGame : MonoBehaviour
 {
     private MusicManager musicManager;
 
-    [SerializeField] private GameObject myUI;
-    [SerializeField] private float lostTimePerFrames;
-    [SerializeField] private Sprite[] lostTheGameSprite;
+    [SerializeField] private GameObject myUIwon;
+    [SerializeField] private GameObject myUIlost;
     [SerializeField] private float winTimePerFrames;
     [SerializeField] private Sprite[] wonTheGameSprite;
     [SerializeField] private Image displayImage;
+    [SerializeField] private VideoPlayer videoPlayer;
     [SerializeField] private MusicTrack lostTheGameTrack;
     [SerializeField] private MusicTrack wonTheGameTrack;
 
@@ -19,21 +20,22 @@ public class EndOfTheGame : MonoBehaviour
     private void Start()
     {
         musicManager = MusicManager.Instance;
-        myUI.SetActive(false);
+        myUIwon.SetActive(false);
+        myUIlost.SetActive(false);
     }
 
     public void EndOfGame(int reputationScore)
     {
-        myUI.SetActive(true);
-
         if(reputationScore >= 3)
         {
+            myUIwon.SetActive(true);
             StartCoroutine(AnimateTheImages(winTimePerFrames, wonTheGameSprite));
             musicManager.FadeToMusic(wonTheGameTrack);
         }
         else
         {
-            StartCoroutine(AnimateTheImages(lostTimePerFrames, lostTheGameSprite));
+            myUIlost.SetActive(true);
+            videoPlayer.Play();
             musicManager.FadeToMusic(lostTheGameTrack);
         }
     }
