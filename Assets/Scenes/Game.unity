@@ -2245,13 +2245,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::MusicManager
   musicTracks:
-  - {fileID: 11400000, guid: bc0703dcc92328e4ca244ed033f421e5, type: 2}
   - {fileID: 11400000, guid: 337dff302f936fb439b73a52c3f35eaa, type: 2}
-  - {fileID: 11400000, guid: 2037fccd067615141b70939405bad21b, type: 2}
-  - {fileID: 11400000, guid: bc0703dcc92328e4ca244ed033f421e5, type: 2}
   - {fileID: 11400000, guid: 337dff302f936fb439b73a52c3f35eaa, type: 2}
-  - {fileID: 11400000, guid: 53ffea8727334ed4280cfca943f29624, type: 2}
   - {fileID: 11400000, guid: 337dff302f936fb439b73a52c3f35eaa, type: 2}
+  - {fileID: 11400000, guid: 30cc60e7df0c3484e8f10be06ba5f328, type: 2}
+  - {fileID: 11400000, guid: 8c9b35635ec63a6459ef643d2b9d0e17, type: 2}
+  - {fileID: 11400000, guid: a8d801ddf5e5606478c847df0e5829a7, type: 2}
+  - {fileID: 11400000, guid: bff666b1a15289a4cb7c51ecb1582bbb, type: 2}
   introSource: {fileID: 361472385}
   loopSource: {fileID: 361472384}
   musicVolume: 0.52
@@ -2547,15 +2547,17 @@ MonoBehaviour:
   myUI: {fileID: 1046640064}
   lostTimePerFrames: 0.1
   lostTheGameSprite:
-  - {fileID: 21300000, guid: 1196278bb2e7134498a336c18461fd65, type: 3}
-  - {fileID: 21300000, guid: 8f2961def0ed6a048bab3643fe75a48e, type: 3}
-  winTimePerFrames: 0.1
+  - {fileID: -223665761552014819, guid: 17ed96973db86a540997f6833fac2ea3, type: 3}
+  - {fileID: -692247718, guid: 17ed96973db86a540997f6833fac2ea3, type: 3}
+  winTimePerFrames: 0.2
   wonTheGameSprite:
-  - {fileID: 21300000, guid: ca3435c863f5c464ea7899cc39d00322, type: 3}
-  - {fileID: 464826628555727692, guid: 398a03e1b458c7544a89b563528a7d21, type: 3}
+  - {fileID: -223665761552014819, guid: 17ed96973db86a540997f6833fac2ea3, type: 3}
+  - {fileID: -692247718, guid: 17ed96973db86a540997f6833fac2ea3, type: 3}
+  - {fileID: -297548114, guid: 17ed96973db86a540997f6833fac2ea3, type: 3}
+  - {fileID: 256356142, guid: 17ed96973db86a540997f6833fac2ea3, type: 3}
   displayImage: {fileID: 1046640065}
-  lostTheGameTrack: {fileID: 11400000, guid: bc0703dcc92328e4ca244ed033f421e5, type: 2}
-  wonTheGameTrack: {fileID: 11400000, guid: bc0703dcc92328e4ca244ed033f421e5, type: 2}
+  lostTheGameTrack: {fileID: 11400000, guid: 2e6d984c346ac3e45829f55a1693fb58, type: 2}
+  wonTheGameTrack: {fileID: 11400000, guid: 446398a606a80764988fea249ea4369d, type: 2}
 --- !u!1 &420840483
 GameObject:
   m_ObjectHideFlags: 0
