@@ -6,18 +6,17 @@ using Game.Dialogue;
 public class GameManager : MonoBehaviour
 {
     public static GameManager Instance { get; private set; }
+    private GameState gameState;
 
     [Header("Boss Dialogue")]
+    [SerializeField] private DialogueDatabase bossDialogueDatabase;
+    [SerializeField] private DialogueUI dialogueUI;
     [SerializeField] private CharacterMovement2D playerMovement;
     [SerializeField] private DialogueManager dialogueManager;
-    [SerializeField] private DialogueDatabase bossDialogueDatabase;
+    [SerializeField] private EndOfDialogueSceneReset endOfDialogueSceneReset;
 
-    [SerializeField]
-    private int daysLeft = 7;
-
-    [SerializeField]
-    private int reputation = 0;
-
+    [SerializeField] private int daysLeft;
+    [SerializeField] private int reputation;
 
     public int DaysLeft
     {
@@ -29,10 +28,13 @@ public class GameManager : MonoBehaviour
                 return;
 
             daysLeft = value;
+            gameState.DaysLeft = daysLeft;
 
-            if (daysLeft == 0) Debug.Log("World should end"); // do something
+            if (daysLeft == 0)
+                Debug.Log("World should end");
         }
     }
+
 
     public int Reputation
     {
@@ -40,19 +42,18 @@ public class GameManager : MonoBehaviour
 
         set
         {
-            int clampedValue = Mathf.Clamp(value, -5, 5);
-
-            if (reputation == clampedValue)
-                return;
-
-            reputation = clampedValue;
+            reputation = Mathf.Clamp(value, -5, 5);
+            gameState.Reputation = reputation;
         }
     }
+
 
     [Header("Death")]
     [SerializeField]
     private float restartDelay = 2f;
+
     private bool restarting;
+
 
 
     private void Awake()
@@ -64,26 +65,43 @@ public class GameManager : MonoBehaviour
         }
 
         Instance = this;
-
-        DontDestroyOnLoad(gameObject);
     }
-
-
 
     private void Start()
     {
-        MusicManager.Instance.PlayMusic("Day3");
-        dialogueManager.OnEndDialogueNode += DialogueFinished;
+        gameState = GameState.Instance;
+
+        reputation = gameState.Reputation;
+        daysLeft = gameState.DaysLeft;
+
+        MusicManager.Instance.PlayTrackNb(daysLeft);
     }
 
     public void StartBossDialogue()
     {
+        if (playerMovement == null)
+        {
+            Debug.LogError("Player not registered");
+            return;
+        }
+
+
+        if (dialogueManager == null)
+        {
+            Debug.LogError("DialogueManager not registered");
+            return;
+        }
+
+
         playerMovement.SetMovementEnabled(false);
-        dialogueManager.StartDialogue(bossDialogueDatabase.GetCurrentDialogue());
+
+        dialogueManager.StartDialogue(bossDialogueDatabase.GetDialogue(gameState.CurrentBossDialogue));
     }
 
-    private void DialogueFinished(DialogueNode node)
+    public void DialogueFinished(DialogueNode node)
     {
+        Debug.Log("Dialogue Finished triggered in GameManager");
+
         if (node.dialogueType != DialogueType.End)
             return;
 
@@ -93,9 +111,16 @@ public class GameManager : MonoBehaviour
             bossDialogueDatabase.Advance();
         }
 
-        playerMovement.SetMovementEnabled(true);
-    }
 
+        playerMovement.SetMovementEnabled(true);
+
+
+        if (endOfDialogueSceneReset != null)
+        {
+            gameState.CurrentBossDialogue++;
+            endOfDialogueSceneReset.GoToNextDay();
+        }
+    }
 
     public void PlayerDied()
     {
@@ -104,6 +129,13 @@ public class GameManager : MonoBehaviour
 
         restarting = true;
 
+        StartCoroutine(RestartSceneRoutine());
+    }
+
+
+
+    public void RestartScene()
+    {
         StartCoroutine(RestartSceneRoutine());
     }
 

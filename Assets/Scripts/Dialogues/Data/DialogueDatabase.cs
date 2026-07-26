@@ -17,6 +17,17 @@ namespace Game.Dialogue
             return allDialogues[currentDialogueIndex];
         }
 
+        public DialogueNode GetDialogue(int index)
+        {
+            if (index < 0 || index >= allDialogues.Length)
+            {
+                Debug.LogError("Dialogue index invalid");
+                return null;
+            }
+
+
+            return allDialogues[index];
+        }
 
         public void Advance()
         {

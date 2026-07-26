@@ -13,18 +13,11 @@ namespace Game.Dialogue
         }
 
         [Header("References")]
-        [SerializeField]
-        private DialogueUI ui;
-
-        [SerializeField]
-        private DialogueTypewriter typewriter;
-
-        [SerializeField]
-        private DialogueVariables variables;
-
+        [SerializeField] private DialogueUI ui;
+        [SerializeField] private DialogueTypewriter typewriter;
+        [SerializeField] private DialogueVariables variables;
         [Header("Settings")]
-        [SerializeField]
-        private bool startHidden = true;
+        [SerializeField] private bool startHidden = true;
 
         private DialogueNode currentNode;
 
@@ -35,16 +28,12 @@ namespace Game.Dialogue
         public bool WaitingForYesNo => state == DialogueState.WaitingForChoice && currentNode != null && currentNode.dialogueType == DialogueType.YesNo;
         public DialogueState CurrentState => state;
 
-        public System.Action<DialogueNode> OnEndDialogueNode;
-
-        private void Awake()
+        private void Start()
         {
             if (startHidden) ui.Hide();
         }
 
-
         #region Dialogue Starting
-
 
         public void StartDialogue(DialogueNode node)
         {
@@ -83,9 +72,15 @@ namespace Game.Dialogue
 
             if (finishedNode != null && finishedNode.dialogueType == DialogueType.End)
             {
-                OnEndDialogueNode?.Invoke(finishedNode);
+                EndDialogueRoutineInspection();
+                GameManager.Instance.DialogueFinished(finishedNode);
             }
 
+            EndDialogueRoutineInspection();
+        }
+
+        private void EndDialogueRoutineInspection()
+        {
             currentNode = null;
 
             currentLineIndex = 0;

@@ -80,6 +80,11 @@ public class MusicManager : MonoBehaviour
     // -------------------------------
 
 
+    public void PlayTrackNb(int trackNumber)
+    {
+        FadeToMusic(musicTracks[trackNumber]);
+    }
+
     public void PlayMusic(string trackID)
     {
         MusicTrack track = musicTracks.Find(x => x.trackID == trackID);
@@ -131,7 +136,11 @@ public class MusicManager : MonoBehaviour
         currentTrack = null;
     }
 
-
+    public void PlaySomething(AudioClip clipToPlay)
+    {
+        loopSource.volume = 1f;
+        loopSource.PlayOneShot(clipToPlay);
+    }
 
     public void SetVolume(float volume)
     {
