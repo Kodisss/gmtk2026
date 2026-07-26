@@ -2243,6 +2243,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::EndOfDialogueSceneReset
   myUI: {fileID: 706953143}
   wholeUI: {fileID: 1426532463}
+  player: {fileID: 283765110}
   textDisplay: {fileID: 1862760867}
   endOfDaySound: {fileID: 8300000, guid: 9c740c623b37ae74f96b29c8dd5aa075, type: 3}
 --- !u!1 &420840483

@@ -6,6 +6,7 @@ public class EndOfDialogueSceneReset : MonoBehaviour
 {
     [SerializeField] private GameObject myUI;
     [SerializeField] private GameObject wholeUI;
+    [SerializeField] private GameObject player;
     private GameManager gameManager;
     private MusicManager musicManager;
     [SerializeField] private TMP_Text textDisplay;
@@ -22,6 +23,7 @@ public class EndOfDialogueSceneReset : MonoBehaviour
     public void GoToNextDay()
     {
         wholeUI.SetActive(false);
+        player.SetActive(false);
 
         StartCoroutine(NextDayRoutine());
     }
