@@ -1,0 +1,123 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bb50b23a4cf2d8b458c5808c80931e04, type: 3}
+  m_Name: 3DAYSLEFT - Entry Dialogue
+  m_EditorClassIdentifier: Assembly-CSharp::Game.Dialogue.DialogueNode
+  speakerName: Oryctola
+  dialogueType: 0
+  advanceDialogueDatabase: 1
+  lines:
+  - portrait:
+    - {fileID: 5035677201601703499, guid: 49f8dc94f1446e24b923f30caecc9884, type: 3}
+    PortraitAnimationFPS: 8
+    voiceClip: {fileID: 8300000, guid: c24a7b4c4ab702e40ad119184336e7ae, type: 3}
+    voiceVolume: 1.27
+    text: GAHHHHHH!!!!
+    typingSpeed: 4.23
+  - portrait:
+    - {fileID: -4587358237732827174, guid: 53c612e55a1353848b4b98d67d941ce2, type: 3}
+    PortraitAnimationFPS: 8
+    voiceClip: {fileID: 8300000, guid: 0e68174b74dce0a49b3e1e42ef9f7ef9, type: 3}
+    voiceVolume: 1
+    text: Don't you get the hint!?
+    typingSpeed: 1.91
+  - portrait:
+    - {fileID: -4587358237732827174, guid: 53c612e55a1353848b4b98d67d941ce2, type: 3}
+    PortraitAnimationFPS: 8
+    voiceClip: {fileID: 8300000, guid: 0e68174b74dce0a49b3e1e42ef9f7ef9, type: 3}
+    voiceVolume: 1
+    text: Have I not been clear!?
+    typingSpeed: 3.13
+  - portrait:
+    - {fileID: 5035677201601703499, guid: 49f8dc94f1446e24b923f30caecc9884, type: 3}
+    PortraitAnimationFPS: 8
+    voiceClip: {fileID: 8300000, guid: c24a7b4c4ab702e40ad119184336e7ae, type: 3}
+    voiceVolume: 1.42
+    text: Leave! Me! Alone!!!
+    typingSpeed: 1
+  - portrait:
+    - {fileID: 5035677201601703499, guid: 49f8dc94f1446e24b923f30caecc9884, type: 3}
+    PortraitAnimationFPS: 8
+    voiceClip: {fileID: 8300000, guid: 0e68174b74dce0a49b3e1e42ef9f7ef9, type: 3}
+    voiceVolume: 1
+    text: I won't change my mind. I am doing this, because I know it is right.
+    typingSpeed: 1
+  - portrait:
+    - {fileID: 5035677201601703499, guid: 49f8dc94f1446e24b923f30caecc9884, type: 3}
+    PortraitAnimationFPS: 8
+    voiceClip: {fileID: 8300000, guid: 0e68174b74dce0a49b3e1e42ef9f7ef9, type: 3}
+    voiceVolume: 1
+    text: 'There is no one left from the Coalition who sees reason like I do. They
+      all believe this can all just be fixed. '
+    typingSpeed: 1
+  - portrait:
+    - {fileID: -6872186827961725178, guid: ff2e9e450f85cbc4fb0884745e73e1fb, type: 3}
+    PortraitAnimationFPS: 8
+    voiceClip: {fileID: 8300000, guid: 0e68174b74dce0a49b3e1e42ef9f7ef9, type: 3}
+    voiceVolume: 1
+    text: Haha. What rubbish.
+    typingSpeed: 1
+  - portrait:
+    - {fileID: 5035677201601703499, guid: 49f8dc94f1446e24b923f30caecc9884, type: 3}
+    PortraitAnimationFPS: 8
+    voiceClip: {fileID: 8300000, guid: c24a7b4c4ab702e40ad119184336e7ae, type: 3}
+    voiceVolume: 1.34
+    text: THE WORLD IS ALREADY DESTROYED AND UNSALVAGEABLE!!!
+    typingSpeed: 1.88
+  ChoicePortraits:
+  - {fileID: -8442755936475116147, guid: 19c69b3e329db5c429c341e483207478, type: 3}
+  ChoicePortraitAnimationFPS: 8
+  choices:
+  - text: Maybe you need to take meditation classes.
+    nextDialogue: {fileID: 11400000, guid: 33d58bd735cb2f14c9757484450c528a, type: 2}
+    conditions: []
+    effects:
+    - variable: 0
+      operation: 1
+      value: 1
+    onSelected:
+      m_PersistentCalls:
+        m_Calls: []
+  - text: And you want to fix it by destroying it...?
+    nextDialogue: {fileID: 11400000, guid: 4a9b3db065bb5ce4f93c2eb6d2af9374, type: 2}
+    conditions: []
+    effects:
+    - variable: 0
+      operation: 2
+      value: 1
+    onSelected:
+      m_PersistentCalls:
+        m_Calls: []
+  yesChoice:
+    text: 
+    nextDialogue: {fileID: 0}
+    conditions: []
+    effects: []
+    onSelected:
+      m_PersistentCalls:
+        m_Calls: []
+  noChoice:
+    text: 
+    nextDialogue: {fileID: 0}
+    conditions: []
+    effects: []
+    onSelected:
+      m_PersistentCalls:
+        m_Calls: []
+  interruptDialogue: {fileID: 0}
+  onEnterEffects: []
+  onEnter:
+    m_PersistentCalls:
+      m_Calls: []
+  onExit:
+    m_PersistentCalls:
+      m_Calls: []

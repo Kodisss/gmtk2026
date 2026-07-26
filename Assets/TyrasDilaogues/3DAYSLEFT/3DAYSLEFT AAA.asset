@@ -1,0 +1,90 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bb50b23a4cf2d8b458c5808c80931e04, type: 3}
+  m_Name: 3DAYSLEFT AAA
+  m_EditorClassIdentifier: Assembly-CSharp::Game.Dialogue.DialogueNode
+  speakerName: Oryctola
+  dialogueType: 2
+  advanceDialogueDatabase: 1
+  lines:
+  - portrait:
+    - {fileID: 5035677201601703499, guid: 49f8dc94f1446e24b923f30caecc9884, type: 3}
+    PortraitAnimationFPS: 8
+    voiceClip: {fileID: 8300000, guid: 0e68174b74dce0a49b3e1e42ef9f7ef9, type: 3}
+    voiceVolume: 1
+    text: Then you have no business trying to trample on my reasons.
+    typingSpeed: 1
+  - portrait:
+    - {fileID: -6872186827961725178, guid: ff2e9e450f85cbc4fb0884745e73e1fb, type: 3}
+    PortraitAnimationFPS: 8
+    voiceClip: {fileID: 8300000, guid: 0e68174b74dce0a49b3e1e42ef9f7ef9, type: 3}
+    voiceVolume: 1
+    text: Maybe you're the one who should try meditating. Haha. Then you'd see that
+      you have no ground to stand on whatsoever.
+    typingSpeed: 1
+  - portrait:
+    - {fileID: -4587358237732827174, guid: 53c612e55a1353848b4b98d67d941ce2, type: 3}
+    PortraitAnimationFPS: 8
+    voiceClip: {fileID: 8300000, guid: 0e68174b74dce0a49b3e1e42ef9f7ef9, type: 3}
+    voiceVolume: 1
+    text: You keep trying to paint a world that doesn't exist anymore.
+    typingSpeed: 1
+  - portrait:
+    - {fileID: -4587358237732827174, guid: 53c612e55a1353848b4b98d67d941ce2, type: 3}
+    PortraitAnimationFPS: 8
+    voiceClip: {fileID: 8300000, guid: 0e68174b74dce0a49b3e1e42ef9f7ef9, type: 3}
+    voiceVolume: 1
+    text: Whatever the bunnies are occupying themselves with are a desperate attempt
+      to forget and survive. To brandish it as something "liveable" and that they're
+      "content" in it is a false illusion.
+    typingSpeed: 1
+  - portrait:
+    - {fileID: -4587358237732827174, guid: 53c612e55a1353848b4b98d67d941ce2, type: 3}
+    PortraitAnimationFPS: 8
+    voiceClip: {fileID: 8300000, guid: 0e68174b74dce0a49b3e1e42ef9f7ef9, type: 3}
+    voiceVolume: 1
+    text: I'm done being bothered by you now.
+    typingSpeed: 1
+  - portrait:
+    - {fileID: 5035677201601703499, guid: 49f8dc94f1446e24b923f30caecc9884, type: 3}
+    PortraitAnimationFPS: 8
+    voiceClip: {fileID: 8300000, guid: c24a7b4c4ab702e40ad119184336e7ae, type: 3}
+    voiceVolume: 1
+    text: Do NOT come back here!
+    typingSpeed: 1.48
+  ChoicePortraits: []
+  ChoicePortraitAnimationFPS: 8
+  choices: []
+  yesChoice:
+    text: 
+    nextDialogue: {fileID: 0}
+    conditions: []
+    effects: []
+    onSelected:
+      m_PersistentCalls:
+        m_Calls: []
+  noChoice:
+    text: 
+    nextDialogue: {fileID: 0}
+    conditions: []
+    effects: []
+    onSelected:
+      m_PersistentCalls:
+        m_Calls: []
+  interruptDialogue: {fileID: 0}
+  onEnterEffects: []
+  onEnter:
+    m_PersistentCalls:
+      m_Calls: []
+  onExit:
+    m_PersistentCalls:
+      m_Calls: []

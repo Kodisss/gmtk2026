@@ -1,0 +1,111 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bb50b23a4cf2d8b458c5808c80931e04, type: 3}
+  m_Name: 1DAYLEFT AAA
+  m_EditorClassIdentifier: Assembly-CSharp::Game.Dialogue.DialogueNode
+  speakerName: Oryctola
+  dialogueType: 0
+  advanceDialogueDatabase: 1
+  lines:
+  - portrait:
+    - {fileID: -4587358237732827174, guid: 53c612e55a1353848b4b98d67d941ce2, type: 3}
+    PortraitAnimationFPS: 8
+    voiceClip: {fileID: 8300000, guid: 0e68174b74dce0a49b3e1e42ef9f7ef9, type: 3}
+    voiceVolume: 1
+    text: When I was a little bunny... I wanted to become a star scientist.
+    typingSpeed: 1
+  - portrait:
+    - {fileID: -4587358237732827174, guid: 53c612e55a1353848b4b98d67d941ce2, type: 3}
+    PortraitAnimationFPS: 8
+    voiceClip: {fileID: 8300000, guid: 0e68174b74dce0a49b3e1e42ef9f7ef9, type: 3}
+    voiceVolume: 1
+    text: I did. I've lived over half my life like it was a dream. It was good. Great.
+    typingSpeed: 1
+  - portrait:
+    - {fileID: -4587358237732827174, guid: 53c612e55a1353848b4b98d67d941ce2, type: 3}
+    PortraitAnimationFPS: 8
+    voiceClip: {fileID: 8300000, guid: 0e68174b74dce0a49b3e1e42ef9f7ef9, type: 3}
+    voiceVolume: 1
+    text: 'And now, everything is just... gone. I wanted the best for everyone. I
+      have only ever wanted the best for everyone. It needed to be perfect. Life
+      needed to be perfect.
+
+'
+    typingSpeed: 1
+  - portrait:
+    - {fileID: -4587358237732827174, guid: 53c612e55a1353848b4b98d67d941ce2, type: 3}
+    PortraitAnimationFPS: 8
+    voiceClip: {fileID: 8300000, guid: 0e68174b74dce0a49b3e1e42ef9f7ef9, type: 3}
+    voiceVolume: 1
+    text: 'If it wasn''t perfect, then... what was the point, really? No one needed
+      to understand it the same way I did, but... it truly did feel possible, back
+      then. I could make things perfect.
+
+'
+    typingSpeed: 1
+  - portrait:
+    - {fileID: -4587358237732827174, guid: 53c612e55a1353848b4b98d67d941ce2, type: 3}
+    PortraitAnimationFPS: 8
+    voiceClip: {fileID: 8300000, guid: 0e68174b74dce0a49b3e1e42ef9f7ef9, type: 3}
+    voiceVolume: 1
+    text: 'So why? Why does Bunnykind just seem... fine? '
+    typingSpeed: 1
+  - portrait:
+    - {fileID: -4587358237732827174, guid: 53c612e55a1353848b4b98d67d941ce2, type: 3}
+    PortraitAnimationFPS: 8
+    voiceClip: {fileID: 8300000, guid: 0e68174b74dce0a49b3e1e42ef9f7ef9, type: 3}
+    voiceVolume: 1
+    text: 'How could anyone possibly be okay with this? This ugly, green, dilapidated
+      world? '
+    typingSpeed: 1
+  - portrait:
+    - {fileID: -4587358237732827174, guid: 53c612e55a1353848b4b98d67d941ce2, type: 3}
+    PortraitAnimationFPS: 8
+    voiceClip: {fileID: 8300000, guid: 0e68174b74dce0a49b3e1e42ef9f7ef9, type: 3}
+    voiceVolume: 1
+    text: 'How could anyone be okay with suffering like this? '
+    typingSpeed: 1
+  ChoicePortraits:
+  - {fileID: -8442755936475116147, guid: 19c69b3e329db5c429c341e483207478, type: 3}
+  ChoicePortraitAnimationFPS: 8
+  choices:
+  - text: Because you can't know if they're suffering or not.
+    nextDialogue: {fileID: 11400000, guid: 20fcf6956d9452844a8c6d4c985f6db1, type: 2}
+    conditions: []
+    effects: []
+    onSelected:
+      m_PersistentCalls:
+        m_Calls: []
+  yesChoice:
+    text: 
+    nextDialogue: {fileID: 0}
+    conditions: []
+    effects: []
+    onSelected:
+      m_PersistentCalls:
+        m_Calls: []
+  noChoice:
+    text: 
+    nextDialogue: {fileID: 0}
+    conditions: []
+    effects: []
+    onSelected:
+      m_PersistentCalls:
+        m_Calls: []
+  interruptDialogue: {fileID: 0}
+  onEnterEffects: []
+  onEnter:
+    m_PersistentCalls:
+      m_Calls: []
+  onExit:
+    m_PersistentCalls:
+      m_Calls: []

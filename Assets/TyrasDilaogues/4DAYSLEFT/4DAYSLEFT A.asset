@@ -1,0 +1,104 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bb50b23a4cf2d8b458c5808c80931e04, type: 3}
+  m_Name: 4DAYSLEFT A
+  m_EditorClassIdentifier: Assembly-CSharp::Game.Dialogue.DialogueNode
+  speakerName: Oryctola
+  dialogueType: 0
+  advanceDialogueDatabase: 1
+  lines:
+  - portrait:
+    - {fileID: -6872186827961725178, guid: ff2e9e450f85cbc4fb0884745e73e1fb, type: 3}
+    PortraitAnimationFPS: 8
+    voiceClip: {fileID: 8300000, guid: 0e68174b74dce0a49b3e1e42ef9f7ef9, type: 3}
+    voiceVolume: 1
+    text: Wouldn't you like to know. Haha.
+    typingSpeed: 1
+  - portrait:
+    - {fileID: -6872186827961725178, guid: ff2e9e450f85cbc4fb0884745e73e1fb, type: 3}
+    PortraitAnimationFPS: 8
+    voiceClip: {fileID: 8300000, guid: 0e68174b74dce0a49b3e1e42ef9f7ef9, type: 3}
+    voiceVolume: 1
+    text: "Truthfully, I actually haven\u2019t even bothered calculating it. That
+      is how low it is."
+    typingSpeed: 1
+  - portrait:
+    - {fileID: -4587358237732827174, guid: 53c612e55a1353848b4b98d67d941ce2, type: 3}
+    PortraitAnimationFPS: 8
+    voiceClip: {fileID: 8300000, guid: 0e68174b74dce0a49b3e1e42ef9f7ef9, type: 3}
+    voiceVolume: 1
+    text: "So I think you should really reconsider your mission here. Have you seen
+      the world out there? It\u2019s miserable."
+    typingSpeed: 1
+  - portrait:
+    - {fileID: -4587358237732827174, guid: 53c612e55a1353848b4b98d67d941ce2, type: 3}
+    PortraitAnimationFPS: 8
+    voiceClip: {fileID: 8300000, guid: 0e68174b74dce0a49b3e1e42ef9f7ef9, type: 3}
+    voiceVolume: 1
+    text: "Terrible, bleak, barren, primitive. There\u2019s nothing left for anyone
+      anymore. No purpose. Though, I guess you have a big gardening gig ahead of
+      you. Haha."
+    typingSpeed: 1
+  - portrait:
+    - {fileID: -4587358237732827174, guid: 53c612e55a1353848b4b98d67d941ce2, type: 3}
+    PortraitAnimationFPS: 8
+    voiceClip: {fileID: 8300000, guid: 0e68174b74dce0a49b3e1e42ef9f7ef9, type: 3}
+    voiceVolume: 1
+    text: "Must be nice to have a purpose, don\u2019t you think?"
+    typingSpeed: 1
+  ChoicePortraits: []
+  ChoicePortraitAnimationFPS: 8
+  choices:
+  - text: Bunnykind still has purpose. They seem to be trading and stuff.
+    nextDialogue: {fileID: 11400000, guid: 9506e833a621614499a6e156faead176, type: 2}
+    conditions: []
+    effects:
+    - variable: 0
+      operation: 1
+      value: 1
+    onSelected:
+      m_PersistentCalls:
+        m_Calls: []
+  - text: Purpose is not everything.
+    nextDialogue: {fileID: 11400000, guid: f5e2107d107f89645ab4550d146d9568, type: 2}
+    conditions: []
+    effects:
+    - variable: 0
+      operation: 2
+      value: 1
+    onSelected:
+      m_PersistentCalls:
+        m_Calls: []
+  yesChoice:
+    text: 
+    nextDialogue: {fileID: 0}
+    conditions: []
+    effects: []
+    onSelected:
+      m_PersistentCalls:
+        m_Calls: []
+  noChoice:
+    text: 
+    nextDialogue: {fileID: 0}
+    conditions: []
+    effects: []
+    onSelected:
+      m_PersistentCalls:
+        m_Calls: []
+  interruptDialogue: {fileID: 0}
+  onEnterEffects: []
+  onEnter:
+    m_PersistentCalls:
+      m_Calls: []
+  onExit:
+    m_PersistentCalls:
+      m_Calls: []

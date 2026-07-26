@@ -1,0 +1,82 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bb50b23a4cf2d8b458c5808c80931e04, type: 3}
+  m_Name: 5DAYSLEFT A
+  m_EditorClassIdentifier: Assembly-CSharp::Game.Dialogue.DialogueNode
+  speakerName: Oryctola
+  dialogueType: 2
+  advanceDialogueDatabase: 1
+  lines:
+  - portrait:
+    - {fileID: -6872186827961725178, guid: ff2e9e450f85cbc4fb0884745e73e1fb, type: 3}
+    PortraitAnimationFPS: 8
+    voiceClip: {fileID: 8300000, guid: 0e68174b74dce0a49b3e1e42ef9f7ef9, type: 3}
+    voiceVolume: 1
+    text: Haha.
+    typingSpeed: 1
+  - portrait:
+    - {fileID: -4587358237732827174, guid: 53c612e55a1353848b4b98d67d941ce2, type: 3}
+    PortraitAnimationFPS: 8
+    voiceClip: {fileID: 8300000, guid: 0e68174b74dce0a49b3e1e42ef9f7ef9, type: 3}
+    voiceVolume: 1
+    text: So he sent you.
+    typingSpeed: 1
+  - portrait:
+    - {fileID: -6872186827961725178, guid: ff2e9e450f85cbc4fb0884745e73e1fb, type: 3}
+    PortraitAnimationFPS: 8
+    voiceClip: {fileID: 8300000, guid: 0e68174b74dce0a49b3e1e42ef9f7ef9, type: 3}
+    voiceVolume: 1
+    text: "Sorry, little bot. I\u2019m still gonna blow it all up. This is bigger
+      than what your old circuits can understand. "
+    typingSpeed: 1
+  - portrait:
+    - {fileID: -4587358237732827174, guid: 53c612e55a1353848b4b98d67d941ce2, type: 3}
+    PortraitAnimationFPS: 8
+    voiceClip: {fileID: 8300000, guid: 0e68174b74dce0a49b3e1e42ef9f7ef9, type: 3}
+    voiceVolume: 1
+    text: "It was nice seeing you though. You reminded me of my life\u2019s biggest
+      embarrassment. That is to say, it was not nice seeing you. "
+    typingSpeed: 1
+  - portrait:
+    - {fileID: -4587358237732827174, guid: 53c612e55a1353848b4b98d67d941ce2, type: 3}
+    PortraitAnimationFPS: 8
+    voiceClip: {fileID: 8300000, guid: 0e68174b74dce0a49b3e1e42ef9f7ef9, type: 3}
+    voiceVolume: 1
+    text: Goodbye.
+    typingSpeed: 1.4
+  ChoicePortraits: []
+  ChoicePortraitAnimationFPS: 8
+  choices: []
+  yesChoice:
+    text: 
+    nextDialogue: {fileID: 0}
+    conditions: []
+    effects: []
+    onSelected:
+      m_PersistentCalls:
+        m_Calls: []
+  noChoice:
+    text: 
+    nextDialogue: {fileID: 0}
+    conditions: []
+    effects: []
+    onSelected:
+      m_PersistentCalls:
+        m_Calls: []
+  interruptDialogue: {fileID: 0}
+  onEnterEffects: []
+  onEnter:
+    m_PersistentCalls:
+      m_Calls: []
+  onExit:
+    m_PersistentCalls:
+      m_Calls: []
