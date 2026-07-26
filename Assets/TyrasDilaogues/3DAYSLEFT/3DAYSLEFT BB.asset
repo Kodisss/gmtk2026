@@ -1,0 +1,144 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bb50b23a4cf2d8b458c5808c80931e04, type: 3}
+  m_Name: 3DAYSLEFT BB
+  m_EditorClassIdentifier: Assembly-CSharp::Game.Dialogue.DialogueNode
+  speakerName: Oryctola
+  dialogueType: 0
+  advanceDialogueDatabase: 1
+  lines:
+  - portrait:
+    - {fileID: 21300000, guid: 8f2961def0ed6a048bab3643fe75a48e, type: 3}
+    PortraitAnimationFPS: 8
+    voiceClip: {fileID: 8300000, guid: 0e68174b74dce0a49b3e1e42ef9f7ef9, type: 3}
+    voiceVolume: 1
+    text: Ah, Lepus, Lepus...
+    typingSpeed: 1
+  - portrait:
+    - {fileID: 21300000, guid: 8f2961def0ed6a048bab3643fe75a48e, type: 3}
+    PortraitAnimationFPS: 8
+    voiceClip: {fileID: 8300000, guid: 0e68174b74dce0a49b3e1e42ef9f7ef9, type: 3}
+    voiceVolume: 1
+    text: 'Truly telling that he hasn''t even filled you in. Was he in such a hurry
+      to stop me? How did he think YOU could convince me to stop when you don''t
+      even know the first thing about this sordid world? '
+    typingSpeed: 1
+  - portrait:
+    - {fileID: 21300000, guid: 8f2961def0ed6a048bab3643fe75a48e, type: 3}
+    PortraitAnimationFPS: 8
+    voiceClip: {fileID: 8300000, guid: 0e68174b74dce0a49b3e1e42ef9f7ef9, type: 3}
+    voiceVolume: 1
+    text: 'Lepus is a fool. He and I, we... we used to be colleagues. We were the
+      leading force of Bunnykind''s progress.
+
+'
+    typingSpeed: 1
+  - portrait:
+    - {fileID: 21300000, guid: 8f2961def0ed6a048bab3643fe75a48e, type: 3}
+    PortraitAnimationFPS: 8
+    voiceClip: {fileID: 8300000, guid: 0e68174b74dce0a49b3e1e42ef9f7ef9, type: 3}
+    voiceVolume: 1
+    text: 'Scientists. Visionaries. '
+    typingSpeed: 1
+  - portrait:
+    - {fileID: 21300000, guid: 8f2961def0ed6a048bab3643fe75a48e, type: 3}
+    PortraitAnimationFPS: 8
+    voiceClip: {fileID: 8300000, guid: 0e68174b74dce0a49b3e1e42ef9f7ef9, type: 3}
+    voiceVolume: 1
+    text: Then, the disaster happened. The city failed, the Coalition of Syl we...
+      well. Some of us died, others went off on their own. Me and Lepus tried to
+      stand together.
+    typingSpeed: 1
+  - portrait:
+    - {fileID: 21300000, guid: 8f2961def0ed6a048bab3643fe75a48e, type: 3}
+    PortraitAnimationFPS: 8
+    voiceClip: {fileID: 8300000, guid: 0e68174b74dce0a49b3e1e42ef9f7ef9, type: 3}
+    voiceVolume: 1
+    text: But he's just so... so nosey! He thought the answer lied within the disaster's
+      origin, and I couldn't- well, I knew already that it didn't. I mean- it was
+      obvious to everyone. He was wasting time.
+    typingSpeed: 1
+  - portrait:
+    - {fileID: 21300000, guid: 8f2961def0ed6a048bab3643fe75a48e, type: 3}
+    PortraitAnimationFPS: 8
+    voiceClip: {fileID: 8300000, guid: 0e68174b74dce0a49b3e1e42ef9f7ef9, type: 3}
+    voiceVolume: 1
+    text: 'I was perhaps not graceful in letting him know.
+
+'
+    typingSpeed: 1
+  - portrait:
+    - {fileID: 21300000, guid: 8f2961def0ed6a048bab3643fe75a48e, type: 3}
+    PortraitAnimationFPS: 8
+    voiceClip: {fileID: 8300000, guid: 0e68174b74dce0a49b3e1e42ef9f7ef9, type: 3}
+    voiceVolume: 1
+    text: 'And Lepus is way too sensitive. We fell out. Simple as. And now he''s
+      out to destroy every bit of progress that I make. '
+    typingSpeed: 1
+  - portrait:
+    - {fileID: 21300000, guid: a969c6cf5888b5e47b18c98739fba120, type: 3}
+    PortraitAnimationFPS: 8
+    voiceClip: {fileID: 8300000, guid: 0e68174b74dce0a49b3e1e42ef9f7ef9, type: 3}
+    voiceVolume: 1
+    text: Still feel like you're on the right side?
+    typingSpeed: 1
+  ChoicePortraits:
+  - {fileID: 21300000, guid: f38a222d19b75354baf0ce9421ce6445, type: 3}
+  ChoicePortraitAnimationFPS: 8
+  choices:
+  - text: Well, you're trying to kill everyone. So yes?
+    nextDialogue: {fileID: 11400000, guid: a786de169d4efd546998e2edb26dfbc1, type: 2}
+    conditions: []
+    effects:
+    - variable: 0
+      operation: 1
+      value: 1
+    onSelected:
+      m_PersistentCalls:
+        m_Calls: []
+  - text: I'm not convinced this "disaster" is impossible to overcome.
+    nextDialogue: {fileID: 11400000, guid: 89d1dc170b8d7e24f86a003f55a97464, type: 2}
+    conditions:
+    - variable: 0
+      condition: 3
+      value: 1
+    effects:
+    - variable: 0
+      operation: 1
+      value: 1
+    onSelected:
+      m_PersistentCalls:
+        m_Calls: []
+  yesChoice:
+    text: 
+    nextDialogue: {fileID: 0}
+    conditions: []
+    effects: []
+    onSelected:
+      m_PersistentCalls:
+        m_Calls: []
+  noChoice:
+    text: 
+    nextDialogue: {fileID: 0}
+    conditions: []
+    effects: []
+    onSelected:
+      m_PersistentCalls:
+        m_Calls: []
+  interruptDialogue: {fileID: 0}
+  onEnterEffects: []
+  onEnter:
+    m_PersistentCalls:
+      m_Calls: []
+  onExit:
+    m_PersistentCalls:
+      m_Calls: []

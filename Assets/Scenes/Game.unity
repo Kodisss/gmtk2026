@@ -164,8 +164,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Game.Dialogue.DialogueDatabase
   allDialogues:
-  - {fileID: 11400000, guid: d8288bc797beb364c9b7cd4ad57a1209, type: 2}
-  - {fileID: 11400000, guid: 46dd08d7fef5170448540862d9d2c755, type: 2}
+  - {fileID: 11400000, guid: 7cdd450889a117c4d8ba925bf7c1c111, type: 2}
+  - {fileID: 11400000, guid: cec449115b16f1f4796bebbdb2971b08, type: 2}
+  - {fileID: 11400000, guid: 0784edfceb1d4ec4b93d1a28e448ee88, type: 2}
+  - {fileID: 11400000, guid: ca1e8fd46310fb344951ad437ef7e6e6, type: 2}
+  - {fileID: 11400000, guid: 15f39c471bfa2084c83e31ccaa747cc9, type: 2}
   currentDialogueIndex: 0
 --- !u!1 &35099537
 GameObject:
@@ -2383,7 +2386,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &401214915
 MonoBehaviour:
   m_ObjectHideFlags: 0
