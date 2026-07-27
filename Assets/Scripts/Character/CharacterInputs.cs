@@ -1,7 +1,5 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
-
-[RequireComponent(typeof(PlayerInput))]
 public class CharacterInputs : MonoBehaviour
 {
     public Vector2 MoveInput { get; private set; }
