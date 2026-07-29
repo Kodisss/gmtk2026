@@ -45,4 +45,13 @@ namespace Game.Dialogue
         LessOrEqual,
         NotEqual
     }
+
+    public enum DialogueLookDirection
+    {
+        Center,
+        Up,
+        Down,
+        Left,
+        Right
+    }
 }
