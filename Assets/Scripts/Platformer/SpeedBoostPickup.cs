@@ -1,20 +1,12 @@
 using UnityEngine;
 
-public class SpeedBoostPickup : MonoBehaviour
+public class SpeedBoostPickup : Boost
 {
-    CharacterStats characterStats;
-
     [SerializeField] private float speedMultiplier = 1.5f;
     [SerializeField] private float boostDuration = 5f;
 
-    private void Start()
+    protected override void ApplyBoost()
     {
-        characterStats = FindAnyObjectByType<CharacterStats>();
-    }
-
-    private void OnTriggerEnter2D(Collider2D collision)
-    {
-        characterStats.ApplySpeedMultiplier(speedMultiplier, boostDuration);
-        Destroy(gameObject);
+        stats.ApplySpeedMultiplier(speedMultiplier, boostDuration);
     }
 }

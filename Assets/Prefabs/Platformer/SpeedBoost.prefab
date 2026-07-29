@@ -11,8 +11,8 @@ GameObject:
   - component: {fileID: 4290797557546211465}
   - component: {fileID: 7551002161705050947}
   - component: {fileID: 8137673662930995326}
-  - component: {fileID: 3818579987218013484}
   - component: {fileID: 3302791186175932962}
+  - component: {fileID: 3818579987218013484}
   m_Layer: 0
   m_Name: SpeedBoost
   m_TagString: Untagged
@@ -81,7 +81,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_GlobalIlluminationMeshLod: 0
   m_SortingLayerID: 1377744433
-  m_SortingLayer: 3
+  m_SortingLayer: 9
   m_SortingOrder: 0
   m_MaskInteraction: 0
   m_Sprite: {fileID: 8951347214503883303, guid: c7215d09b1c223441b99eb328e32f200, type: 3}
@@ -131,20 +131,6 @@ CircleCollider2D:
   m_CompositeOrder: 0
   m_Offset: {x: 0, y: 0}
   m_Radius: 0.55
---- !u!114 &3818579987218013484
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4028608570572198087}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9156014b1b7542a40bd3e7bbfbe16417, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::SpeedBoostPickup
-  speedMultiplier: 1.5
-  boostDuration: 5
 --- !u!95 &3302791186175932962
 Animator:
   serializedVersion: 7
@@ -167,3 +153,18 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &3818579987218013484
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4028608570572198087}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9156014b1b7542a40bd3e7bbfbe16417, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::SpeedBoostPickup
+  respawnTimer: 5
+  speedMultiplier: 1.5
+  boostDuration: 5

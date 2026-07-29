@@ -1,19 +1,11 @@
 using UnityEngine;
 
-public class DoubleJumpBoostPickup : MonoBehaviour
+public class DoubleJumpBoostPickup : Boost
 {
-    CharacterStats characterStats;
-
     [SerializeField] private float boostDuration = 5f;
 
-    private void Start()
+    protected override void ApplyBoost()
     {
-        characterStats = FindAnyObjectByType<CharacterStats>();
-    }
-
-    private void OnTriggerEnter2D(Collider2D collision)
-    {
-        characterStats.EnableDoubleJump(boostDuration);
-        Destroy(gameObject);
+        stats.EnableDoubleJump(boostDuration);
     }
 }
