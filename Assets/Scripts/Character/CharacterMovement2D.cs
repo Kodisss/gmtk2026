@@ -421,17 +421,19 @@ public class CharacterMovement2D : MonoBehaviour
 
     private void UpdateCameraOffset()
     {
-        if (moveCamera == null) return;
+        if (moveCamera == null)
+            return;
 
-        if (currentState == CharacterState.Walking)
+        if (!IsMoving)
         {
-            walkingCameraOffset *= - Mathf.Sign(characterInput.MoveInput.x); // set the direction
-            moveCamera.SetOffset(walkingCameraOffset);
+            Debug.Log("Reset Camera");
+            moveCamera.SetOffset(0f);
         }
-        else if (currentState == CharacterState.Idle)
+        else
         {
-            idleCameraOffset *= Mathf.Sign(characterInput.MoveInput.x); // set the direction
-            moveCamera.SetOffset(idleCameraOffset);
+            float direction = spriteRenderer.flipX ? -1f : 1f;
+            moveCamera.SetOffset(direction * walkingCameraOffset);
+            Debug.Log(direction * walkingCameraOffset);
         }
     }
 

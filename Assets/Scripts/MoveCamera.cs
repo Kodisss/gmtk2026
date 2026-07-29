@@ -12,16 +12,16 @@ public class MoveCamera : MonoBehaviour
 
     private bool talkingToBoss = false;
 
-    public void SetOffset(float newOffset)
-    {
-        offset = newOffset;
-    }
-
     // Update is called once per frame
     void Update()
     {
         if (!talkingToBoss) LockOnPlayer();
         else if(talkingToBoss) LockOnBossDialogue();
+    }
+
+    public void SetOffset(float newOffset)
+    {
+        offset = newOffset;
     }
 
     public void WeTalkToSomeoneNow(Transform newTalkableTarget)
