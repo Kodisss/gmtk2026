@@ -9,6 +9,7 @@ namespace Game.Dialogue
         [SerializeField] private DaysLeftUI daysLeftDisplay;
         [SerializeField] private GameObject heartDisplay;
         [SerializeField] private MoveCamera cameraMovements;
+        [SerializeField] private Transform myTalkableTarget;
 
         private void OnTriggerEnter2D(Collider2D collision)
         {
@@ -16,7 +17,7 @@ namespace Game.Dialogue
             daysLeftDisplay.HideMyself();
             heartDisplay.SetActive(false);
 
-            cameraMovements.SwitchTarget();
+            cameraMovements.WeTalkToSomeoneNow(myTalkableTarget);
 
             if (player.position.x - transform.position.x < 0f) GetComponent<SpriteRenderer>().flipX = true;
             GameManager.Instance.StartBossDialogue();

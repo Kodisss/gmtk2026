@@ -56,6 +56,9 @@ TagManager:
   - name: BackgroundClose
     uniqueID: 2318023903
     locked: 0
+  - name: BackgroundProps
+    uniqueID: 721881835
+    locked: 0
   - name: Props
     uniqueID: 719366061
     locked: 0

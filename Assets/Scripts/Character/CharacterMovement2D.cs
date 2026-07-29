@@ -16,12 +16,16 @@ public enum CharacterState
 [RequireComponent(typeof(CharacterStats))]
 public class CharacterMovement2D : MonoBehaviour
 {
+    // public access to completely make it impossible for the character to move
     public bool CanMove { get; private set; } = true;
+
+    // access to important stuff
     private Rigidbody2D rb;
     private CharacterInputs characterInput;
     private SpriteRenderer spriteRenderer;
     private MoveCamera moveCamera;
 
+    // access to metadata on the game and character
     private CharacterStats stats;
     private CharacterState currentState;
 
@@ -74,7 +78,7 @@ public class CharacterMovement2D : MonoBehaviour
 
     [Header("Camera Offsets")]
     [SerializeField] private float walkingCameraOffset = 2f;
-    [SerializeField] private float idleCameraOffset = 2f;
+    [SerializeField] private float idleCameraOffset = 0f;
 
     public float CurrentSpeed => Mathf.Abs(currentHorizontalSpeed);
     public float MaxSpeed => walkingSpeed;
@@ -85,12 +89,13 @@ public class CharacterMovement2D : MonoBehaviour
     private float currentHorizontalSpeed;
     private bool isGrounded;
 
-    // Access for animmations
+    // Access for animations
     public CharacterState CurrentState => currentState;
     public Vector2 Velocity => rb.linearVelocity;
     public bool IsGrounded => isGrounded;
     public bool IsMoving => Mathf.Abs(rb.linearVelocity.x) > 0.1f;
 
+    // Initialize everthing
     private void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
@@ -136,6 +141,7 @@ public class CharacterMovement2D : MonoBehaviour
         HandleMovement();
     }
 
+    // method for the access to CanMove globally
     public void SetMovementEnabled(bool enabled)
     {
         CanMove = enabled;
@@ -148,6 +154,7 @@ public class CharacterMovement2D : MonoBehaviour
         }
     }
 
+    // this flips the character sprite based on inputs
     private void HandleSpriteFlip()
     {
         if (characterInput.MoveInput.x > 0.01f)
@@ -160,23 +167,28 @@ public class CharacterMovement2D : MonoBehaviour
         }
     }
 
+    // Everything that makes the character move around
     private void HandleMovement()
     {
-        if (isDashing) return;
+        if (isDashing) return; // we don't do anything if we're dashing
 
-        float targetSpeed = 0f;
+        float targetSpeed = 0f; // we set a target speed to accelerate to
 
+        // only if we're moving and we get a deadzone in case
         if (Mathf.Abs(characterInput.MoveInput.x) > 0.01f)
         {
-            targetSpeed = walkingSpeed;
-            targetSpeed *= Mathf.Sign(characterInput.MoveInput.x);
-            targetSpeed *= stats.SpeedMultiplier;
+            targetSpeed = walkingSpeed; // set the target speed
+            targetSpeed *= Mathf.Sign(characterInput.MoveInput.x); // set the direction
+            targetSpeed *= stats.SpeedMultiplier; // add any multiplier
         }
 
+        // check if we're going faster or slower to use the acceleration stat or deceleration stat for the rate
         float rate = Mathf.Abs(targetSpeed) > Mathf.Abs(currentHorizontalSpeed) ? acceleration : deceleration;
 
+        // get the speed towards the target speed at the acceleration or deceleration rate
         currentHorizontalSpeed = Mathf.MoveTowards(currentHorizontalSpeed, targetSpeed, rate * Time.fixedDeltaTime);
 
+        // update the velocity of the rigibody
         rb.linearVelocity = new Vector2(currentHorizontalSpeed, rb.linearVelocity.y);
     }
 
@@ -184,12 +196,7 @@ public class CharacterMovement2D : MonoBehaviour
     {
         bool wasGrounded = isGrounded;
 
-        isGrounded = Physics2D.OverlapBox(
-            GroundCheckPosition(),
-            groundCheckSize,
-            0f,
-            groundLayer
-        );
+        isGrounded = Physics2D.OverlapBox(GroundCheckPosition(), groundCheckSize, 0f, groundLayer);
 
         if (isGrounded && !wasGrounded)
         {
@@ -418,10 +425,12 @@ public class CharacterMovement2D : MonoBehaviour
 
         if (currentState == CharacterState.Walking)
         {
+            walkingCameraOffset *= - Mathf.Sign(characterInput.MoveInput.x); // set the direction
             moveCamera.SetOffset(walkingCameraOffset);
         }
         else if (currentState == CharacterState.Idle)
         {
+            idleCameraOffset *= Mathf.Sign(characterInput.MoveInput.x); // set the direction
             moveCamera.SetOffset(idleCameraOffset);
         }
     }
