@@ -426,14 +426,14 @@ public class CharacterMovement2D : MonoBehaviour
 
         if (!IsMoving)
         {
-            Debug.Log("Reset Camera");
+            // Debug.Log("Reset Camera");
             moveCamera.SetOffset(0f);
         }
         else
         {
             float direction = spriteRenderer.flipX ? -1f : 1f;
             moveCamera.SetOffset(direction * walkingCameraOffset);
-            Debug.Log(direction * walkingCameraOffset);
+            // Debug.Log(direction * walkingCameraOffset);
         }
     }
 
