@@ -10,6 +10,8 @@ public class GameState : MonoBehaviour
 
     public int CurrentBossDialogue = 0;
 
+    public bool PlayIntro = true;
+
     private void Awake()
     {
         if (Instance != null && Instance != this)

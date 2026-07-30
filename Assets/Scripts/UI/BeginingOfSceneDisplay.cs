@@ -2,11 +2,11 @@ using System.Collections;
 using TMPro;
 using UnityEngine;
 
-public class EndOfDialogueSceneReset : MonoBehaviour
+public class BeginingOfSceneDisplay : MonoBehaviour
 {
     [SerializeField] private GameObject myUI;
     [SerializeField] private GameObject wholeUI;
-    [SerializeField] private GameObject player;
+    [SerializeField] private CharacterMovement2D player;
     private GameManager gameManager;
     private MusicManager musicManager;
     [SerializeField] private TMP_Text textDisplay;
@@ -20,10 +20,10 @@ public class EndOfDialogueSceneReset : MonoBehaviour
         myUI.SetActive(false);
     }
 
-    public void GoToNextDay()
+    public void PlayIntro()
     {
         wholeUI.SetActive(false);
-        player.SetActive(false);
+        player.SetMovementEnabled(false);
 
         StartCoroutine(NextDayRoutine());
     }
@@ -83,8 +83,10 @@ public class EndOfDialogueSceneReset : MonoBehaviour
         // Wait before changing day
         yield return new WaitForSeconds(3f);
 
+        myUI.SetActive(false);
+        wholeUI.SetActive(true);
+        player.SetMovementEnabled(true);
 
-        // Restart scene / next day
-        gameManager.RestartScene();
+        musicManager.PlayTrackNb(gameManager.DaysLeft + 1);
     }
 }

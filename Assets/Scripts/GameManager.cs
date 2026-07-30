@@ -13,7 +13,7 @@ public class GameManager : MonoBehaviour
     [SerializeField] private DialogueUI dialogueUI;
     [SerializeField] private CharacterMovement2D playerMovement;
     [SerializeField] private DialogueManager dialogueManager;
-    [SerializeField] private EndOfDialogueSceneReset endOfDialogueSceneReset;
+    [SerializeField] private BeginingOfSceneDisplay beginingOfSceneDisplay;
     [SerializeField] private EndOfTheGame endOfGame;
 
     [SerializeField] private int daysLeft;
@@ -75,7 +75,7 @@ public class GameManager : MonoBehaviour
         reputation = gameState.Reputation;
         daysLeft = gameState.DaysLeft;
 
-        MusicManager.Instance.PlayTrackNb(daysLeft + 1);
+        if(gameState.PlayIntro) beginingOfSceneDisplay.PlayIntro();
     }
 
     public void StartBossDialogue()
@@ -117,19 +117,15 @@ public class GameManager : MonoBehaviour
 
         playerMovement.SetMovementEnabled(true);
 
+        gameState.CurrentBossDialogue++;
+        DaysLeft = daysLeft - 1;
 
-        if (endOfDialogueSceneReset != null)
-        {
-            gameState.CurrentBossDialogue++;
-            DaysLeft = daysLeft - 1;
-            endOfDialogueSceneReset.GoToNextDay();
-        }
+        RestartScene();
     }
 
     public void PlayerDied()
     {
-        if (restarting)
-            return;
+        if (restarting) return;
 
         restarting = true;
 
@@ -138,18 +134,28 @@ public class GameManager : MonoBehaviour
 
     public void RestartScene()
     {
-        if(daysLeft > 0) StartCoroutine(RestartSceneRoutine());
-        else if (daysLeft == 0) endOfGame.EndOfGame(reputation);
+        playerMovement.SetMovementEnabled(false);
+
+        if (daysLeft > 0)
+        {
+            gameState.PlayIntro = true;
+            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+        }
+        else if (daysLeft == 0)
+        {
+            endOfGame.EndOfGame(reputation);
+        }
     }
 
     private IEnumerator RestartSceneRoutine()
     {
+        playerMovement.SetMovementEnabled(false);
+
         yield return new WaitForSeconds(restartDelay);
 
+        gameState.PlayIntro = false;
 
-        SceneManager.LoadScene(
-            SceneManager.GetActiveScene().buildIndex);
-
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
 
         restarting = false;
     }

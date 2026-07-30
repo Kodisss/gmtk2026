@@ -2549,7 +2549,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::EndOfDialogueSceneReset
   myUI: {fileID: 706953143}
   wholeUI: {fileID: 1426532463}
-  player: {fileID: 283765110}
+  player: {fileID: 283765111}
   textDisplay: {fileID: 1862760867}
   endOfDaySound: {fileID: 8300000, guid: 9c740c623b37ae74f96b29c8dd5aa075, type: 3}
 --- !u!114 &401214923
@@ -6174,6 +6174,7 @@ MonoBehaviour:
   DaysLeft: 5
   Reputation: 0
   CurrentBossDialogue: 0
+  PlayIntro: 1
 --- !u!1 &1044773346
 GameObject:
   m_ObjectHideFlags: 0
@@ -6374,7 +6375,7 @@ MonoBehaviour:
   dialogueUI: {fileID: 35099539}
   playerMovement: {fileID: 283765111}
   dialogueManager: {fileID: 4365247804648253884}
-  endOfDialogueSceneReset: {fileID: 401214922}
+  beginingOfSceneDisplay: {fileID: 401214922}
   endOfGame: {fileID: 401214923}
   daysLeft: 5
   reputation: 0
