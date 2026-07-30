@@ -89,7 +89,7 @@ MonoBehaviour:
       m_PersistentCalls:
         m_Calls: []
   - text: Yes, but it does not mean you need to blow up the whole world.
-    nextDialogue: {fileID: 0}
+    nextDialogue: {fileID: 11400000, guid: 794ac2dcf2fcf824f8dc873fb61661cf, type: 2}
     conditions: []
     effects:
     - variable: 0
@@ -99,7 +99,7 @@ MonoBehaviour:
       m_PersistentCalls:
         m_Calls: []
   - text: Maybe it's how it's meant to be, then.
-    nextDialogue: {fileID: 0}
+    nextDialogue: {fileID: 11400000, guid: 3bf710e7eeff0784797e15fb8b655abe, type: 2}
     conditions:
     - variable: 0
       condition: 4
