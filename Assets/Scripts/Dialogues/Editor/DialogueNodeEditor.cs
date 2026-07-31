@@ -22,34 +22,25 @@ namespace Game.Dialogue.Editor
         {
             serializedObject.Update();
 
-
             DrawHeader();
 
             EditorGUILayout.Space();
-
 
             DrawProperty("speakerName");
 
             DrawProperty("dialogueType");
 
-
             EditorGUILayout.Space();
-
 
             DrawLines();
 
-
             EditorGUILayout.Space();
-
 
             DrawDialogueTypeSpecific();
 
-
             EditorGUILayout.Space();
 
-
-            DrawAdvanced();
-
+            // DrawAdvanced(); // Displays onenter stuff and unity events on choice and all
 
             serializedObject.ApplyModifiedProperties();
         }
@@ -58,12 +49,13 @@ namespace Game.Dialogue.Editor
 
         private void DrawLines()
         {
-            EditorGUILayout.LabelField(
-                "Dialogue Lines",
-                EditorStyles.boldLabel);
+            EditorGUILayout.BeginVertical(EditorStyles.helpBox);
 
+            EditorGUILayout.LabelField("Dialogue Lines", EditorStyles.boldLabel);
 
             DrawProperty("lines");
+
+            EditorGUILayout.EndVertical();
         }
 
 
@@ -73,23 +65,17 @@ namespace Game.Dialogue.Editor
             switch (node.dialogueType)
             {
                 case DialogueType.Normal:
-
                     DrawNormalChoices();
-
                     break;
 
 
                 case DialogueType.YesNo:
-
                     DrawYesNoChoices();
-
                     break;
 
 
                 case DialogueType.End:
-
                     DrawEndDialogue();
-
                     break;
             }
         }
@@ -98,79 +84,61 @@ namespace Game.Dialogue.Editor
 
         private void DrawNormalChoices()
         {
-            EditorGUILayout.LabelField(
-                "Choice Display",
-                EditorStyles.boldLabel);
+            EditorGUILayout.BeginVertical(EditorStyles.helpBox);
 
+            EditorGUILayout.LabelField("Choice Display", EditorStyles.boldLabel);
 
             DrawProperty("ChoicePortraits");
 
-            DrawProperty(
-                "ChoicePortraitAnimationFPS");
-
+            DrawProperty("ChoicePortraitAnimationFPS");
 
             DrawProperty("choices");
+
+            EditorGUILayout.EndVertical();
         }
 
 
 
         private void DrawYesNoChoices()
         {
-            EditorGUILayout.LabelField(
-                "YES / NO",
-                EditorStyles.boldLabel);
+            EditorGUILayout.BeginVertical(EditorStyles.helpBox);
 
+            EditorGUILayout.LabelField("YES / NO", EditorStyles.boldLabel);
 
-            DrawYesNoChoice(
-                "yesChoice",
-                "YES");
+            DrawYesNoChoice("yesChoice", "YES");
 
+            EditorGUILayout.Space();
 
-            DrawYesNoChoice(
-                "noChoice",
-                "NO");
+            DrawYesNoChoice("noChoice", "NO");
+
+            EditorGUILayout.EndVertical();
         }
 
 
 
         private void DrawEndDialogue()
         {
-            EditorGUILayout.HelpBox(
-                "End dialogue: only lines are displayed. Dialogue closes automatically afterwards.",
+            EditorGUILayout.HelpBox("End dialogue: only lines are displayed. Dialogue closes automatically afterwards.",
                 MessageType.Info);
         }
 
 
 
-        private void DrawYesNoChoice(
-            string propertyName,
-            string label)
+        private void DrawYesNoChoice(string propertyName, string label)
         {
-            SerializedProperty choice =
-                serializedObject.FindProperty(propertyName);
-
+            SerializedProperty choice = serializedObject.FindProperty(propertyName);
 
             if (choice == null)
                 return;
 
+            EditorGUILayout.BeginVertical(EditorStyles.helpBox);
 
-            SerializedProperty nextDialogue =
-                choice.FindPropertyRelative(
-                    "nextDialogue");
+            EditorGUILayout.LabelField(label, EditorStyles.boldLabel);
 
+            EditorGUILayout.PropertyField(choice.FindPropertyRelative("nextDialogue"));
+            EditorGUILayout.PropertyField(choice.FindPropertyRelative("effects"), true);
 
-            EditorGUILayout.BeginVertical(
-                EditorStyles.helpBox);
-
-
-            EditorGUILayout.LabelField(
-                label,
-                EditorStyles.boldLabel);
-
-
-            EditorGUILayout.PropertyField(
-                nextDialogue);
-
+            // EditorGUILayout.PropertyField(choice.FindPropertyRelative("onSelected"));
 
             EditorGUILayout.EndVertical();
         }
@@ -179,10 +147,7 @@ namespace Game.Dialogue.Editor
 
         private void DrawAdvanced()
         {
-            EditorGUILayout.LabelField(
-                "Advanced",
-                EditorStyles.boldLabel);
-
+            EditorGUILayout.LabelField("Advanced", EditorStyles.boldLabel);
 
             DrawProperty("interruptDialogue");
 
@@ -197,15 +162,11 @@ namespace Game.Dialogue.Editor
 
         private void DrawProperty(string propertyName)
         {
-            SerializedProperty property =
-                serializedObject.FindProperty(propertyName);
-
+            SerializedProperty property = serializedObject.FindProperty(propertyName);
 
             if (property != null)
             {
-                EditorGUILayout.PropertyField(
-                    property,
-                    true);
+                EditorGUILayout.PropertyField(property, true);
             }
         }
 
@@ -213,33 +174,20 @@ namespace Game.Dialogue.Editor
 
         private void DrawHeader()
         {
-            EditorGUILayout.LabelField(
-                "Dialogue Node",
-                EditorStyles.boldLabel);
+            EditorGUILayout.LabelField("Dialogue Node", EditorStyles.boldLabel);
 
-
-            EditorGUILayout.HelpBox(
-                GetHelpText(),
-                MessageType.Info);
+            EditorGUILayout.HelpBox(GetHelpText(), MessageType.Info);
         }
-
-
 
         private string GetHelpText()
         {
             return node.dialogueType switch
             {
-                DialogueType.Normal =>
-                    "Normal dialogue: lines followed by choices.",
+                DialogueType.Normal => "Normal dialogue: lines followed by choices.",
 
+                DialogueType.YesNo => "Yes/No dialogue: player answers by nodding or shaking.",
 
-                DialogueType.YesNo =>
-                    "Yes/No dialogue: player answers by nodding or shaking.",
-
-
-                DialogueType.End =>
-                    "End dialogue: displays lines and closes the conversation.",
-
+                DialogueType.End => "End dialogue: displays lines and closes the conversation.",
 
                 _ =>
                     ""

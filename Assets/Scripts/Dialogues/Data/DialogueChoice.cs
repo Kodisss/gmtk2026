@@ -22,7 +22,7 @@ namespace Game.Dialogue
         public DialogueEffect[] effects;
 
 
-        [Header("Events")]
-        public UnityEvent onSelected;
+        // [Header("Events")]
+        // public UnityEvent onSelected;
     }
 }

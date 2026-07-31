@@ -30,25 +30,16 @@ namespace Game.Dialogue
         [Tooltip("Used only for Normal dialogue.")]
         public DialogueChoice[] choices;
 
-
-
         [Header("Yes / No")]
         [Tooltip("Used only for Yes/No dialogue.")]
         public DialogueChoice yesChoice;
-
         public DialogueChoice noChoice;
-
-
 
         [Header("Interrupt")]
         public DialogueNode interruptDialogue;
 
-
-
         [Header("Effects")]
         public DialogueEffect[] onEnterEffects;
-
-
 
         [Header("Events")]
         public UnityEvent onEnter;

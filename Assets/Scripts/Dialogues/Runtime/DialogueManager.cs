@@ -215,13 +215,11 @@ namespace Game.Dialogue
 
         private void Choose(DialogueChoice choice)
         {
-            if (choice == null)
-                return;
+            if (choice == null) return;
 
             ApplyEffects(choice.effects);
 
-
-            choice.onSelected?.Invoke();
+            // choice.onSelected?.Invoke();
 
             StartDialogue(choice.nextDialogue);
         }
