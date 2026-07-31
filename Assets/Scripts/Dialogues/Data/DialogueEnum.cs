@@ -38,12 +38,8 @@ namespace Game.Dialogue
     /// </summary>
     public enum ConditionOperator
     {
-        Equal,
         Greater,
-        Less,
-        GreaterOrEqual,
-        LessOrEqual,
-        NotEqual
+        Less
     }
 
     public enum DialogueLookDirection

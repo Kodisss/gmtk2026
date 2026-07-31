@@ -35,25 +35,16 @@ MonoBehaviour:
     nextDialogue: {fileID: 11400000, guid: c024d960f9955154e80ba431861d9b49, type: 2}
     conditions: []
     effects: []
-    onSelected:
-      m_PersistentCalls:
-        m_Calls: []
   yesChoice:
     text: 
     nextDialogue: {fileID: 0}
     conditions: []
     effects: []
-    onSelected:
-      m_PersistentCalls:
-        m_Calls: []
   noChoice:
     text: 
     nextDialogue: {fileID: 0}
     conditions: []
     effects: []
-    onSelected:
-      m_PersistentCalls:
-        m_Calls: []
   interruptDialogue: {fileID: 0}
   onEnterEffects: []
   onEnter:

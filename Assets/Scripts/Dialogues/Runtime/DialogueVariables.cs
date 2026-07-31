@@ -9,8 +9,7 @@ namespace Game.Dialogue
         {
             if (GameManager.Instance == null)
             {
-                Debug.LogWarning(
-                    "GameManager missing while reading dialogue variable.");
+                Debug.LogWarning("GameManager missing while reading dialogue variable.");
 
                 return 0;
             }
@@ -18,13 +17,9 @@ namespace Game.Dialogue
 
             return variable switch
             {
-                DialogueVariable.DaysLeft =>
-                    GameManager.Instance.DaysLeft,
+                DialogueVariable.DaysLeft => GameManager.Instance.DaysLeft,
 
-
-                DialogueVariable.Reputation =>
-                    GameManager.Instance.Reputation,
-
+                DialogueVariable.Reputation => GameManager.Instance.Reputation,
 
                 _ => 0
             };
@@ -70,28 +65,13 @@ namespace Game.Dialogue
 
         public bool Check(DialogueCondition condition)
         {
-            int currentValue =
-                Get(condition.variable);
+            int currentValue = Get(condition.variable);
 
             return condition.condition switch
             {
-                ConditionOperator.Equal =>
-                    currentValue == condition.value,
+                ConditionOperator.Greater => currentValue > condition.value,
 
-                ConditionOperator.Greater =>
-                    currentValue > condition.value,
-
-                ConditionOperator.Less =>
-                    currentValue < condition.value,
-
-                ConditionOperator.GreaterOrEqual =>
-                    currentValue >= condition.value,
-
-                ConditionOperator.LessOrEqual =>
-                    currentValue <= condition.value,
-
-                ConditionOperator.NotEqual =>
-                    currentValue != condition.value,
+                ConditionOperator.Less => currentValue < condition.value,
 
                 _ => false
             };

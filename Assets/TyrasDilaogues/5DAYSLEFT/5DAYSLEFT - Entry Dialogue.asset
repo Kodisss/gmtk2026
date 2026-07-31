@@ -67,9 +67,6 @@ MonoBehaviour:
     - variable: 0
       operation: 1
       value: 0
-    onSelected:
-      m_PersistentCalls:
-        m_Calls: []
   - text: I don't know.
     nextDialogue: {fileID: 11400000, guid: da24c34ed4f56ba48894ff683971f8f2, type: 2}
     conditions: []
@@ -77,25 +74,16 @@ MonoBehaviour:
     - variable: 0
       operation: 2
       value: 1
-    onSelected:
-      m_PersistentCalls:
-        m_Calls: []
   yesChoice:
     text: 
     nextDialogue: {fileID: 0}
     conditions: []
     effects: []
-    onSelected:
-      m_PersistentCalls:
-        m_Calls: []
   noChoice:
     text: 
     nextDialogue: {fileID: 0}
     conditions: []
     effects: []
-    onSelected:
-      m_PersistentCalls:
-        m_Calls: []
   interruptDialogue: {fileID: 0}
   onEnterEffects: []
   onEnter:

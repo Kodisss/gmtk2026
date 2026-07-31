@@ -4,7 +4,7 @@ public class GameState : MonoBehaviour
 {
     public static GameState Instance { get; private set; }
 
-    public int DaysLeft = 7;
+    public int DaysLeft = 5;
 
     public int Reputation = 0;
 

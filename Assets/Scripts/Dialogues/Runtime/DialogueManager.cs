@@ -247,35 +247,15 @@ namespace Game.Dialogue
                 {
                     thatDidntWork = condition;
                     shouldItBeOn = false;
-                    string conditionBetterWording;
 
-
-                    switch (condition.condition)
+                    string conditionBetterWording = condition.condition switch
                     {
-                        case ConditionOperator.Equal:
-                            conditionBetterWording = "not equal to ";
-                            break;
-                        case ConditionOperator.NotEqual:
-                            conditionBetterWording = "anything but ";
-                            break;
-                        case ConditionOperator.Greater:
-                            conditionBetterWording = "greater than ";
-                            break;
-                        case ConditionOperator.Less:
-                            conditionBetterWording = "lower than ";
-                            break;
-                        case ConditionOperator.GreaterOrEqual:
-                            conditionBetterWording = "greater than ";
-                            break;
-                        case ConditionOperator.LessOrEqual:
-                            conditionBetterWording = "greater than ";
-                            break;
-                        default:
-                            conditionBetterWording = " ";
-                            break;
-                    }
+                        ConditionOperator.Greater => " must be over ",
+                        ConditionOperator.Less => " must be lower than ",
+                        _ => " ",
+                    };
 
-                    endDialogue = "(" + condition.variable + " must be " + conditionBetterWording + condition.value + ") " + endDialogue;
+                    endDialogue = "(" + condition.variable + conditionBetterWording + condition.value + ") " + endDialogue;
                 }  
             }
 
