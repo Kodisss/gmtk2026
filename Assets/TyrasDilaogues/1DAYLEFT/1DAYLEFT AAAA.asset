@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bb50b23a4cf2d8b458c5808c80931e04, type: 3}
   m_Name: 1DAYLEFT AAAA
   m_EditorClassIdentifier: Assembly-CSharp::Game.Dialogue.DialogueNode
-  speakerName: 
+  speakerName: Oryctola
   dialogueType: 0
   advanceDialogueDatabase: 1
   lines:
@@ -31,25 +31,16 @@ MonoBehaviour:
     nextDialogue: {fileID: 11400000, guid: 661161427e626144fa39c4ac4e44c0e1, type: 2}
     conditions: []
     effects: []
-    onSelected:
-      m_PersistentCalls:
-        m_Calls: []
   yesChoice:
     text: 
     nextDialogue: {fileID: 0}
     conditions: []
     effects: []
-    onSelected:
-      m_PersistentCalls:
-        m_Calls: []
   noChoice:
     text: 
     nextDialogue: {fileID: 0}
     conditions: []
     effects: []
-    onSelected:
-      m_PersistentCalls:
-        m_Calls: []
   interruptDialogue: {fileID: 0}
   onEnterEffects: []
   onEnter:
