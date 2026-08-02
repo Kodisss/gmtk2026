@@ -1321,7 +1321,7 @@ MonoBehaviour:
   jumpGravityMultiplier: 2
   fallGravityMultiplier: 3
   lowJumpGravityMultiplier: 10
-  coyoteTime: 0.2
+  coyoteTime: 0.1
   jumpBufferTime: 0.15
   jumpCutMultiplier: 0.5
   landingVelocityThresholdToLand: 0
@@ -2166,7 +2166,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: bff666b1a15289a4cb7c51ecb1582bbb, type: 2}
   introSource: {fileID: 361472385}
   loopSource: {fileID: 361472384}
-  musicVolume: 0.473
+  musicVolume: 0.187
   fadeDuration: 1
 --- !u!4 &361472387
 Transform:

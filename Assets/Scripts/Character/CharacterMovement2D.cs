@@ -220,10 +220,14 @@ public class CharacterMovement2D : MonoBehaviour
 
     private void HandleCoyoteTime()
     {
-        if (isGrounded)
+        if (isGrounded && !isJumping)
+        {
             coyoteTimer = coyoteTime;
+        }
         else
+        {
             coyoteTimer -= Time.deltaTime;
+        }
     }
 
     private void HandleJumpBuffer()
