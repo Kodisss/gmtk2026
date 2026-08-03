@@ -7,6 +7,7 @@ public class GameManager : MonoBehaviour
 {
     public static GameManager Instance { get; private set; }
     private GameState gameState;
+    [SerializeField] private GameObject rainParticleSystem;
 
     [Header("Boss Dialogue")]
     [SerializeField] private DialogueDatabase bossDialogueDatabase;
@@ -74,6 +75,8 @@ public class GameManager : MonoBehaviour
 
         reputation = gameState.Reputation;
         daysLeft = gameState.DaysLeft;
+
+        if (daysLeft == 1) rainParticleSystem.SetActive(true);
 
         if(gameState.PlayIntro) beginingOfSceneDisplay.PlayIntro();
     }
