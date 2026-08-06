@@ -21,11 +21,6 @@ MonoBehaviour:
     position: 4
   lines:
   - speaker: {fileID: 11400000, guid: fe8e49dcead5893438ac9f7d55091e15, type: 2}
-    text: Hey! What a beautiful day today!
-    typingSpeed: 1
-    voiceVolume: 1
-    waitAfter: 0.5
-  - speaker: {fileID: 11400000, guid: fe8e49dcead5893438ac9f7d55091e15, type: 2}
     text: I wonder how you guys are doing?
     typingSpeed: 1
     voiceVolume: 1
