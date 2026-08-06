@@ -7,21 +7,23 @@ public class ShoutingSlot : MonoBehaviour
 {
     private SpriteRenderer spriteRenderer;
     private Animator animator;
-    private TMP_Text textBubble;
+    private ShoutingTypewriter typewriter;
+    private AudioClip npcVoice;
 
     private void Awake()
     {
         animator = GetComponent<Animator>();
         spriteRenderer = GetComponent<SpriteRenderer>();
-        textBubble = GetComponentInChildren<TMP_Text>();
+        typewriter = GetComponentInChildren<ShoutingTypewriter>();
 
         ClearMyself();
     }
 
+
     private void ClearMyself()
     {
-        textBubble.text = "";
         spriteRenderer.sprite = null;
+        typewriter.Clear();
     }
 
 
@@ -33,11 +35,23 @@ public class ShoutingSlot : MonoBehaviour
 
         animator.Play(0);
 
-        textBubble.text = "";
+        npcVoice = npc.voice;
+
+        typewriter.Clear();
     }
 
-    public void Say(string text)
+    public void Say(string text, float speed)
     {
-        textBubble.text = text;
+        typewriter.Type(text, npcVoice, speed);
+    }
+
+    public bool IsTyping()
+    {
+        return typewriter.IsTyping;
+    }
+
+    public void ClearText()
+    {
+        typewriter.Clear();
     }
 }

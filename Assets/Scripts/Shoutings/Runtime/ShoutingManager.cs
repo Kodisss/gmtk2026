@@ -44,28 +44,20 @@ public class ShoutingManager : MonoBehaviour
     {
         foreach (ShoutingLine line in shoutingNode.lines)
         {
-            if (!npcSlots.TryGetValue(line.speaker, out ShoutingSlot slot))
+            ShoutingSlot slot = npcSlots[line.speaker];
+
+            slot.Say(line.text, line.typingSpeed);
+
+
+            while (slot.IsTyping())
             {
-                Debug.LogWarning(
-                    "NPC " + line.speaker.name + " is not present in this shouting."
-                );
-
-                continue;
+                yield return null;
             }
-
-            slot.Say(line.text);
-
-            //float readingTime =
-            //    line.text.Length / (10f * line.typingSpeed);
-
-
-            //yield return new WaitForSeconds(readingTime);
 
 
             yield return new WaitForSeconds(line.waitAfter);
 
-
-            slot.Say("");
+            slot.ClearText();
         }
     }
 }
