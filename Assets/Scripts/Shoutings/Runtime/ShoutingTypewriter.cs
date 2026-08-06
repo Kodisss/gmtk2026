@@ -3,29 +3,21 @@ using System.Collections;
 using TMPro;
 using UnityEngine;
 
+[RequireComponent(typeof(TMP_Text))]
+[RequireComponent(typeof(AudioSource))]
 public class ShoutingTypewriter : MonoBehaviour
 {
-    [Header("Typing Settings")]
-    [SerializeField]
-    private float charactersPerSecond = 40f;
-
-
-    [Header("Punctuation")]
-    [SerializeField] private float commaPause = 0.15f;
-    [SerializeField] private float periodPause = 0.35f;
-    [SerializeField] private float ellipsisPause = 0.8f;
+    private float charactersPerSecond;
+    private float commaPause;
+    private float periodPause;
+    private float ellipsisPause;
 
     private AudioSource audioSource;
     private AudioClip currentVoice;
 
-    [SerializeField]
-    private float minPitch = 0.9f;
-
-    [SerializeField]
-    private float maxPitch = 1.1f;
-
-    [SerializeField]
-    private int charactersPerBlip = 2;
+    private float minPitch;
+    private float maxPitch;
+    private int charactersPerBlip;
 
 
     private TMP_Text textField;
@@ -43,6 +35,20 @@ public class ShoutingTypewriter : MonoBehaviour
         audioSource = GetComponent<AudioSource>();
     }
 
+    public void SetupPunctuation(float charPerSec, float cPause, float pPause, float ePause)
+    {
+        charactersPerSecond = charPerSec;
+        commaPause = cPause;
+        periodPause = pPause;
+        ellipsisPause = ePause;
+    }
+
+    public void SetupVoiceSettings(float mini, float max, int charPerBlip)
+    {
+        minPitch = mini;
+        maxPitch = max;
+        charactersPerBlip = charPerBlip;
+    }
 
     public void Type(string text, AudioClip voice, float typingSpeed = 1f, Action onFinished = null)
     {
@@ -61,9 +67,7 @@ public class ShoutingTypewriter : MonoBehaviour
 
         textField.text = "";
 
-
         float delay = 1f / (charactersPerSecond * typingSpeed);
-
 
         int blipCounter = 0;
 
@@ -108,60 +112,37 @@ public class ShoutingTypewriter : MonoBehaviour
 
         if (character == '.')
         {
-            bool isEllipsis =
-                index + 1 < text.Length &&
-                text[index + 1] == '.';
+            bool isEllipsis = index + 1 < text.Length && text[index + 1] == '.';
 
+            bool lastEllipsisDot = index >= 2 && text[index - 1] == '.' && text[index - 2] == '.';
 
-            bool lastEllipsisDot =
-                index >= 2 &&
-                text[index - 1] == '.' &&
-                text[index - 2] == '.';
+            if (lastEllipsisDot) return ellipsisPause;
 
-
-            if (lastEllipsisDot)
-                return ellipsisPause;
-
-
-            if (isEllipsis)
-                return 0.2f;
-
+            if (isEllipsis) return 0.2f;
 
             return periodPause;
         }
 
+        if (character == ',') return commaPause;
 
-        if (character == ',')
-            return commaPause;
-
-
-        if (character == '!' || character == '?')
-            return periodPause;
-
+        if (character == '!' || character == '?') return periodPause;
 
         return 0f;
     }
 
     private void PlayVoice()
     {
-        if (audioSource == null || currentVoice == null)
-            return;
-
+        if (audioSource == null || currentVoice == null) return;
 
         float pitch;
 
-
         do
         {
-            pitch = UnityEngine.Random.Range(
-                minPitch,
-                maxPitch);
+            pitch = UnityEngine.Random.Range(minPitch, maxPitch);
         }
         while (Mathf.Abs(pitch - previousPitch) < 0.03f);
 
-
         previousPitch = pitch;
-
 
         audioSource.pitch = pitch;
 
@@ -191,9 +172,7 @@ public class ShoutingTypewriter : MonoBehaviour
 
     public void FinishImmediately()
     {
-        if (!IsTyping)
-            return;
-
+        if (!IsTyping) return;
 
         StopTyping();
     }

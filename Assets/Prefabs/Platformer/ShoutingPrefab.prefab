@@ -28,7 +28,7 @@ Transform:
   m_GameObject: {fileID: 574054688882001086}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -4.71, y: -1.02, z: 0}
+  m_LocalPosition: {x: -4.44, y: -0.951, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -83,7 +83,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}
+  - {fileID: 2100000, guid: 9dfc825aed78fcd4ba02077103263b40, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -181,9 +181,9 @@ MeshRenderer:
   m_DynamicOccludee: 1
   m_StaticShadowCaster: 0
   m_MotionVectors: 1
-  m_LightProbeUsage: 1
+  m_LightProbeUsage: 0
   m_ReflectionProbeUsage: 1
-  m_RayTracingMode: 2
+  m_RayTracingMode: 0
   m_RayTraceProcedural: 0
   m_RayTracingAccelStructBuildFlagsOverride: 0
   m_RayTracingAccelStructBuildFlags: 1
@@ -212,8 +212,8 @@ MeshRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_GlobalIlluminationMeshLod: 0
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
+  m_SortingLayerID: 1481837715
+  m_SortingLayer: 10
   m_SortingOrder: 0
   m_MaskInteraction: 0
   m_AdditionalVertexStreams: {fileID: 0}
@@ -324,15 +324,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ae8f60ea8b01b344088111d6ed7b02ee, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ShoutingTypewriter
-  charactersPerSecond: 40
-  commaPause: 0.15
-  periodPause: 0.35
-  ellipsisPause: 0.8
-  audioSource: {fileID: 0}
-  voiceClip: {fileID: 0}
-  minPitch: 0.9
-  maxPitch: 1.1
-  charactersPerBlip: 2
 --- !u!82 &4312624869143675140
 AudioSource:
   m_ObjectHideFlags: 0
@@ -482,9 +473,9 @@ MeshRenderer:
   m_DynamicOccludee: 1
   m_StaticShadowCaster: 0
   m_MotionVectors: 1
-  m_LightProbeUsage: 1
+  m_LightProbeUsage: 0
   m_ReflectionProbeUsage: 1
-  m_RayTracingMode: 2
+  m_RayTracingMode: 0
   m_RayTraceProcedural: 0
   m_RayTracingAccelStructBuildFlagsOverride: 0
   m_RayTracingAccelStructBuildFlags: 1
@@ -513,8 +504,8 @@ MeshRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_GlobalIlluminationMeshLod: 0
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
+  m_SortingLayerID: 1481837715
+  m_SortingLayer: 10
   m_SortingOrder: 0
   m_MaskInteraction: 0
   m_AdditionalVertexStreams: {fileID: 0}
@@ -625,15 +616,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ae8f60ea8b01b344088111d6ed7b02ee, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ShoutingTypewriter
-  charactersPerSecond: 40
-  commaPause: 0.15
-  periodPause: 0.35
-  ellipsisPause: 0.8
-  audioSource: {fileID: 0}
-  voiceClip: {fileID: 0}
-  minPitch: 0.9
-  maxPitch: 1.1
-  charactersPerBlip: 2
 --- !u!82 &843426344035070833
 AudioSource:
   m_ObjectHideFlags: 0
@@ -783,9 +765,9 @@ MeshRenderer:
   m_DynamicOccludee: 1
   m_StaticShadowCaster: 0
   m_MotionVectors: 1
-  m_LightProbeUsage: 1
+  m_LightProbeUsage: 0
   m_ReflectionProbeUsage: 1
-  m_RayTracingMode: 2
+  m_RayTracingMode: 0
   m_RayTraceProcedural: 0
   m_RayTracingAccelStructBuildFlagsOverride: 0
   m_RayTracingAccelStructBuildFlags: 1
@@ -814,8 +796,8 @@ MeshRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_GlobalIlluminationMeshLod: 0
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
+  m_SortingLayerID: 1481837715
+  m_SortingLayer: 10
   m_SortingOrder: 0
   m_MaskInteraction: 0
   m_AdditionalVertexStreams: {fileID: 0}
@@ -926,15 +908,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ae8f60ea8b01b344088111d6ed7b02ee, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ShoutingTypewriter
-  charactersPerSecond: 40
-  commaPause: 0.15
-  periodPause: 0.35
-  ellipsisPause: 0.8
-  audioSource: {fileID: 0}
-  voiceClip: {fileID: 0}
-  minPitch: 0.9
-  maxPitch: 1.1
-  charactersPerBlip: 2
 --- !u!82 &6470979310018552891
 AudioSource:
   m_ObjectHideFlags: 0
@@ -1060,7 +1033,7 @@ Transform:
   m_GameObject: {fileID: 1896717434049737420}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 1.66, y: 0.11, z: 0}
+  m_LocalPosition: {x: 1.74, y: 0.049, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -1115,7 +1088,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}
+  - {fileID: 2100000, guid: 9dfc825aed78fcd4ba02077103263b40, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -1189,7 +1162,7 @@ Transform:
   m_GameObject: {fileID: 2232714952258236814}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -7.44, y: 0.5, z: 0}
+  m_LocalPosition: {x: -7.61, y: 0.042, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -1244,7 +1217,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}
+  - {fileID: 2100000, guid: 9dfc825aed78fcd4ba02077103263b40, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -1318,7 +1291,7 @@ Transform:
   m_GameObject: {fileID: 4889158312778185176}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 4.26, y: -1.19, z: 0}
+  m_LocalPosition: {x: 3.49, y: 3.679, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -1373,7 +1346,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}
+  - {fileID: 2100000, guid: 9dfc825aed78fcd4ba02077103263b40, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -1447,7 +1420,7 @@ Transform:
   m_GameObject: {fileID: 5472162904554189174}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -1.62, y: 0.72, z: 0}
+  m_LocalPosition: {x: -1.62, y: -0.954, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -1502,7 +1475,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}
+  - {fileID: 2100000, guid: 9dfc825aed78fcd4ba02077103263b40, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -1527,7 +1500,7 @@ SpriteRenderer:
   m_MaskInteraction: 0
   m_Sprite: {fileID: 21300000, guid: e7201fb1ca1892c4ab03101462701536, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_FlipX: 0
+  m_FlipX: 1
   m_FlipY: 0
   m_DrawMode: 0
   m_Size: {x: 2.1333334, y: 2.1333334}
@@ -1600,9 +1573,9 @@ MeshRenderer:
   m_DynamicOccludee: 1
   m_StaticShadowCaster: 0
   m_MotionVectors: 1
-  m_LightProbeUsage: 1
+  m_LightProbeUsage: 0
   m_ReflectionProbeUsage: 1
-  m_RayTracingMode: 2
+  m_RayTracingMode: 0
   m_RayTraceProcedural: 0
   m_RayTracingAccelStructBuildFlagsOverride: 0
   m_RayTracingAccelStructBuildFlags: 1
@@ -1631,8 +1604,8 @@ MeshRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_GlobalIlluminationMeshLod: 0
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
+  m_SortingLayerID: 1481837715
+  m_SortingLayer: 10
   m_SortingOrder: 0
   m_MaskInteraction: 0
   m_AdditionalVertexStreams: {fileID: 0}
@@ -1743,15 +1716,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ae8f60ea8b01b344088111d6ed7b02ee, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ShoutingTypewriter
-  charactersPerSecond: 40
-  commaPause: 0.15
-  periodPause: 0.35
-  ellipsisPause: 0.8
-  audioSource: {fileID: 0}
-  voiceClip: {fileID: 0}
-  minPitch: 0.9
-  maxPitch: 1.1
-  charactersPerBlip: 2
 --- !u!82 &3949950683024443303
 AudioSource:
   m_ObjectHideFlags: 0
@@ -1860,6 +1824,7 @@ GameObject:
   - component: {fileID: 5603590404280142160}
   - component: {fileID: 6201149076140409528}
   - component: {fileID: 1772366088811725467}
+  - component: {fileID: 501337582639965342}
   m_Layer: 0
   m_Name: ShoutingPrefab
   m_TagString: Untagged
@@ -1918,6 +1883,59 @@ MonoBehaviour:
   - {fileID: 5644346514823385833}
   - {fileID: 101796366144459940}
   - {fileID: 8386260984858817909}
+  charactersPerSecond: 40
+  commaPause: 0.15
+  periodPause: 0.35
+  ellipsisPause: 0.8
+  minPitch: 0.9
+  maxPitch: 1.1
+  charactersPerBlip: 2
+--- !u!61 &501337582639965342
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7999523522997818854}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_CompositeOperation: 0
+  m_CompositeOrder: 0
+  m_Offset: {x: -1.8702469, y: 3.2024813}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0, y: 0}
+    oldSize: {x: 0, y: 0}
+    newSize: {x: 0, y: 0}
+    adaptiveTilingThreshold: 0
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  m_Size: {x: 20.419846, y: 10.530584}
+  m_EdgeRadius: 0
 --- !u!1 &8336239699102077324
 GameObject:
   m_ObjectHideFlags: 0
@@ -1970,9 +1988,9 @@ MeshRenderer:
   m_DynamicOccludee: 1
   m_StaticShadowCaster: 0
   m_MotionVectors: 1
-  m_LightProbeUsage: 1
+  m_LightProbeUsage: 0
   m_ReflectionProbeUsage: 1
-  m_RayTracingMode: 2
+  m_RayTracingMode: 0
   m_RayTraceProcedural: 0
   m_RayTracingAccelStructBuildFlagsOverride: 0
   m_RayTracingAccelStructBuildFlags: 1
@@ -2001,8 +2019,8 @@ MeshRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_GlobalIlluminationMeshLod: 0
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
+  m_SortingLayerID: 1481837715
+  m_SortingLayer: 10
   m_SortingOrder: 0
   m_MaskInteraction: 0
   m_AdditionalVertexStreams: {fileID: 0}
@@ -2113,15 +2131,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ae8f60ea8b01b344088111d6ed7b02ee, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ShoutingTypewriter
-  charactersPerSecond: 40
-  commaPause: 0.15
-  periodPause: 0.35
-  ellipsisPause: 0.8
-  audioSource: {fileID: 0}
-  voiceClip: {fileID: 0}
-  minPitch: 0.9
-  maxPitch: 1.1
-  charactersPerBlip: 2
 --- !u!82 &1909083298204976207
 AudioSource:
   m_ObjectHideFlags: 0

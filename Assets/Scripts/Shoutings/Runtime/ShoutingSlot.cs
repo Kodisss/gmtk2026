@@ -19,6 +19,11 @@ public class ShoutingSlot : MonoBehaviour
         ClearMyself();
     }
 
+    public void SetupTypewriter(float charPerSec, float cPause, float pPause, float ePause, float mini, float max, int charPerBlip)
+    {
+        typewriter.SetupPunctuation(charPerSec, cPause, pPause, ePause);
+        typewriter.SetupVoiceSettings(mini, max, charPerBlip);
+    }
 
     private void ClearMyself()
     {
