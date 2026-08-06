@@ -1,0 +1,37 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3ff7c044ac618394e8350a2d460e50d7, type: 3}
+  m_Name: Test
+  m_EditorClassIdentifier: Assembly-CSharp::ShoutingNode
+  npcs:
+  - npc: {fileID: 11400000, guid: eaefd72abfa294241b78fdc739b5dea7, type: 2}
+    position: 0
+  - npc: {fileID: 11400000, guid: fe8e49dcead5893438ac9f7d55091e15, type: 2}
+    position: 2
+  - npc: {fileID: 11400000, guid: 5a7a072977255934c9fdb9742100db1f, type: 2}
+    position: 4
+  lines:
+  - speaker: {fileID: 11400000, guid: eaefd72abfa294241b78fdc739b5dea7, type: 2}
+    text: Bonjour ca va?
+    typingSpeed: 1
+    voiceVolume: 1
+    waitAfter: 0.5
+  - speaker: {fileID: 11400000, guid: fe8e49dcead5893438ac9f7d55091e15, type: 2}
+    text: Bonjour oui ca va
+    typingSpeed: 1
+    voiceVolume: 1
+    waitAfter: 0.5
+  - speaker: {fileID: 11400000, guid: 5a7a072977255934c9fdb9742100db1f, type: 2}
+    text: No pas moi
+    typingSpeed: 1
+    voiceVolume: 1
+    waitAfter: 0.5
