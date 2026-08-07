@@ -7,14 +7,19 @@ public class BeginingOfSceneDisplay : MonoBehaviour
     [SerializeField] private GameObject myUI;
     [SerializeField] private GameObject wholeUI;
     [SerializeField] private CharacterMovement2D player;
+
     private GameManager gameManager;
     private MusicManager musicManager;
+    private GameSettings gameSettings;
+
     [SerializeField] private TMP_Text textDisplay;
     [SerializeField] private AudioClip endOfDaySound;
+    [SerializeField] private AudioSource myAudioSource;
 
     private void Start()
     {
         gameManager = GameManager.Instance;
+        gameSettings = GameSettings.Instance;
         musicManager = MusicManager.Instance;
 
         myUI.SetActive(false);
@@ -33,7 +38,6 @@ public class BeginingOfSceneDisplay : MonoBehaviour
         // Show UI
         myUI.SetActive(true);
         musicManager.StopMusic();
-
 
         // Reset text alpha
         Color textColor = textDisplay.color;
@@ -54,7 +58,8 @@ public class BeginingOfSceneDisplay : MonoBehaviour
         // Play sound
         if (endOfDaySound != null)
         {
-            musicManager.PlaySomething(endOfDaySound);
+            myAudioSource.volume = gameSettings.SoundVolume;
+            myAudioSource.PlayOneShot(endOfDaySound);
         }
 
         // Fade in text
@@ -74,11 +79,9 @@ public class BeginingOfSceneDisplay : MonoBehaviour
             yield return null;
         }
 
-
         // Make sure it ends fully visible
         textColor.a = 1f;
         textDisplay.color = textColor;
-
 
         // Wait before changing day
         yield return new WaitForSeconds(3f);

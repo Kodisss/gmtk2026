@@ -7,6 +7,8 @@ public class GameManager : MonoBehaviour
 {
     public static GameManager Instance { get; private set; }
     private GameState gameState;
+    private GameSettings gameSettings;
+
     [SerializeField] private GameObject rainParticleSystem;
 
     [Header("Boss Dialogue")]
@@ -78,7 +80,7 @@ public class GameManager : MonoBehaviour
 
         if (daysLeft == 1) rainParticleSystem.SetActive(true);
 
-        if(gameState.PlayIntro) beginingOfSceneDisplay.PlayIntro();
+        if (gameState.PlayIntro) beginingOfSceneDisplay.PlayIntro();
     }
 
     public void StartBossDialogue()

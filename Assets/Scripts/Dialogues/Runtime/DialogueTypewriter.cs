@@ -156,7 +156,7 @@ namespace Game.Dialogue
             previousPitch = pitch;
 
             audioSource.pitch = pitch;
-            audioSource.PlayOneShot(currentVoice, currentVolume);
+            audioSource.PlayOneShot(currentVoice, currentVolume * GameSettings.Instance.VoiceVolume);
         }
 
 

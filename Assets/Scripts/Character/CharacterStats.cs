@@ -6,6 +6,7 @@ public class CharacterStats : MonoBehaviour
 {
     private CharacterAnimation characterAnimation;
     private CharacterMovement2D movements;
+    private GameSettings gameSettings;
 
     [Header("Movements")]
     public float SpeedMultiplier { get; private set; } = 1f;
@@ -47,17 +48,17 @@ public class CharacterStats : MonoBehaviour
     private Coroutine doubleJumpRoutine;
     private Coroutine invincibilityCoroutine;
 
-    #region Speed
-
     private void Start()
     {
         CurrentHealth = maxHealth;
         characterAnimation = GetComponentInChildren<CharacterAnimation>();
-
+        gameSettings = GameSettings.Instance;
         movements = GetComponent<CharacterMovement2D>();
         speedBoostRenderer.sprite = null;
         doubleJumpBoostRenderer.sprite = null;
     }
+
+    #region Speed
 
     public void ApplySpeedMultiplier(float multiplier, float duration)
     {
@@ -70,13 +71,13 @@ public class CharacterStats : MonoBehaviour
     {
         SpeedMultiplier = multiplier;
         speedBoostRenderer.sprite = speedBoostSprite;
-        boostAudioSource.PlayOneShot(speedIn);
+        boostAudioSource.PlayOneShot(speedIn, gameSettings.SoundVolume);
 
         yield return new WaitForSeconds(duration);
 
         SpeedMultiplier = 1f;
         speedBoostRenderer.sprite = null;
-        boostAudioSource.PlayOneShot(speedOut);
+        boostAudioSource.PlayOneShot(speedOut, gameSettings.SoundVolume);
     }
 
     #endregion
@@ -89,7 +90,7 @@ public class CharacterStats : MonoBehaviour
 
         doubleJumpRoutine = StartCoroutine(DoubleJumpRoutine(duration));
 
-        boostAudioSource.PlayOneShot(pickUpItemSound);
+        boostAudioSource.PlayOneShot(pickUpItemSound, gameSettings.SoundVolume);
     }
 
     private IEnumerator DoubleJumpRoutine(float duration)
@@ -107,7 +108,7 @@ public class CharacterStats : MonoBehaviour
 
     public void NewDashPickup()
     {
-        boostAudioSource.PlayOneShot(pickUpItemSound);
+        boostAudioSource.PlayOneShot(pickUpItemSound, gameSettings.SoundVolume);
         movements.CanDash = true;
     }
 
@@ -128,7 +129,7 @@ public class CharacterStats : MonoBehaviour
             return;
         }
 
-        boostAudioSource.PlayOneShot(damageTakenSound);
+        boostAudioSource.PlayOneShot(damageTakenSound, gameSettings.SoundVolume);
 
         StartCoroutine(InvincibilityRoutine());
     }

@@ -7,6 +7,8 @@ using UnityEngine;
 [RequireComponent(typeof(AudioSource))]
 public class ShoutingTypewriter : MonoBehaviour
 {
+    private GameSettings gameSettings;
+
     private float charactersPerSecond;
     private float commaPause;
     private float periodPause;
@@ -33,6 +35,11 @@ public class ShoutingTypewriter : MonoBehaviour
     {
         textField = GetComponent<TMP_Text>();
         audioSource = GetComponent<AudioSource>();
+    }
+
+    private void Start()
+    {
+        gameSettings = GameSettings.Instance;
     }
 
     public void SetupPunctuation(float charPerSec, float cPause, float pPause, float ePause)
@@ -146,7 +153,7 @@ public class ShoutingTypewriter : MonoBehaviour
 
         audioSource.pitch = pitch;
 
-        audioSource.PlayOneShot(currentVoice);
+        audioSource.PlayOneShot(currentVoice, gameSettings.VoiceVolume);
     }
 
     public void StopTyping()

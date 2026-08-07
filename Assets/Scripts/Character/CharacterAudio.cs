@@ -4,6 +4,7 @@ public class CharacterAudio : MonoBehaviour
 {
     [Header("References")]
     [SerializeField] private CharacterMovement2D movement;
+    private GameSettings gameSettings;
 
     [Header("Audio Sources")]
     [SerializeField] private AudioSource footstepSource;
@@ -35,8 +36,7 @@ public class CharacterAudio : MonoBehaviour
 
     private void Awake()
     {
-        if (movement == null)
-            movement = GetComponent<CharacterMovement2D>();
+        if (movement == null) movement = GetComponent<CharacterMovement2D>();
 
         footstepSource.playOnAwake = false;
         footstepSource.loop = false;
@@ -45,6 +45,11 @@ public class CharacterAudio : MonoBehaviour
         effectsSource.playOnAwake = false;
         effectsSource.loop = false;
         effectsSource.spatialBlend = 0f;
+    }
+
+    private void Start()
+    {
+        gameSettings = GameSettings.Instance;
     }
 
     private void Update()
@@ -71,7 +76,7 @@ public class CharacterAudio : MonoBehaviour
         if (stepTimer > 0f) return;
 
         footstepSource.pitch = Random.Range(minPitch, maxPitch);
-        footstepSource.PlayOneShot(footstepClip, footstepVolume);
+        footstepSource.PlayOneShot(footstepClip, footstepVolume * gameSettings.SoundVolume);
 
         stepTimer = stepInterval;
     }
@@ -103,12 +108,12 @@ public class CharacterAudio : MonoBehaviour
             return;
 
         effectsSource.pitch = Random.Range(minPitch, maxPitch);
-        effectsSource.PlayOneShot(clip, volume);
+        effectsSource.PlayOneShot(clip, volume * gameSettings.SoundVolume);
     }
 
     public void PlayDeathSoundEffect()
     {
         effectsSource.pitch = 1f;
-        effectsSource.PlayOneShot(deathClip, deathVolume);
+        effectsSource.PlayOneShot(deathClip, deathVolume * gameSettings.SoundVolume);
     }
 }

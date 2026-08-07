@@ -7,27 +7,20 @@ public class MusicManager : MonoBehaviour
 {
     public static MusicManager Instance { get; private set; }
 
+    private GameSettings gameSettings;
 
     [Header("Music Library")]
     [SerializeField] private List<MusicTrack> musicTracks = new List<MusicTrack>();
-
 
     [Header("Audio Sources")]
     [SerializeField] private AudioSource introSource;
     [SerializeField] private AudioSource loopSource;
 
-
-    [Header("Settings")]
-    [SerializeField][Range(0f, 1f)] private float musicVolume = 1f;
-    [SerializeField] private float fadeDuration = 1f;
-
-    public float MusicVolume => musicVolume;
-
+    private float musicVolume = 1f;
     private float currentTrackVolume = 1f;
 
     private MusicTrack currentTrack;
     private Coroutine fadeCoroutine;
-
 
     private void Awake()
     {
@@ -40,45 +33,27 @@ public class MusicManager : MonoBehaviour
         Instance = this;
 
         DontDestroyOnLoad(gameObject);
+    }
 
-
+    private void Start()
+    {
+        gameSettings = GameSettings.Instance;
         introSource.loop = false;
-
         loopSource.loop = true;
-
-        introSource.volume = 0f;
-        loopSource.volume = 0f;
+        UpdateVolume();
     }
 
-    private void OnValidate()
+    private void Update()
     {
-        if (musicVolume < 0f)
-            musicVolume = 0f;
-
-        if (musicVolume > 1f)
-            musicVolume = 1f;
-
-
-        if (Application.isPlaying)
-        {
-            ApplyVolume();
-        }
+        if (musicVolume != gameSettings.MusicVolume) UpdateVolume();
     }
 
-    private void ApplyVolume()
+    private void UpdateVolume()
     {
-        float introVolume = currentTrackVolume * musicVolume;
-        float loopVolume = currentTrackVolume * musicVolume;
-
-        introSource.volume = introVolume;
-        loopSource.volume = loopVolume;
+        musicVolume = gameSettings.MusicVolume;
+        introSource.volume = musicVolume * currentTrackVolume;
+        loopSource.volume = musicVolume * currentTrackVolume;
     }
-
-
-    // -------------------------------
-    // PUBLIC FUNCTIONS
-    // -------------------------------
-
 
     public void PlayTrackNb(int trackNumber)
     {
@@ -91,119 +66,57 @@ public class MusicManager : MonoBehaviour
     {
         MusicTrack track = musicTracks.Find(x => x.trackID == trackID);
 
-
         if (track == null)
         {
             Debug.LogWarning($"Music track '{trackID}' not found!");
             return;
         }
 
-
         FadeToMusic(track);
     }
 
     public void FadeToMusic(MusicTrack track)
     {
-        if (track == null)
-            return;
+        if (track == null) return;
 
+        if (track == currentTrack) return;
 
-        if (track == currentTrack)
-            return;
-
-
-        if (fadeCoroutine != null)
-            StopCoroutine(fadeCoroutine);
-
+        if (fadeCoroutine != null) StopCoroutine(fadeCoroutine);
 
         fadeCoroutine = StartCoroutine(FadeRoutine(track));
     }
 
-
-
     public void StopMusic()
     {
-        if (fadeCoroutine != null)
-            StopCoroutine(fadeCoroutine);
-
+        if (fadeCoroutine != null) StopCoroutine(fadeCoroutine);
 
         introSource.Stop();
         loopSource.Stop();
 
-        introSource.volume = 0f;
-        loopSource.volume = 0f;
-
         currentTrack = null;
     }
-
-    public void PlaySomething(AudioClip clipToPlay)
-    {
-        loopSource.volume = 1f;
-        loopSource.PlayOneShot(clipToPlay);
-    }
-
-    public void SetVolume(float volume)
-    {
-        musicVolume = Mathf.Clamp01(volume);
-
-        introSource.volume = currentTrackVolume * musicVolume;
-        loopSource.volume = currentTrackVolume * musicVolume;
-    }
-
-
-
-    // -------------------------------
-    // MUSIC ROUTINE
-    // -------------------------------
-
 
     private IEnumerator FadeRoutine(MusicTrack newTrack)
     {
         currentTrackVolume = newTrack.volume;
 
-        // Fade out
-        float startVolume = loopSource.volume;
-
-
-        while (loopSource.volume > 0f)
-        {
-            loopSource.volume -= startVolume * Time.deltaTime / fadeDuration;
-
-            yield return null;
-        }
-
-
         introSource.Stop();
         loopSource.Stop();
-
-
 
         if (newTrack.HasIntro && newTrack.HasLoop)
         {
             introSource.clip = newTrack.intro;
             loopSource.clip = newTrack.loop;
 
-
-            introSource.volume = newTrack.volume * musicVolume;
-            loopSource.volume = 0f;
-
-
             double startTime = AudioSettings.dspTime + 0.1;
-
 
             introSource.PlayScheduled(startTime);
 
-
             double loopStartTime = startTime + newTrack.intro.length;
-
 
             loopSource.PlayScheduled(loopStartTime);
 
-
             yield return new WaitForSeconds(newTrack.intro.length);
-
-
-            loopSource.volume = newTrack.volume * musicVolume;
         }
         else if (newTrack.HasLoop)
         {
@@ -217,7 +130,6 @@ public class MusicManager : MonoBehaviour
             introSource.volume = newTrack.volume * musicVolume;
             introSource.Play();
         }
-
 
         currentTrack = newTrack;
 
