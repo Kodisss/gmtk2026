@@ -6,6 +6,7 @@ public class CharacterInputs : MonoBehaviour
     public bool JumpPressed { get; private set; }
     public bool JumpReleased { get; private set; }
     public bool DashPressed { get; private set; }
+    public bool PausePressed { get; private set; }
 
     public void OnMove(InputAction.CallbackContext context)
     {

@@ -8,7 +8,7 @@ public class DisplaySliderNumber : MonoBehaviour
     private TMP_Text numberDisplay;
     private Slider numberSlider;
 
-    private void Start()
+    private void Awake()
     {
         numberSlider = GetComponent<Slider>();
         numberDisplay = GetComponentInChildren<TMP_Text>();
