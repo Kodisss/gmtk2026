@@ -1,4 +1,3 @@
-using UnityEditor.Animations;
 using UnityEngine;
 
 [CreateAssetMenu(
@@ -10,7 +9,7 @@ public class ShoutingNPC : ScriptableObject
 
     public Sprite portrait;
 
-    public AnimatorController animator;
+    public RuntimeAnimatorController animator;
 
     public AudioClip voice;
 }
