@@ -153,6 +153,7 @@ public class ShoutingTypewriter : MonoBehaviour
 
         audioSource.pitch = pitch;
 
+        audioSource.Stop();
         audioSource.PlayOneShot(currentVoice, gameSettings.VoiceVolume);
     }
 
