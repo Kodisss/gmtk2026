@@ -18,16 +18,18 @@ public class SettingScreen : MonoBehaviour
         voiceSlider.value = gameSettings.VoiceVolume;
     }
 
-    public void ModifySFXVolume(float value)
-    {
-        gameSettings.SoundVolume = value;
-    }
     public void ModifyMusicVolume(float value)
     {
-        gameSettings.MusicVolume = value;
+        gameSettings.MusicVolume = Mathf.Pow(value, 2.3f);
     }
+
+    public void ModifySFXVolume(float value)
+    {
+        gameSettings.SoundVolume = Mathf.Pow(value, 2.3f);
+    }
+    
     public void ModifyVoiceVolume(float value)
     {
-        gameSettings.VoiceVolume = value;
+        gameSettings.VoiceVolume = Mathf.Pow(value, 2.3f);
     }
 }
